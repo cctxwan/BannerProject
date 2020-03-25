@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 圆角 -->
+    <corners android:radius="@dimen/dimen_45_dip"/>
+
+    <gradient
+        android:angle="180"
+        android:endColor="#0048E2"
+        android:startColor="#1D65FF" />
+    <!-- 边距 -->
+    <padding
+        android:top="@dimen/dimen_5_dip"
+        android:bottom="@dimen/dimen_5_dip"
+        android:left="@dimen/dimen_5_dip"
+        android:right="@dimen/dimen_5_dip"/>
+
+</shape>

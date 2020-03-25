@@ -1,0 +1,278 @@
+package com.bangni.yzcm.activity;
+
+import android.Manifest;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.dialog.CommomDialog;
+import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
+import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
+import com.bangni.yzcm.view.RoundImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import kr.co.namee.permissiongen.PermissionFail;
+import kr.co.namee.permissiongen.PermissionGen;
+import kr.co.namee.permissiongen.PermissionSuccess;
+
+public class SettingActivity extends BannerActivity implements View.OnClickListener {
+
+    @BindView(R.id.rel_change_img)
+    RelativeLayout rel_change_img;
+
+    @BindView(R.id.rel_change_name)
+    RelativeLayout rel_change_name;
+
+    @BindView(R.id.rel_change_account)
+    RelativeLayout rel_change_account;
+
+    @BindView(R.id.rel_change_pass)
+    RelativeLayout rel_change_pass;
+
+    @BindView(R.id.rel_clear_hc)
+    RelativeLayout rel_clear_hc;
+
+    @BindView(R.id.txt_loginout)
+    TextView txt_loginout;
+
+    @BindView(R.id.img_userimg)
+    ImageView img_userimg;
+
+    private Bitmap head;// 头像Bitmap
+
+    private static String path = "/sdcard/myHead/";// sd路径
+
+    Uri imageUri;
+
+    private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
+
+    // 要申请的权限
+    private String[] permissions = {Manifest.permission.CAMERA};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setting);
+        ButterKnife.bind(this);
+
+        //修改状态栏字体颜色
+        StatusBarUtil.setImmersiveStatusBar(this, true);
+    }
+
+    @OnClick({R.id.rel_change_img, R.id.rel_change_name, R.id.rel_change_account, R.id.rel_change_pass, R.id.rel_clear_hc, R.id.txt_loginout, })
+    @Override
+    public void onClick(View v) {
+        int temdId = v.getId();
+        if(temdId == R.id.rel_change_img){
+            changeImg();
+        }else if(temdId == R.id.rel_change_name){
+            changename();
+        }else if(temdId == R.id.rel_change_account){
+
+        }else if(temdId == R.id.rel_change_pass){
+            startActivity(new Intent(mContext, ChangePsdActivity.class));
+        }else if(temdId == R.id.rel_clear_hc){
+            clearHC();
+        }else if(temdId == R.id.txt_loginout){
+            loginout();
+        }
+    }
+
+    /**
+     * 退出登录
+     */
+    private void loginout() {
+        new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
+
+            @Override
+            public void onClick(Dialog dialog, String content) {
+                if(content.equals("yes_hc")){
+                    //退出登录
+                }else if(content.equals("no_hc")){
+                    dialog.dismiss();
+                }
+            }
+        }, 4).show();
+    }
+
+    /**
+     * 清楚缓存
+     */
+    private void clearHC() {
+        new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
+
+            @Override
+            public void onClick(Dialog dialog, String content) {
+                if(content.equals("yes_hc")){
+                    //清楚缓存
+                }else if(content.equals("no_hc")){
+                    dialog.dismiss();
+                }
+            }
+        }, 3).show();
+    }
+
+    /**
+     * 修改昵称
+     */
+    private void changename() {
+        new CommomDialog(mContext, R.style.dialog, "更改昵称", new CommomDialog.OnCloseListenerParmes() {
+
+            @Override
+            public void onClickParmes(Dialog dialog, String content, String str) {
+                if(content.equals("sub_name")){
+                    BannerLog.d("b_cc", "更改昵称所返回的昵称为：" + str);
+                    //修改
+                }else if(content.equals("close")){
+                    dialog.dismiss();
+                }
+            }
+        }, 2).show();
+    }
+
+    /**
+     * 切换圆形img
+     */
+    private void changeImg() {
+        new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
+
+            @Override
+            public void onClick(Dialog dialog, String content) {
+                if(content.equals("photo")){
+                    dialog.dismiss();
+                    //请求打开权限
+                    // 3、调用拍照方法
+                    PermissionGen.with(mContext)
+                            .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
+                            .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.CAMERA
+                            ).request();
+                }else if(content.equals("album")){
+                    dialog.dismiss();
+                    // 3、调用从图库选取图片方法
+                    PermissionGen.needPermission(mContext,
+                            LQRPhotoSelectUtils.REQ_SELECT_PHOTO,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                    );
+                }else if(content.equals("cancel")){
+                    dialog.dismiss();
+                }
+            }
+        }, 1).show();
+    }
+
+
+    // 跳转到当前应用的设置界面
+    private void goToAppSetting() {
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+        startActivityForResult(intent, 321);
+    }
+
+    @PermissionSuccess(requestCode = LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
+    private void takePhoto() {
+        // 1、创建LQRPhotoSelectUtils（一个Activity对应一个LQRPhotoSelectUtils）
+        mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(this, new LQRPhotoSelectUtils.PhotoSelectListener() {
+            @Override
+            public void onFinish(File outputFile, Uri outputUri) {
+                // 4、当拍照或从图库选取图片成功后回调
+                Glide.with(mContext).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable =
+                                RoundedBitmapDrawableFactory.create(getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+            }
+        }, false);//true裁剪，false不裁剪
+
+        mLqrPhotoSelectUtils.takePhoto();
+    }
+
+    @PermissionSuccess(requestCode = LQRPhotoSelectUtils.REQ_SELECT_PHOTO)
+    private void selectPhoto() {
+        // 1、创建LQRPhotoSelectUtils（一个Activity对应一个LQRPhotoSelectUtils）
+        mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(this, new LQRPhotoSelectUtils.PhotoSelectListener() {
+            @Override
+            public void onFinish(File outputFile, Uri outputUri) {
+                // 4、当拍照或从图库选取图片成功后回调
+                Glide.with(mContext).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable =
+                                RoundedBitmapDrawableFactory.create(getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+            }
+        }, false);//true裁剪，false不裁剪
+        mLqrPhotoSelectUtils.selectPhoto();
+    }
+
+    @PermissionFail(requestCode = LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
+    private void showTip1() {
+        goToAppSetting();
+    }
+
+    @PermissionFail(requestCode = LQRPhotoSelectUtils.REQ_SELECT_PHOTO)
+    private void showTip2() {
+        goToAppSetting();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 2、在Activity中的onActivityResult()方法里与LQRPhotoSelectUtils关联
+        mLqrPhotoSelectUtils.attachToActivityForResult(requestCode, resultCode, data);
+        //请求打开权限
+        PermissionGen.with(mContext)
+                .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
+                .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA
+                ).request();
+    }
+
+}
