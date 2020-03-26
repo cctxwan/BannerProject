@@ -1,6 +1,7 @@
 package com.bangni.yzcm.adapter;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     /** 控件 */
     LayoutInflater inflater;
-
 
     /**
      * 这里的data作为数据源从activity传入
@@ -98,6 +98,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             this.order_item_kssj = rootView.findViewById(R.id.order_item_kssj);
 
             this.lin_order_rv = rootView.findViewById(R.id.lin_order_rv);
+
+            //加粗
+            this.order_item_name.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
 
             //设置item的点击事件

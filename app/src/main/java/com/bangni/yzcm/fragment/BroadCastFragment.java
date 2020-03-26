@@ -1,6 +1,7 @@
 package com.bangni.yzcm.fragment;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -37,6 +38,12 @@ public class BroadCastFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         StatusBarUtil.setImmersiveStatusBar(getActivity(), true);
+
+        initView();
+    }
+
+    private void initView() {
+
     }
 
     @Override

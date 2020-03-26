@@ -1,12 +1,21 @@
 package com.bangni.yzcm.activity;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
@@ -44,11 +53,20 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     @BindView(R.id.txt_tologin)
     TextView txt_tologin;
 
+    @BindView(R.id.txt_register_title)
+    TextView txt_register_title;
+
+    @BindView(R.id.img_register_lookpsd)
+    ImageView img_register_lookpsd;
+
     //是否获取过验证码
     private boolean ISGETCODE = false;
 
     //倒计时60s
     private int min = 60;
+
+    //查看密码
+    private boolean isLookPsd = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +78,44 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
         StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT);
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
+        
+        initView();
+    }
+
+    private void initView() {
+        //加粗
+        txt_register_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_rg_getcode.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_tologin.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_register.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+        img_register_lookpsd.setVisibility(View.GONE);
+        et_rg_password.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+        et_rg_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+        //否则隐藏密码
+        et_rg_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        et_rg_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length() > 0){
+                    img_register_lookpsd.setVisibility(View.VISIBLE);
+                }else{
+                    img_register_lookpsd.setVisibility(View.GONE);
+                }
+                if(s.length() == 0) img_register_lookpsd.setImageResource(R.mipmap.hide_pass);
+            }
+        });
     }
 
 
@@ -67,7 +123,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
      * 点击事件
      * @param v
      */
-    @OnClick({R.id.txt_rg_getcode, R.id.txt_register, R.id.txt_yhxy, R.id.txt_tologin})
+    @OnClick({R.id.txt_rg_getcode, R.id.txt_register, R.id.txt_yhxy, R.id.txt_tologin, R.id.img_register_lookpsd})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
@@ -97,6 +153,19 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
             //去登录界面
             initGetCode();
             finish();
+        }else if(temdId == R.id.img_register_lookpsd){
+            //查看密码
+            if(isLookPsd){
+                isLookPsd = false;
+                et_rg_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                img_register_lookpsd.setImageResource(R.mipmap.hide_pass);
+                et_rg_password.setSelection(et_rg_password.getText().length());
+            }else{
+                isLookPsd = true;
+                et_rg_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                img_register_lookpsd.setImageResource(R.mipmap.show_pass);
+                et_rg_password.setSelection(et_rg_password.getText().length());
+            }
         }
     }
 

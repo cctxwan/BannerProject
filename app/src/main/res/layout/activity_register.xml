@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/txt_register_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注册"
@@ -115,20 +116,17 @@
                 android:textColor="@color/black"
                 android:layout_height="@dimen/dimen_80_dip" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+
+            <ImageView
+                android:id="@+id/img_register_lookpsd"
+                android:layout_width="@dimen/dimen_43_dip"
+                android:visibility="gone"
                 android:layout_height="match_parent"
                 android:background="@drawable/while_bg"
                 android:paddingRight="@dimen/dimen_13_dip"
-                android:orientation="horizontal">
+                android:src="@mipmap/hide_pass"
+                android:layout_gravity="center_vertical"/>
 
-                <ImageView
-                    android:layout_width="@dimen/dimen_29_dip"
-                    android:layout_height="@dimen/dimen_13_dip"
-                    android:src="@mipmap/hide_pass"
-                    android:layout_gravity="center_vertical"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 

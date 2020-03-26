@@ -15,12 +15,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/img_about_back"
-            android:layout_width="@dimen/dimen_9_dip"
-            android:layout_height="@dimen/dimen_22_dip"
-            android:src="@mipmap/back_black"
-            android:layout_marginTop="@dimen/dimen_25_dip"/>
+
+        <LinearLayout
+            android:id="@+id/img_changepsd_back"
+            android:layout_width="@dimen/dimen_45_dip"
+            android:layout_height="@dimen/dimen_45_dip"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="@dimen/dimen_9_dip"
+                android:layout_height="@dimen/dimen_22_dip"
+                android:src="@mipmap/back_black"
+                android:layout_marginTop="@dimen/dimen_25_dip"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,6 +42,134 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_239_dip"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dimen_33_dip"
+        android:background="@drawable/feedbook_bg"
+        android:weightSum="3">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_oldpsd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="请输入旧密码"
+                android:background="@null"
+                android:textColorHint="#B5B5B5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_20_dip"
+                android:layout_marginLeft="@dimen/dimen_28_dip"
+                android:layout_marginRight="@dimen/dimen_28_dip"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/img_old_lookpsd"
+                android:layout_width="@dimen/dimen_43_dip"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:paddingRight="@dimen/dimen_13_dip"
+                android:src="@mipmap/hide_pass"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_newpsd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="请输入新密码"
+                android:background="@null"
+                android:textColorHint="#B5B5B5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_20_dip"
+                android:layout_marginLeft="@dimen/dimen_28_dip"
+                android:layout_marginRight="@dimen/dimen_28_dip"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/img_new_lookpsd"
+                android:layout_width="@dimen/dimen_43_dip"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:paddingRight="@dimen/dimen_13_dip"
+                android:src="@mipmap/hide_pass"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_newpsd_r"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="请再次输入新密码"
+                android:background="@null"
+                android:textColorHint="#B5B5B5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_20_dip"
+                android:layout_marginLeft="@dimen/dimen_28_dip"
+                android:layout_marginRight="@dimen/dimen_28_dip"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/img_new_r_lookpsd"
+                android:layout_width="@dimen/dimen_43_dip"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:paddingRight="@dimen/dimen_13_dip"
+                android:src="@mipmap/hide_pass"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/dimen_29_dip"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_changepsd_comple"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_59_dip"
+            android:text="确定"
+            android:textSize="@dimen/dimen_24_dip"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@drawable/slategrey_bg"
+            android:layout_gravity="bottom"/>
+
+    </LinearLayout>
 
 </LinearLayout>

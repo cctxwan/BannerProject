@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -19,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,6 +31,7 @@ import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
 import com.bangni.yzcm.view.RoundImageView;
 import com.bumptech.glide.Glide;
@@ -68,16 +72,13 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     @BindView(R.id.img_userimg)
     ImageView img_userimg;
 
-    private Bitmap head;// 头像Bitmap
+    @BindView(R.id.txt_getHc)
+    TextView txt_getHc;
 
-    private static String path = "/sdcard/myHead/";// sd路径
-
-    Uri imageUri;
+    @BindView(R.id.img_setting_back)
+    LinearLayout img_setting_back;
 
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
-
-    // 要申请的权限
-    private String[] permissions = {Manifest.permission.CAMERA};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +88,26 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
+
+        new Handler().post(initView);
     }
 
-    @OnClick({R.id.rel_change_img, R.id.rel_change_name, R.id.rel_change_account, R.id.rel_change_pass, R.id.rel_clear_hc, R.id.txt_loginout, })
+    Runnable initView = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                txt_getHc.setText(ClearDataUtils.getTotalCacheSize(mContext));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //加粗
+            txt_loginout.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        }
+    };
+
+
+    @OnClick({R.id.rel_change_img, R.id.rel_change_name, R.id.rel_change_account, R.id.rel_change_pass, R.id.rel_clear_hc, R.id.txt_loginout, R.id.img_setting_back})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
@@ -105,6 +123,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             clearHC();
         }else if(temdId == R.id.txt_loginout){
             loginout();
+        }else if(temdId == R.id.img_setting_back){
+            finish();
         }
     }
 
@@ -117,6 +137,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onClick(Dialog dialog, String content) {
                 if(content.equals("yes_hc")){
+                    dialog.dismiss();
                     //退出登录
                 }else if(content.equals("no_hc")){
                     dialog.dismiss();
@@ -126,7 +147,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     }
 
     /**
-     * 清楚缓存
+     * 清除缓存
      */
     private void clearHC() {
         new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
@@ -134,7 +155,19 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onClick(Dialog dialog, String content) {
                 if(content.equals("yes_hc")){
+                    dialog.dismiss();
                     //清楚缓存
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                ClearDataUtils.clearAllCache(mContext);
+                                txt_getHc.setText(ClearDataUtils.getTotalCacheSize(mContext));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 }else if(content.equals("no_hc")){
                     dialog.dismiss();
                 }
@@ -151,6 +184,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onClickParmes(Dialog dialog, String content, String str) {
                 if(content.equals("sub_name")){
+                    dialog.dismiss();
                     BannerLog.d("b_cc", "更改昵称所返回的昵称为：" + str);
                     //修改
                 }else if(content.equals("close")){
@@ -172,7 +206,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                     dialog.dismiss();
                     //请求打开权限
                     // 3、调用拍照方法
-                    PermissionGen.with(mContext)
+                    PermissionGen.with(SettingActivity.this)
                             .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
                             .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
                                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -181,10 +215,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 }else if(content.equals("album")){
                     dialog.dismiss();
                     // 3、调用从图库选取图片方法
-                    PermissionGen.needPermission(mContext,
+                    PermissionGen.needPermission(SettingActivity.this,
                             LQRPhotoSelectUtils.REQ_SELECT_PHOTO,
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}
                     );
                 }else if(content.equals("cancel")){
                     dialog.dismiss();
@@ -205,12 +238,11 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
     @PermissionSuccess(requestCode = LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
     private void takePhoto() {
-        // 1、创建LQRPhotoSelectUtils（一个Activity对应一个LQRPhotoSelectUtils）
         mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(this, new LQRPhotoSelectUtils.PhotoSelectListener() {
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(mContext).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                Glide.with(SettingActivity.this).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable =
@@ -232,7 +264,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(mContext).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                Glide.with(SettingActivity.this).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable =
@@ -266,13 +298,6 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         // 2、在Activity中的onActivityResult()方法里与LQRPhotoSelectUtils关联
         mLqrPhotoSelectUtils.attachToActivityForResult(requestCode, resultCode, data);
-        //请求打开权限
-        PermissionGen.with(mContext)
-                .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
-                .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.CAMERA
-                ).request();
     }
 
 }

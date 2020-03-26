@@ -20,12 +20,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/img_broadcast_back"
-                android:layout_width="@dimen/dimen_9_dip"
-                android:layout_height="@dimen/dimen_22_dip"
-                android:src="@mipmap/back_black"
-                android:layout_marginTop="@dimen/dimen_25_dip"/>
+                android:layout_width="@dimen/dimen_45_dip"
+                android:layout_height="@dimen/dimen_45_dip"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_9_dip"
+                    android:layout_height="@dimen/dimen_22_dip"
+                    android:src="@mipmap/back_black"
+                    android:layout_marginTop="@dimen/dimen_25_dip"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,6 +53,7 @@
             android:background="@drawable/while_bg">
 
             <TextView
+                android:id="@+id/txt_broadcase_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="社区名称"
@@ -71,6 +79,7 @@
             android:background="@drawable/while_bg">
 
             <TextView
+                android:id="@+id/txt_broadcase_wz"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="电梯位置"
@@ -96,6 +105,7 @@
             android:background="@drawable/while_bg">
 
             <TextView
+                android:id="@+id/txt_broadcase_time"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="上报时间"
@@ -121,6 +131,7 @@
             android:background="@drawable/while_bg">
 
             <TextView
+                android:id="@+id/txt_broadcase_takephoto"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="投影仪拍照图片"
@@ -143,6 +154,7 @@
             android:background="@drawable/while_bg">
 
             <TextView
+                android:id="@+id/txt_broadcase_photosb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="摄像头拍照图片识别结果"

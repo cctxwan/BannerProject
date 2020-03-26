@@ -3,16 +3,22 @@ package com.bangni.yzcm.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
 import android.text.Html;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.network.bean.UserLoginBean;
@@ -22,6 +28,7 @@ import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.SystemUtil;
 import com.bangni.yzcm.utils.ToastUtils;
@@ -57,11 +64,20 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @BindView(R.id.txt_getcodelogin)
     TextView txt_getcodelogin;
 
+    @BindView(R.id.txt_login_title)
+    TextView txt_login_title;
+
+    @BindView(R.id.img_login_loogpsd)
+    ImageView img_login_loogpsd;
+
     //是否是账号登录
     private boolean ISUSERLOGIN = true;
 
     //是否获取过验证码
     private boolean ISGETCODE = false;
+
+    //查看密码
+    private boolean isLookPsd = false;
 
     //倒计时60s
     private int min = 60;
@@ -84,12 +100,49 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
     private void initView() {
+        //加粗
+        txt_login_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_getcodelogin.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_getcode.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        txt_login.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+
+        txt_register.setClickable(true);
         String textSource = "还没有账号，立即<font color='#1D65FF'>注册</font>";
         txt_register.setText(Html.fromHtml(textSource));
         //密码
         et_password.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-        et_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         et_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+        if(ISUSERLOGIN){
+            //否则隐藏密码
+            et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
+
+
+        et_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                BannerLog.d("b_cc", "111");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                BannerLog.d("b_cc", "222");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                BannerLog.d("b_cc", "333---" + s.length());
+                if(ISUSERLOGIN){
+                    if(s.length() > 0){
+                        img_login_loogpsd.setVisibility(View.VISIBLE);
+                    }else{
+                        img_login_loogpsd.setVisibility(View.GONE);
+                    }
+                    if(s.length() == 0) img_login_loogpsd.setImageResource(R.mipmap.hide_pass);
+                }
+            }
+        });
     }
 
 
@@ -124,7 +177,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
      * 点击事件
      * @param v
      */
-    @OnClick({R.id.txt_login, R.id.txt_getcode, R.id.txt_register, R.id.txt_getcodelogin})
+    @OnClick({R.id.txt_login, R.id.txt_getcode, R.id.txt_register, R.id.txt_getcodelogin, R.id.img_login_loogpsd})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
@@ -151,6 +204,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 //账号密码登录
 //                userLogin();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
             }else{
                 //验证码登录
                 getCodeLogin();
@@ -164,24 +218,48 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             //验证码登录
             if(txt_getcodelogin.getText().toString().trim().equals("验证码登录")){
                 ISUSERLOGIN = false;
+                txt_login_title.setText("手机快捷登录");
+                txt_register.setText("未注册手机验证后完成注册");
+                txt_register.setClickable(false);
                 txt_getcode.setVisibility(View.VISIBLE);
+                img_login_loogpsd.setVisibility(View.GONE);
                 txt_getcodelogin.setText("账号密码登录");
                 et_password.setHint("请输入验证码");
                 et_password.setInputType(InputType.TYPE_CLASS_PHONE);
                 et_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
-                et_username.setText("");
+                et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                et_username.setText("");
                 et_password.setText("");
             }else{
                 initGetCode();
                 ISUSERLOGIN = true;
+                txt_login_title.setText("账号密码登录");
+                txt_register.setText((Html.fromHtml("还没有账号，立即<font color='#1D65FF'>注册</font>")));
+                txt_register.setClickable(true);
                 txt_getcode.setVisibility(View.GONE);
+                img_login_loogpsd.setVisibility(View.GONE);
                 txt_getcodelogin.setText("验证码登录");
                 et_password.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-                et_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 et_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+                //否则隐藏密码
+                et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                et_password.setSelection(et_password.getText().length());
+
                 et_password.setHint("请输入密码");
-                et_username.setText("");
+//                et_username.setText("");
                 et_password.setText("");
+            }
+        }else if(temdId == R.id.img_login_loogpsd){
+            if(isLookPsd){
+                isLookPsd = false;
+                et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                img_login_loogpsd.setImageResource(R.mipmap.hide_pass);
+                et_password.setSelection(et_password.getText().length());
+            }else{
+                isLookPsd = true;
+                et_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                img_login_loogpsd.setImageResource(R.mipmap.show_pass);
+                et_password.setSelection(et_password.getText().length());
             }
         }
     }

@@ -2,6 +2,7 @@ package com.bangni.yzcm.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -85,6 +86,10 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             setContentView(R.layout.clearhc);
             setCanceledOnTouchOutside(false);
             initView();
+        }else if(num == 5){
+            setContentView(R.layout.clearhc);
+            setCanceledOnTouchOutside(false);
+            initView();
         }
     }
 
@@ -109,6 +114,9 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             yes_hc.setOnClickListener(this);
             no_hc.setOnClickListener(this);
 
+            //加粗
+            txt_hc_content.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
             txt_hc_content.setText("确定要清除缓存？");
         }else if(num == 4){
             yes_hc = findViewById(R.id.yes_hc);
@@ -117,7 +125,21 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             yes_hc.setOnClickListener(this);
             no_hc.setOnClickListener(this);
 
+            //加粗
+            txt_hc_content.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
             txt_hc_content.setText("确定要退出登录？");
+        }else if(num == 5){
+            yes_hc = findViewById(R.id.yes_hc);
+            no_hc = findViewById(R.id.no_hc);
+            txt_hc_content = findViewById(R.id.txt_hc_content);
+            yes_hc.setOnClickListener(this);
+            no_hc.setOnClickListener(this);
+
+            //加粗
+            txt_hc_content.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+            txt_hc_content.setText("修改成功后需重新登录，确定执行此操作吗？");
         }
     }
 
@@ -168,6 +190,19 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                     break;
             }
         }else if(num == 4){
+            switch (v.getId()){
+                case R.id.no_hc:
+                    if(listener != null){
+                        listener.onClick(this, "no_hc");
+                    }
+                    break;
+                case R.id.yes_hc:
+                    if(listener != null){
+                        listener.onClick(this, "yes_hc");
+                    }
+                    break;
+            }
+        }else if(num == 5){
             switch (v.getId()){
                 case R.id.no_hc:
                     if(listener != null){
