@@ -3,8 +3,13 @@ package com.bangni.yzcm.network.retrofit;
 
 import android.util.Log;
 
+import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.network.bean.UserFeedBookBean;
+import com.bangni.yzcm.network.bean.UserGetCodeBean;
+import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
 import com.bangni.yzcm.network.bean.UserLoginBean;
+import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.util.BannerConstants;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
@@ -72,7 +77,7 @@ public class BannerRetrofitUtil {
                 Request original = chain.request();
                 Request request = original.newBuilder()
                         .header("Content-type", "application/json;charset=UTF-8")
-                        .header("token", "541564864165156")
+                        .header("token", new BannerPreferenceStorage(BannerApplication.getInstance()).getToken())
                         .method(original.method(), original.body())
                         .build();
                 printParams(request.body());
@@ -126,6 +131,26 @@ public class BannerRetrofitUtil {
     //用户账号密码登录
     public void userLogin(@Body RequestBody route, Subscriber<BannerBaseResponse<UserLoginBean>> subscriber) {
         toSubscribe(mApiService.userLogin(route), subscriber);
+    }
+
+    //用户账号密码注册
+    public void userRegister(@Body RequestBody route, Subscriber<BannerBaseResponse<UserRegisterBean>> subscriber) {
+        toSubscribe(mApiService.userRegister(route), subscriber);
+    }
+
+    //用户手机号登录
+    public void userGetCodeLogin(@Body RequestBody route, Subscriber<BannerBaseResponse<UserGetCodeLoginBean>> subscriber) {
+        toSubscribe(mApiService.userGetCodeLogin(route), subscriber);
+    }
+
+    //用户获取验证码
+    public void userGetCode(@Body RequestBody route, Subscriber<BannerBaseResponse<UserGetCodeBean>> subscriber) {
+        toSubscribe(mApiService.userGetCode(route), subscriber);
+    }
+
+    //用户意见反馈
+    public void userFeedBook(@Body RequestBody route, Subscriber<BannerBaseResponse<UserFeedBookBean>> subscriber) {
+        toSubscribe(mApiService.userFeedBook(route), subscriber);
     }
 
 }

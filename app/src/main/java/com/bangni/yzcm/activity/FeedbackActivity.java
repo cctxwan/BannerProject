@@ -1,21 +1,37 @@
 package com.bangni.yzcm.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.network.bean.UserFeedBookBean;
+import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
+import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
+import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
+import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.ToastUtils;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 意见反馈
@@ -24,6 +40,9 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
     @BindView(R.id.txt_feedbook_submit)
     TextView txt_feedbook_submit;
+
+    @BindView(R.id.et_feedbook_content)
+    EditText et_feedbook_content;
 
     @BindView(R.id.img_feedbook_back)
     LinearLayout img_feedbook_back;
@@ -52,7 +71,40 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
         if(temdId == R.id.img_feedbook_back){
             finish();
         }else if(temdId == R.id.txt_feedbook_submit){
+            if(TextUtils.isEmpty(et_feedbook_content.getText().toString().trim())){
+                ToastUtils.warning(mContext, "内容不能为空");
+                return;
+            }
+
             //提交
+            feedBook(et_feedbook_content.getText().toString().trim());
         }
+    }
+
+    /**
+     * 反馈内容
+     * @param trim
+     */
+    private void feedBook(String trim) {
+        Map<String, String> map = new HashMap<>();
+        map.put("feedbackContent", trim);
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<UserFeedBookBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
+                BannerLog.d("b_cc", "反馈成功返回参数为：" + response.toString());
+                startActivity(new Intent(mContext, MainActivity.class));
+                finish();
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(mContext, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().userFeedBook(body, new BannerProgressSubscriber<BannerBaseResponse<UserFeedBookBean>>(mListener, this, true));
     }
 }

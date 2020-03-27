@@ -1,5 +1,6 @@
 package com.bangni.yzcm.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Handler;
@@ -19,13 +20,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.network.bean.UserGetCodeBean;
+import com.bangni.yzcm.network.bean.UserRegisterBean;
+import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
+import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
+import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
+import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 注册界面
@@ -139,13 +154,12 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
                 return;
             }
 
-            ISGETCODE = true;
-            getCodeHandler.sendEmptyMessageDelayed(1, 1000);
+            getCode(et_rg_username.getText().toString().trim());
 
 
         }else if(temdId == R.id.txt_register){
             //注册
-            register();
+            registerCheck();
         }else if(temdId == R.id.txt_yhxy){
             initGetCode();
             //用户协议
@@ -170,9 +184,39 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     }
 
     /**
+     * 获取验证码
+     * @param trim
+     */
+    private void getCode(String trim) {
+        Map<String, String> map = new HashMap<>();
+        map.put("cell", trim);
+        map.put("type", "reg_code_");
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<UserGetCodeBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
+                BannerLog.d("b_cc", "注册验证码获取成功返回参数为：" + response.toString());
+
+                //倒计时
+                ISGETCODE = true;
+                getCodeHandler.sendEmptyMessageDelayed(1, 1000);
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(mContext, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().userGetCode(body, new BannerProgressSubscriber<BannerBaseResponse<UserGetCodeBean>>(mListener, this, true));
+    }
+
+    /**
      * 注册
      */
-    private void register() {
+    private void registerCheck() {
         String username = et_rg_username.getText().toString().trim();
         String password = et_rg_password.getText().toString().trim();
         String code = et_rg_code.getText().toString().trim();
@@ -206,6 +250,39 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
             ToastUtils.warning(this, "密码不能小于6位");
             return;
         }
+
+        register(username, password, code);
+    }
+
+    /**
+     * 注册
+     * @param username
+     * @param password
+     * @param code
+     */
+    private void register(String username, String password, String code) {
+        Map<String, String> map = new HashMap<>();
+        map.put("username", username);
+        map.put("password", password);
+        map.put("code", code);
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<UserRegisterBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<UserRegisterBean> response) {
+                BannerLog.d("b_cc", "注册成功返回参数为：" + response.toString());
+                startActivity(new Intent(mContext, LoginActivity.class));
+                finish();
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(mContext, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().userRegister(body, new BannerProgressSubscriber<BannerBaseResponse<UserRegisterBean>>(mListener, this, true));
     }
 
     Handler getCodeHandler = new Handler(){

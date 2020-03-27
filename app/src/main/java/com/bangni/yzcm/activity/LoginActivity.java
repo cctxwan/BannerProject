@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.network.bean.UserGetCodeBean;
+import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
 import com.bangni.yzcm.network.bean.UserLoginBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
@@ -146,13 +148,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
 
-    private void login(){
+    private void login(String username, String password){
         Map<String, String> map = new HashMap<>();
-        map.put("userAccount", "18588400509");
-        map.put("userPassword", "123456");
-        map.put("deviceType", "1");
-        map.put("deviceToken", "24544h56gfs1h56gf1jdsggdsa56151");
-        map.put("systemManufacturer", SystemUtil.getDeviceBrand());
+        map.put("username", username);
+        map.put("password", password);
         Gson gson = new Gson();
         String entity = gson.toJson(map);
         RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
@@ -160,14 +159,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onNext(BannerBaseResponse<UserLoginBean> response) {
+                BannerLog.d("b_cc", "登录成功返回参数为：" + response.toString());
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
 
             @Override
             public void onError(String msg) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                ToastUtils.error(LoginActivity.this, msg);
             }
         };
         BannerRetrofitUtil.getInstance().userLogin(body, new BannerProgressSubscriber<BannerBaseResponse<UserLoginBean>>(mListener, this, true));
@@ -194,20 +193,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 return;
             }
 
-            //倒计时
-            ISGETCODE = true;
-            getCodeHandler.sendEmptyMessageDelayed(1, 1000);
+            getCode(et_username.getText().toString().trim());
 
         }else if(temdId == R.id.txt_login){
             //登录
             if(ISUSERLOGIN){
                 //账号密码登录
-//                userLogin();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                userLoginCheck();
             }else{
                 //验证码登录
-                getCodeLogin();
+                getCodeLoginCheck();
             }
         }else if(temdId == R.id.txt_register){
             initGetCode();
@@ -265,9 +260,38 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     /**
+     * 获取验证码
+     * @param et_username
+     */
+    private void getCode(String et_username) {
+        Map<String, String> map = new HashMap<>();
+        map.put("cell", et_username);
+        map.put("type", "login_code_");
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<UserGetCodeBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
+                BannerLog.d("b_cc", "验证码获取成功返回参数为：" + response.toString());
+                //倒计时
+                ISGETCODE = true;
+                getCodeHandler.sendEmptyMessageDelayed(1, 1000);
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(LoginActivity.this, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().userGetCode(body, new BannerProgressSubscriber<BannerBaseResponse<UserGetCodeBean>>(mListener, this, true));
+    }
+
+    /**
      * 获取验证码登录
      */
-    private void getCodeLogin() {
+    private void getCodeLoginCheck() {
         //标记标识设置是否点击过获取验证码
 
         String username = et_username.getText().toString().trim();
@@ -291,19 +315,46 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         //密码判断
         if(TextUtils.isEmpty(password)){
-            ToastUtils.warning(this, "密码不能为空");
+            ToastUtils.warning(this, "验证码不能为空");
             return;
         }
-        if(password.length() < 6){
-            ToastUtils.warning(this, "密码不能小于6位");
-            return;
-        }
+        
+        codeLogin(username, password);
+    }
+
+    /**
+     * 验证码登录
+     * @param username
+     * @param password
+     */
+    private void codeLogin(String username, String password) {
+        Map<String, String> map = new HashMap<>();
+        map.put("username", username);
+        map.put("code", password);
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<UserGetCodeLoginBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<UserGetCodeLoginBean> response) {
+                BannerLog.d("b_cc", "验证码登录成功返回参数为：" + response.toString());
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(LoginActivity.this, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().userGetCodeLogin(body, new BannerProgressSubscriber<BannerBaseResponse<UserGetCodeLoginBean>>(mListener, this, true));
     }
 
     /**
      * 账号密码登录
      */
-    private void userLogin() {
+    private void userLoginCheck() {
         String username = et_username.getText().toString().trim();
         String password = et_password.getText().toString().trim();
         //账号判断
@@ -328,7 +379,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return;
         }
 
-        login();
+        login(username, password);
     }
 
     Handler getCodeHandler = new Handler(){

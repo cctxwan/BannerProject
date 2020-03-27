@@ -28,6 +28,9 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
         this.mListener = listener;
         this.mContext = context;
         this.mIsShowDialog = isShowDialog;
+        if(isShowDialog){
+            LoadsUtils.getInstance((Activity) mContext).startLoad();
+        }
     }
 
 
@@ -38,7 +41,9 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onCompleted() {
-        LoadsUtils.getInstance((Activity) mContext).stopLoad();
+        if(mIsShowDialog){
+            LoadsUtils.getInstance((Activity) mContext).stopLoad();
+        }
     }
 
     /**
@@ -49,7 +54,9 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
      */
     @Override
     public void onError(Throwable e) {
-        LoadsUtils.getInstance((Activity) mContext).stopLoad();
+        if(mIsShowDialog){
+            LoadsUtils.getInstance((Activity) mContext).stopLoad();
+        }
         //失败时取消所有请求
         //遇到取消订阅的情况可以直接调用
         e.printStackTrace();

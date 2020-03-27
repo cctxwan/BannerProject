@@ -60,6 +60,9 @@ public class BannerActivity extends SwipeBackActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         addActivity(mContext);
 
+
+
+
         //是否全屏
         if (mAllowFullScreen) {
             this.getWindow().setFlags(
@@ -79,6 +82,7 @@ public class BannerActivity extends SwipeBackActivity {
         }
 
         sdPath = getExternalFilesDir(null).toString() + "/";
+
     }
 
     /**
