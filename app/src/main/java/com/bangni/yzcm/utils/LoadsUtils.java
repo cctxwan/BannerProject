@@ -25,13 +25,14 @@ public class LoadsUtils {
         return instance;
     }
 
+
     public LoadsUtils() {
 
     }
 
     public static void startLoad(){
         dialog.setLoadingBuilder(Z_TYPE.SNAKE_CIRCLE)//设置类型
-                .setLoadingColor(Color.RED)//颜色
+                .setLoadingColor(Color.BLUE)//颜色
                 .setHintText("")
                 .setHintTextSize(16) // 设置字体大小 dp
                 .setHintTextColor(Color.BLACK)  // 设置字体颜色

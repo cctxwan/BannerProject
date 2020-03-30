@@ -185,7 +185,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             //非空处理
             if(TextUtils.isEmpty(et_username.getText().toString().trim())){
-                ToastUtils.warning(this, "手机不能为空");
+                ToastUtils.warning(this, "手机号不能为空");
                 return;
             }
             if(!BannerUtils.isMobileNO(et_username.getText().toString().trim())){
@@ -298,7 +298,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         String password = et_password.getText().toString().trim();
         //账号判断
         if(TextUtils.isEmpty(username)){
-            ToastUtils.warning(this, "手机不能为空");
+            ToastUtils.warning(this, "手机号不能为空");
             return;
         }
         if(!BannerUtils.isMobileNO(username)){
@@ -359,7 +359,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         String password = et_password.getText().toString().trim();
         //账号判断
         if(TextUtils.isEmpty(username)){
-            ToastUtils.warning(this, "手机不能为空");
+            ToastUtils.warning(this, "手机号不能为空");
             return;
         }
         if(!BannerUtils.isMobileNO(username)){
@@ -379,7 +379,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return;
         }
 
-        login(username, password);
+//        login(username, password);
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     Handler getCodeHandler = new Handler(){

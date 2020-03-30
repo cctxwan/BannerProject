@@ -107,7 +107,7 @@
                 android:background="@drawable/while_bg"
                 android:padding="@dimen/dimen_10_dip"
                 android:gravity="left|center"
-                android:hint="请输入密码"
+                android:hint="请输入密码（6-20位大小写字母数字组合）"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:lines="1"

@@ -16,7 +16,6 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
@@ -32,10 +31,8 @@ import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -146,7 +143,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
             //获取验证码
             //账号判断
             if(TextUtils.isEmpty(et_rg_username.getText().toString().trim())){
-                ToastUtils.warning(this, "手机不能为空");
+                ToastUtils.warning(this, "手机号不能为空");
                 return;
             }
             if(!BannerUtils.isMobileNO(et_rg_username.getText().toString().trim())){
@@ -223,7 +220,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
         //账号判断
         if(TextUtils.isEmpty(username)){
-            ToastUtils.warning(this, "手机不能为空");
+            ToastUtils.warning(this, "手机号不能为空");
             return;
         }
         if(!BannerUtils.isMobileNO(username)){
