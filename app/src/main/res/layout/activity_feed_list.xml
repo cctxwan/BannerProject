@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F1F2F7"
     android:orientation="vertical"
     android:paddingLeft="@dimen/dimen_25_dip"
@@ -30,6 +31,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txt_feedbooklist_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="反馈记录"
@@ -40,11 +42,37 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_feedlist"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/feedlist_swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dimen_43_dip"
-        android:layout_marginBottom="@dimen/dimen_20_dip"/>
+        app:srlEnableFooterFollowWhenLoadFinished="true"
+        app:srlEnablePreviewInEditMode="false">
+
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="#333333"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_feedlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_43_dip"
+                android:layout_marginBottom="@dimen/dimen_20_dip"/>
+
+        </LinearLayout>
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="#333333"/>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

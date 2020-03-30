@@ -17,15 +17,15 @@ import java.lang.Override;
 public class LoginActivity_ViewBinding implements Unbinder {
   private LoginActivity target;
 
-  private View view2131231001;
+  private View view2131231058;
 
-  private View view2131230998;
+  private View view2131231055;
 
-  private View view2131231007;
+  private View view2131231066;
 
-  private View view2131230999;
+  private View view2131231056;
 
-  private View view2131230843;
+  private View view2131230864;
 
   @UiThread
   public LoginActivity_ViewBinding(LoginActivity target) {
@@ -41,7 +41,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.et_password = Utils.findRequiredViewAsType(source, R.id.et_password, "field 'et_password'", EditText.class);
     view = Utils.findRequiredView(source, R.id.txt_login, "field 'txt_login' and method 'onClick'");
     target.txt_login = Utils.castView(view, R.id.txt_login, "field 'txt_login'", TextView.class);
-    view2131231001 = view;
+    view2131231058 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,7 +50,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.txt_getcode, "field 'txt_getcode' and method 'onClick'");
     target.txt_getcode = Utils.castView(view, R.id.txt_getcode, "field 'txt_getcode'", TextView.class);
-    view2131230998 = view;
+    view2131231055 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -59,7 +59,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.txt_register, "field 'txt_register' and method 'onClick'");
     target.txt_register = Utils.castView(view, R.id.txt_register, "field 'txt_register'", TextView.class);
-    view2131231007 = view;
+    view2131231066 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -68,7 +68,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.txt_getcodelogin, "field 'txt_getcodelogin' and method 'onClick'");
     target.txt_getcodelogin = Utils.castView(view, R.id.txt_getcodelogin, "field 'txt_getcodelogin'", TextView.class);
-    view2131230999 = view;
+    view2131231056 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -78,7 +78,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.txt_login_title = Utils.findRequiredViewAsType(source, R.id.txt_login_title, "field 'txt_login_title'", TextView.class);
     view = Utils.findRequiredView(source, R.id.img_login_loogpsd, "field 'img_login_loogpsd' and method 'onClick'");
     target.img_login_loogpsd = Utils.castView(view, R.id.img_login_loogpsd, "field 'img_login_loogpsd'", ImageView.class);
-    view2131230843 = view;
+    view2131230864 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -103,15 +103,15 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.txt_login_title = null;
     target.img_login_loogpsd = null;
 
-    view2131231001.setOnClickListener(null);
-    view2131231001 = null;
-    view2131230998.setOnClickListener(null);
-    view2131230998 = null;
-    view2131231007.setOnClickListener(null);
-    view2131231007 = null;
-    view2131230999.setOnClickListener(null);
-    view2131230999 = null;
-    view2131230843.setOnClickListener(null);
-    view2131230843 = null;
+    view2131231058.setOnClickListener(null);
+    view2131231058 = null;
+    view2131231055.setOnClickListener(null);
+    view2131231055 = null;
+    view2131231066.setOnClickListener(null);
+    view2131231066 = null;
+    view2131231056.setOnClickListener(null);
+    view2131231056 = null;
+    view2131230864.setOnClickListener(null);
+    view2131230864 = null;
   }
 }

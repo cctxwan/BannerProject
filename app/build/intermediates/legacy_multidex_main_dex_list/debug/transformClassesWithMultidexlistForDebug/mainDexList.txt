@@ -167,6 +167,7 @@ com/google/gson/annotations/JsonAdapter.class
 com/google/gson/annotations/SerializedName.class
 com/google/gson/annotations/Since.class
 com/google/gson/annotations/Until.class
+com/scwang/smart/refresh/header/material/MaterialProgressDrawable$ProgressDrawableSize.class
 com/tencent/bugly/crashreport/CrashReport.class
 kr/co/namee/permissiongen/AllowPermissions.class
 kr/co/namee/permissiongen/PermissionFail.class

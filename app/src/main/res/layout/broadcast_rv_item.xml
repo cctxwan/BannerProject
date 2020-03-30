@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_broadcast_item"
+    android:orientation="horizontal"
+    android:background="@drawable/boradcastfrag_rv_bg"
+    android:layout_width="match_parent"
+    android:weightSum="1"
+    android:layout_marginBottom="@dimen/dimen_13_dip"
+    android:layout_height="@dimen/dimen_51_dip">
+
+    <TextView
+        android:id="@+id/broadcast_rv_txt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="大兴景苑-1号楼西梯"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dimen_28_dip"
+        android:textSize="@dimen/dimen_20_dip"
+        android:textColor="#464646"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/right_back"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dimen_30_dip"/>
+
+</LinearLayout>

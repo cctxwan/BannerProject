@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dimen_23_dip"
+    android:paddingLeft="@dimen/dimen_15_dip"
+    android:paddingRight="@dimen/dimen_15_dip"
+    android:layout_marginBottom="@dimen/dimen_20_dip"
+    android:background="@drawable/feedbook_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/feedlistimg"/>
+
+        <TextView
+            android:id="@+id/txt_record_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="监播信息"
+            android:layout_marginLeft="@dimen/dimen_13_dip"
+            android:textColor="#464646"
+            android:textSize="@dimen/dimen_18_dip"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_record_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen_15_dip"
+        android:layout_marginTop="@dimen/dimen_23_dip"
+        android:textColor="#999999"
+        android:text="您好，您投放在大兴景苑1号楼西梯的广告在2020-3-13 17:56有一条广告播放信息，请速速查看！"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5_dip"
+        android:layout_marginTop="@dimen/dimen_23_dip"
+        android:background="#F3F3F3"/>
+
+    <LinearLayout
+        android:id="@+id/lin_record"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_56_dip"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="查看详情"
+            android:layout_weight="1"
+            android:textColor="#666666"
+            android:textSize="@dimen/dimen_15_dip"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dimen_10_dip"
+            android:src="@mipmap/right_back"/>
+
+    </LinearLayout>
+
+</LinearLayout>

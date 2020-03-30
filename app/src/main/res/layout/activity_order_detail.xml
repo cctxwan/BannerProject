@@ -117,6 +117,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rel_order_community"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_60_dip"
                 android:orientation="horizontal">
@@ -225,12 +226,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="1"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/txt_broadcasenumber"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="监播统计"
                 android:textSize="@dimen/dimen_20_dip"
                 android:layout_marginLeft="@dimen/dimen_18_dip"
@@ -238,7 +241,8 @@
                 android:textColor="#333333"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/orderdetail_txt_allbroadcast"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="全部"
                 android:gravity="right"
@@ -258,6 +262,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_60_dip"
                 android:orientation="horizontal">

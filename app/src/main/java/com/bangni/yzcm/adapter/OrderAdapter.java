@@ -76,7 +76,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
      */
     @Override
     public int getItemCount() {
-        return data.size();
+        return 20;
     }
 
     /**

@@ -5,7 +5,7 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.bangni.yzcm.activity.ChangeAccountActivity" />
+        <activity android:name="com.bangni.yzcm.activity.BroadcastRecordActivity" />
+        <activity android:name="com.bangni.yzcm.activity.CommunityActivity" />
         <activity android:name="com.bangni.yzcm.activity.FeedListActivity" />
         <activity android:name="com.bangni.yzcm.activity.ChangePsdActivity" />
         <activity android:name="com.bangni.yzcm.activity.OrderDetailActivity" />

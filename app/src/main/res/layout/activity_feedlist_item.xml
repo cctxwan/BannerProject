@@ -6,6 +6,7 @@
     android:paddingTop="@dimen/dimen_23_dip"
     android:paddingLeft="@dimen/dimen_15_dip"
     android:paddingRight="@dimen/dimen_15_dip"
+    android:layout_marginBottom="@dimen/dimen_20_dip"
     android:background="@drawable/feedbook_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -31,6 +32,7 @@
             android:textSize="@dimen/dimen_18_dip"/>
 
         <TextView
+            android:id="@+id/txt_feedlist_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2020-3-26  14:00:32"
@@ -42,6 +44,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txt_feedlist_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_15_dip"
@@ -69,6 +72,7 @@
             android:textSize="@dimen/dimen_15_dip"/>
 
         <TextView
+            android:id="@+id/txt_feedlist_kf_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -79,6 +83,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txt_feedlist_kf_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="不过键盘最右侧的“删除”，在暗黑模式下却依然采用线性图标。我想删除按钮用线性图案，也许是苹果刻意。"

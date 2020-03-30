@@ -18,15 +18,15 @@ import java.lang.Override;
 public class ChangePsdActivity_ViewBinding implements Unbinder {
   private ChangePsdActivity target;
 
-  private View view2131230840;
+  private View view2131230860;
 
-  private View view2131230993;
+  private View view2131231045;
 
-  private View view2131230846;
+  private View view2131230867;
 
-  private View view2131230844;
+  private View view2131230865;
 
-  private View view2131230845;
+  private View view2131230866;
 
   @UiThread
   public ChangePsdActivity_ViewBinding(ChangePsdActivity target) {
@@ -40,7 +40,7 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.img_changepsd_back, "field 'img_changepsd_back' and method 'onClick'");
     target.img_changepsd_back = Utils.castView(view, R.id.img_changepsd_back, "field 'img_changepsd_back'", LinearLayout.class);
-    view2131230840 = view;
+    view2131230860 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -52,7 +52,7 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     target.et_newpsd_r = Utils.findRequiredViewAsType(source, R.id.et_newpsd_r, "field 'et_newpsd_r'", EditText.class);
     view = Utils.findRequiredView(source, R.id.txt_changepsd_comple, "field 'txt_changepsd_comple' and method 'onClick'");
     target.txt_changepsd_comple = Utils.castView(view, R.id.txt_changepsd_comple, "field 'txt_changepsd_comple'", TextView.class);
-    view2131230993 = view;
+    view2131231045 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -61,7 +61,7 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.img_old_lookpsd, "field 'img_old_lookpsd' and method 'onClick'");
     target.img_old_lookpsd = Utils.castView(view, R.id.img_old_lookpsd, "field 'img_old_lookpsd'", ImageView.class);
-    view2131230846 = view;
+    view2131230867 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -70,7 +70,7 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.img_new_lookpsd, "field 'img_new_lookpsd' and method 'onClick'");
     target.img_new_lookpsd = Utils.castView(view, R.id.img_new_lookpsd, "field 'img_new_lookpsd'", ImageView.class);
-    view2131230844 = view;
+    view2131230865 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -79,7 +79,7 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.img_new_r_lookpsd, "field 'img_new_r_lookpsd' and method 'onClick'");
     target.img_new_r_lookpsd = Utils.castView(view, R.id.img_new_r_lookpsd, "field 'img_new_r_lookpsd'", ImageView.class);
-    view2131230845 = view;
+    view2131230866 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -104,15 +104,15 @@ public class ChangePsdActivity_ViewBinding implements Unbinder {
     target.img_new_lookpsd = null;
     target.img_new_r_lookpsd = null;
 
-    view2131230840.setOnClickListener(null);
-    view2131230840 = null;
-    view2131230993.setOnClickListener(null);
-    view2131230993 = null;
-    view2131230846.setOnClickListener(null);
-    view2131230846 = null;
-    view2131230844.setOnClickListener(null);
-    view2131230844 = null;
-    view2131230845.setOnClickListener(null);
-    view2131230845 = null;
+    view2131230860.setOnClickListener(null);
+    view2131230860 = null;
+    view2131231045.setOnClickListener(null);
+    view2131231045 = null;
+    view2131230867.setOnClickListener(null);
+    view2131230867 = null;
+    view2131230865.setOnClickListener(null);
+    view2131230865 = null;
+    view2131230866.setOnClickListener(null);
+    view2131230866 = null;
   }
 }

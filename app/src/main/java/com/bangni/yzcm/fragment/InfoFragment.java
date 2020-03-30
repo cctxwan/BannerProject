@@ -16,6 +16,7 @@ import com.bangni.yzcm.activity.FeedbackActivity;
 import com.bangni.yzcm.activity.SettingActivity;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +60,13 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-            StatusBarUtil.setImmersiveStatusBar(getActivity(), true);
+        StatusBarUtil.setImmersiveStatusBar(getActivity(), true);
+
+        if(hidden){
+            BannerLog.d("b_cc", "离开了我的界面");
+        }else{
+            BannerLog.d("b_cc", "进入了我的界面");
+        }
     }
 
 

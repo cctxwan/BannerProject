@@ -16,7 +16,11 @@ import java.lang.Override;
 public class OrderDetailActivity_ViewBinding implements Unbinder {
   private OrderDetailActivity target;
 
-  private View view2131230848;
+  private View view2131230869;
+
+  private View view2131230944;
+
+  private View view2131230922;
 
   @UiThread
   public OrderDetailActivity_ViewBinding(OrderDetailActivity target) {
@@ -33,7 +37,23 @@ public class OrderDetailActivity_ViewBinding implements Unbinder {
     target.txt_broadcasenumber = Utils.findRequiredViewAsType(source, R.id.txt_broadcasenumber, "field 'txt_broadcasenumber'", TextView.class);
     view = Utils.findRequiredView(source, R.id.img_orderdetail_back, "field 'img_orderdetail_back' and method 'onClick'");
     target.img_orderdetail_back = Utils.castView(view, R.id.img_orderdetail_back, "field 'img_orderdetail_back'", LinearLayout.class);
-    view2131230848 = view;
+    view2131230869 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onClick(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.rel_order_community, "method 'onClick'");
+    view2131230944 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onClick(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.orderdetail_txt_allbroadcast, "method 'onClick'");
+    view2131230922 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -54,7 +74,11 @@ public class OrderDetailActivity_ViewBinding implements Unbinder {
     target.txt_broadcasenumber = null;
     target.img_orderdetail_back = null;
 
-    view2131230848.setOnClickListener(null);
-    view2131230848 = null;
+    view2131230869.setOnClickListener(null);
+    view2131230869 = null;
+    view2131230944.setOnClickListener(null);
+    view2131230944 = null;
+    view2131230922.setOnClickListener(null);
+    view2131230922 = null;
   }
 }

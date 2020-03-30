@@ -8,6 +8,7 @@ import android.view.View;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.bangni.yzcm.R;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -19,6 +20,7 @@ public class OrderFragment_ViewBinding implements Unbinder {
     this.target = target;
 
     target.rv_order_list = Utils.findRequiredViewAsType(source, R.id.rv_order_list, "field 'rv_order_list'", RecyclerView.class);
+    target.order_swipeRefreshLayout = Utils.findRequiredViewAsType(source, R.id.order_swipeRefreshLayout, "field 'order_swipeRefreshLayout'", RefreshLayout.class);
   }
 
   @Override
@@ -29,5 +31,6 @@ public class OrderFragment_ViewBinding implements Unbinder {
     this.target = null;
 
     target.rv_order_list = null;
+    target.order_swipeRefreshLayout = null;
   }
 }

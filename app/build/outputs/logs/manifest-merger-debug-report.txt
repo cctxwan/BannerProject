@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
 MERGED from [com.android.support:multidex:1.0.3] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.3.aar\cc6c4fce3da53fbaecb5f93f86562b89\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\360c97cbf96bd6bae8fd1d000dfb9102\AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.GrenderG:Toasty:1.4.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Toasty-1.4.2.aar\bc38e25dccf4c80367e13d2e2197dc56\AndroidManifest.xml:2:1-11:12
@@ -17,6 +17,17 @@ MERGED from [io.reactivex:rxandroid:1.2.1] C:\Users\Administrator\.gradle\caches
 MERGED from [com.jakewharton:butterknife:8.8.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\225b462882bf5917057ed4375fe7235a\AndroidManifest.xml:2:1-7:12
 MERGED from [com.zyao89:zloading:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\zloading-1.2.0.aar\e88eb2fd8cc413296725ced66b1d13d6\AndroidManifest.xml:2:1-17:12
 MERGED from [me.imid.swipebacklayout.lib:library:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.1.0.aar\487bdbfe1a960fd4f4162c36fed1601c\AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-layout-kernel-2.0.0-alpha-1.aar\b0652c9252c3be380ac7c3b0a133dd70\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-header-two-level:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-two-level-2.0.0-alpha-1.aar\35bdf89111037a78b9e6d70a4be6cc9d\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-header-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-classics-2.0.0-alpha-1.aar\f793dc82b11c559ecd546899d3019355\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-header-radar:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-radar-2.0.0-alpha-1.aar\16da0d8ccabb892466731a93abc71629\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-header-falsify:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-falsify-2.0.0-alpha-1.aar\d93770cf87f3ba7c1e483222920240c8\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-header-material:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-material-2.0.0-alpha-1.aar\49372f4084b27460088f26b860cdc9b4\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-footer-ball:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-ball-2.0.0-alpha-1.aar\b9a0b5795c01425d0c414c28a299da95\AndroidManifest.xml:2:1-11:12
+MERGED from [com.scwang.smart:refresh-footer-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-classics-2.0.0-alpha-1.aar\6db03d5add35f9bfbc26aef36788b685\AndroidManifest.xml:2:1-11:12
+MERGED from [com.contrarywind:Android-PickerView:4.1.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Android-PickerView-4.1.9.aar\fd7ae648e6ea8f71c48b4c57fb78e8df\AndroidManifest.xml:2:1-11:12
+MERGED from [com.contrarywind:wheelview:4.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\wheelview-4.1.0.aar\423041dc0bd20457450d03490dea7cec\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\630e839ef6e0c76573e983114c960f3a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\660e6a377372c191f7bc4dc0a9b1594a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\28fb855d7dddd6afa67bf8b76e1a8118\AndroidManifest.xml:17:1-22:12
@@ -35,7 +46,6 @@ MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Administra
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\60cad91ae7fa9ac7ba786f9f6c4daeb9\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\25b7558af185b32db34c4225a8d66dd2\AndroidManifest.xml:17:1-25:12
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\0b7d8096a6804f72e0624f0d52187cf8\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8650ef4738f6b470c66d959e12510880\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\7972a7dfe6274993a1fae73f45f3777b\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\f2427d8f41b72da3f1815bc1e15c230e\AndroidManifest.xml:17:1-22:12
@@ -45,22 +55,23 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Administrator\.gr
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b02b00e0744cdef866ff78295ae8060f\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\bb390f6456ed38f48105c9fbf3ea8e22\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\541104ecfbe237bc923306664ffe0d1a\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
+MERGED from [com.scwang.smart:refresh-drawable-paint:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-drawable-paint-2.0.0-alpha-1.aar\4c4b0a9dacca9e303c2a94bbabd2745d\AndroidManifest.xml:2:1-11:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
 	package
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:4:5-30
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:2:11-69
@@ -99,7 +110,7 @@ ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:13:5-15:47
 	android:name
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:14:9-52
 application
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:17:5-55:19
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:17:5-58:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\360c97cbf96bd6bae8fd1d000dfb9102\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\360c97cbf96bd6bae8fd1d000dfb9102\AndroidManifest.xml:22:5-20
 MERGED from [com.lovedise:permissiongen:0.0.6] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\permissiongen-0.0.6.aar\50fe37a26c6a62e743a3332c37cf3ce1\AndroidManifest.xml:11:5-15:19
@@ -132,78 +143,90 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administra
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:25:9-44
 	android:name
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:18:9-46
+activity#com.bangni.yzcm.activity.ChangeAccountActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:26:9-77
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:26:19-65
+activity#com.bangni.yzcm.activity.BroadcastRecordActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:27:9-70
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:27:19-67
+activity#com.bangni.yzcm.activity.CommunityActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:28:9-64
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:28:19-61
 activity#com.bangni.yzcm.activity.FeedListActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:26:9-72
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:29:9-63
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:26:19-60
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:29:19-60
 activity#com.bangni.yzcm.activity.ChangePsdActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:27:9-64
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:27:19-61
-activity#com.bangni.yzcm.activity.OrderDetailActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:28:9-66
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:28:19-63
-activity#com.bangni.yzcm.activity.SettingActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:29:9-62
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:29:19-59
-activity#com.bangni.yzcm.activity.BroadcastActivity
 ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:30:9-64
 	android:name
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:30:19-61
+activity#com.bangni.yzcm.activity.OrderDetailActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:31:9-66
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:31:19-63
+activity#com.bangni.yzcm.activity.SettingActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:32:9-62
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:32:19-59
+activity#com.bangni.yzcm.activity.BroadcastActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:33:9-64
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:33:19-61
 activity#com.bangni.yzcm.activity.AboutActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:31:9-60
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:31:19-57
-activity#com.bangni.yzcm.activity.FeedbackActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:32:9-63
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:32:19-60
-activity#com.bangni.yzcm.activity.RegisterActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:33:9-63
-	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:33:19-60
-activity#com.bangni.yzcm.activity.LoginActivity
 ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:34:9-60
 	android:name
 		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:34:19-57
+activity#com.bangni.yzcm.activity.FeedbackActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:35:9-63
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:35:19-60
+activity#com.bangni.yzcm.activity.RegisterActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:36:9-63
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:36:19-60
+activity#com.bangni.yzcm.activity.LoginActivity
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:37:9-60
+	android:name
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:37:19-57
 activity#com.bangni.yzcm.activity.MainActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:35:9-59
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:38:9-59
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:35:19-56
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:38:19-56
 activity#com.bangni.yzcm.activity.GuiActivity
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:36:9-44:20
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:39:9-47:20
 	android:screenOrientation
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:38:13-49
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:41:13-49
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:37:13-49
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:40:13-49
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:39:13-43:29
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:42:13-46:29
 action#android.intent.action.MAIN
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:40:17-69
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:43:17-69
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:40:25-66
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:43:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:42:17-77
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:45:17-77
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:42:27-74
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:45:27-74
 provider#android.support.v4.content.FileProvider
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:46:9-54:20
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:49:9-57:20
 	android:grantUriPermissions
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:50:13-47
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:53:13-47
 	android:authorities
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:48:13-75
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:51:13-75
 	android:exported
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:49:13-37
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:47:13-67
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:50:13-67
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:51:13-53:58
+ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:54:13-56:58
 	android:resource
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:53:17-55
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:56:17-55
 	android:name
-		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:52:17-67
+		ADDED from E:\BannerProject\app\src\main\AndroidManifest.xml:55:17-67
 uses-sdk
 INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
@@ -234,6 +257,28 @@ MERGED from [com.zyao89:zloading:1.2.0] C:\Users\Administrator\.gradle\caches\tr
 MERGED from [com.zyao89:zloading:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\zloading-1.2.0.aar\e88eb2fd8cc413296725ced66b1d13d6\AndroidManifest.xml:7:5-9:41
 MERGED from [me.imid.swipebacklayout.lib:library:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.1.0.aar\487bdbfe1a960fd4f4162c36fed1601c\AndroidManifest.xml:9:5-11:41
 MERGED from [me.imid.swipebacklayout.lib:library:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.1.0.aar\487bdbfe1a960fd4f4162c36fed1601c\AndroidManifest.xml:9:5-11:41
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:20:5-44
+MERGED from [com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-layout-kernel-2.0.0-alpha-1.aar\b0652c9252c3be380ac7c3b0a133dd70\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-layout-kernel-2.0.0-alpha-1.aar\b0652c9252c3be380ac7c3b0a133dd70\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-two-level:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-two-level-2.0.0-alpha-1.aar\35bdf89111037a78b9e6d70a4be6cc9d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-two-level:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-two-level-2.0.0-alpha-1.aar\35bdf89111037a78b9e6d70a4be6cc9d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-classics-2.0.0-alpha-1.aar\f793dc82b11c559ecd546899d3019355\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-classics-2.0.0-alpha-1.aar\f793dc82b11c559ecd546899d3019355\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-radar:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-radar-2.0.0-alpha-1.aar\16da0d8ccabb892466731a93abc71629\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-radar:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-radar-2.0.0-alpha-1.aar\16da0d8ccabb892466731a93abc71629\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-falsify:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-falsify-2.0.0-alpha-1.aar\d93770cf87f3ba7c1e483222920240c8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-falsify:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-falsify-2.0.0-alpha-1.aar\d93770cf87f3ba7c1e483222920240c8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-material:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-material-2.0.0-alpha-1.aar\49372f4084b27460088f26b860cdc9b4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-header-material:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-header-material-2.0.0-alpha-1.aar\49372f4084b27460088f26b860cdc9b4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-footer-ball:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-ball-2.0.0-alpha-1.aar\b9a0b5795c01425d0c414c28a299da95\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-footer-ball:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-ball-2.0.0-alpha-1.aar\b9a0b5795c01425d0c414c28a299da95\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-footer-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-classics-2.0.0-alpha-1.aar\6db03d5add35f9bfbc26aef36788b685\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-footer-classics:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-footer-classics-2.0.0-alpha-1.aar\6db03d5add35f9bfbc26aef36788b685\AndroidManifest.xml:7:5-9:41
+MERGED from [com.contrarywind:Android-PickerView:4.1.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Android-PickerView-4.1.9.aar\fd7ae648e6ea8f71c48b4c57fb78e8df\AndroidManifest.xml:7:5-9:41
+MERGED from [com.contrarywind:Android-PickerView:4.1.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Android-PickerView-4.1.9.aar\fd7ae648e6ea8f71c48b4c57fb78e8df\AndroidManifest.xml:7:5-9:41
+MERGED from [com.contrarywind:wheelview:4.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\wheelview-4.1.0.aar\423041dc0bd20457450d03490dea7cec\AndroidManifest.xml:7:5-9:41
+MERGED from [com.contrarywind:wheelview:4.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\wheelview-4.1.0.aar\423041dc0bd20457450d03490dea7cec\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\630e839ef6e0c76573e983114c960f3a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\630e839ef6e0c76573e983114c960f3a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\660e6a377372c191f7bc4dc0a9b1594a\AndroidManifest.xml:20:5-44
@@ -270,8 +315,6 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administra
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\25b7558af185b32db34c4225a8d66dd2\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\0b7d8096a6804f72e0624f0d52187cf8\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\0b7d8096a6804f72e0624f0d52187cf8\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\e96710ad31d18eb87b35ad80f24412fc\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8650ef4738f6b470c66d959e12510880\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\8650ef4738f6b470c66d959e12510880\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\7972a7dfe6274993a1fae73f45f3777b\AndroidManifest.xml:20:5-44
@@ -290,6 +333,8 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\bb390f6456ed38f48105c9fbf3ea8e22\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\541104ecfbe237bc923306664ffe0d1a\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\541104ecfbe237bc923306664ffe0d1a\AndroidManifest.xml:20:5-44
+MERGED from [com.scwang.smart:refresh-drawable-paint:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-drawable-paint-2.0.0-alpha-1.aar\4c4b0a9dacca9e303c2a94bbabd2745d\AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smart:refresh-drawable-paint:2.0.0-alpha-1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\refresh-drawable-paint-2.0.0-alpha-1.aar\4c4b0a9dacca9e303c2a94bbabd2745d\AndroidManifest.xml:7:5-9:41
 INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 INJECTED from E:\BannerProject\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion

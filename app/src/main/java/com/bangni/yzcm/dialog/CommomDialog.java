@@ -2,6 +2,7 @@ package com.bangni.yzcm.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.utils.BannerLog;
+import com.bigkoo.pickerview.adapter.ArrayWheelAdapter;
+import com.contrarywind.listener.OnItemSelectedListener;
+import com.contrarywind.view.WheelView;
+
+import java.util.List;
 
 /**
  * 封装的dialog
@@ -23,6 +30,7 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
     private LinearLayout lin_changeclose;
     private EditText et_changename;
     private TextView txt_changename;
+    private ImageView close;
 
     //清楚缓存
     private TextView yes_hc, no_hc;
@@ -30,12 +38,17 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
     //退出登录
     private TextView txt_hc_content;
 
+    //社区和广告选择器
+    private WheelView wheelview;
+    private String WheelViewSelectStr;
+    private TextView txt_wheelview_ok, txt_wheelview_cancal;
 
     //网络请求 成功
     static final int SUCC_CODE = 0;
 
 
     private String title;
+    private List<String> items;
     private String content;
     private Context mContext;
     private OnCloseListener listener;
@@ -57,6 +70,13 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
         this.num = num;
     }
 
+    public CommomDialog(Context context, int themeResId, List<String> items, OnCloseListenerParmes listenerParmes, int num) {
+        super(context, themeResId);
+        this.items = items;
+        this.mContext = context;
+        this.listenerParmes = listenerParmes;
+        this.num = num;
+    }
 
     public CommomDialog(Context context, int themeResId, String title, String content, OnCloseListener listener, int num) {
         super(context, themeResId);
@@ -90,6 +110,10 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             setContentView(R.layout.clearhc);
             setCanceledOnTouchOutside(false);
             initView();
+        }else if(num == 6){
+            setContentView(R.layout.dialog_wheelview);
+            setCanceledOnTouchOutside(false);
+            initView();
         }
     }
 
@@ -105,8 +129,11 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             lin_changeclose = findViewById(R.id.lin_changeclose);
             et_changename = findViewById(R.id.et_changename);
             txt_changename = findViewById(R.id.txt_changename);
+            close = findViewById(R.id.close);
             lin_changeclose.setOnClickListener(this);
             txt_changename.setOnClickListener(this);
+
+            close.setColorFilter(Color.parseColor("#959595"));
         }else if(num == 3){
             yes_hc = findViewById(R.id.yes_hc);
             no_hc = findViewById(R.id.no_hc);
@@ -140,6 +167,26 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             txt_hc_content.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
             txt_hc_content.setText("修改成功后需重新登录，确定执行此操作吗？");
+        }else if(num == 6){
+            wheelview = findViewById(R.id.wheelview);
+            txt_wheelview_cancal = findViewById(R.id.txt_wheelview_cancal);
+            txt_wheelview_ok = findViewById(R.id.txt_wheelview_ok);
+
+            txt_wheelview_ok.setOnClickListener(this);
+            txt_wheelview_cancal.setOnClickListener(this);
+
+            wheelview.setCyclic(false);
+            wheelview.setItemsVisibleCount(3);
+            wheelview.setLineSpacingMultiplier(2.5f);
+
+            wheelview.setAdapter(new ArrayWheelAdapter(items));
+            wheelview.setOnItemSelectedListener(new OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(int index) {
+                    WheelViewSelectStr = items.get(index);
+                    BannerLog.d("b_cc", "当前选中的是：" + items.get(index));
+                }
+            });
         }
     }
 
@@ -212,6 +259,19 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                 case R.id.yes_hc:
                     if(listener != null){
                         listener.onClick(this, "yes_hc");
+                    }
+                    break;
+            }
+        }else if(num == 6){
+            switch (v.getId()){
+                case R.id.txt_wheelview_cancal:
+                    if(listenerParmes != null){
+                        dismiss();
+                    }
+                    break;
+                case R.id.txt_wheelview_ok:
+                    if(listenerParmes != null){
+                        listenerParmes.onClickParmes(this, "ok", WheelViewSelectStr);
                     }
                     break;
             }

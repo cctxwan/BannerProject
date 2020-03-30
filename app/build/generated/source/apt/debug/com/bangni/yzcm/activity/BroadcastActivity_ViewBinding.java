@@ -16,7 +16,7 @@ import java.lang.Override;
 public class BroadcastActivity_ViewBinding implements Unbinder {
   private BroadcastActivity target;
 
-  private View view2131230839;
+  private View view2131230858;
 
   @UiThread
   public BroadcastActivity_ViewBinding(BroadcastActivity target) {
@@ -30,7 +30,7 @@ public class BroadcastActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.img_broadcast_back, "field 'img_broadcast_back' and method 'onClick'");
     target.img_broadcast_back = Utils.castView(view, R.id.img_broadcast_back, "field 'img_broadcast_back'", LinearLayout.class);
-    view2131230839 = view;
+    view2131230858 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -58,7 +58,7 @@ public class BroadcastActivity_ViewBinding implements Unbinder {
     target.txt_broadcase_takephoto = null;
     target.txt_broadcase_photosb = null;
 
-    view2131230839.setOnClickListener(null);
-    view2131230839 = null;
+    view2131230858.setOnClickListener(null);
+    view2131230858 = null;
   }
 }

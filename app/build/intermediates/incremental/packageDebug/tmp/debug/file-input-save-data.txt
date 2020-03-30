@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Mar 30 10:28:43 CST 2020
+#Mon Mar 30 17:03:33 CST 2020
 2.base=E\:\\BannerProject\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 5.set=DEX
 0.path=lib/arm64-v8a/libBugly.so

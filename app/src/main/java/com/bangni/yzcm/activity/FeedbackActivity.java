@@ -64,7 +64,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
         txt_feedbook_submit.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
     }
 
-    @OnClick({R.id.txt_feedbook_submit, R.id.img_feedbook_back})
+    @OnClick({R.id.txt_feedbook_submit, R.id.img_feedbook_back, R.id.txt_feedbook_list})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
@@ -78,6 +78,9 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
             //提交
             feedBook(et_feedbook_content.getText().toString().trim());
+        }else if(temdId == R.id.txt_feedbook_list){
+            //反馈记录
+            startActivity(new Intent(mContext, FeedListActivity.class));
         }
     }
 

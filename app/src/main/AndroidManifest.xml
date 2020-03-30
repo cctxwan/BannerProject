@@ -23,7 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.FeedListActivity"></activity>
+        <activity android:name=".activity.ChangeAccountActivity"></activity>
+        <activity android:name=".activity.BroadcastRecordActivity" />
+        <activity android:name=".activity.CommunityActivity" />
+        <activity android:name=".activity.FeedListActivity" />
         <activity android:name=".activity.ChangePsdActivity" />
         <activity android:name=".activity.OrderDetailActivity" />
         <activity android:name=".activity.SettingActivity" />

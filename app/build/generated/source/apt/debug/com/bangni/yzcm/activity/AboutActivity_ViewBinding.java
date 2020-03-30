@@ -14,7 +14,7 @@ import java.lang.Override;
 public class AboutActivity_ViewBinding implements Unbinder {
   private AboutActivity target;
 
-  private View view2131230838;
+  private View view2131230857;
 
   @UiThread
   public AboutActivity_ViewBinding(AboutActivity target) {
@@ -27,7 +27,7 @@ public class AboutActivity_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.img_about_back, "method 'onClick'");
-    view2131230838 = view;
+    view2131230857 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -43,7 +43,7 @@ public class AboutActivity_ViewBinding implements Unbinder {
     target = null;
 
 
-    view2131230838.setOnClickListener(null);
-    view2131230838 = null;
+    view2131230857.setOnClickListener(null);
+    view2131230857 = null;
   }
 }

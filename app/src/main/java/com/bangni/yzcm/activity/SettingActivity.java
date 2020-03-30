@@ -116,7 +116,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         }else if(temdId == R.id.rel_change_name){
             changename();
         }else if(temdId == R.id.rel_change_account){
-
+            startActivity(new Intent(mContext, ChangeAccountActivity.class));
         }else if(temdId == R.id.rel_change_pass){
             startActivity(new Intent(mContext, ChangePsdActivity.class));
         }else if(temdId == R.id.rel_clear_hc){
