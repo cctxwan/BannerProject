@@ -23,8 +23,9 @@
 
             <ImageView
                 android:id="@+id/img_one_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_22_dip"
+                android:layout_height="@dimen/dimen_26_dip"
+                android:scaleType="center"
                 android:src="@mipmap/order"/>
 
             <TextView
@@ -51,8 +52,9 @@
 
             <ImageView
                 android:id="@+id/img_two_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_22_dip"
+                android:layout_height="@dimen/dimen_26_dip"
+                android:scaleType="center"
                 android:src="@mipmap/boardcast"/>
 
             <TextView
@@ -78,8 +80,9 @@
 
             <ImageView
                 android:id="@+id/img_three_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_22_dip"
+                android:layout_height="@dimen/dimen_26_dip"
+                android:scaleType="center"
                 android:src="@mipmap/me"/>
 
             <TextView

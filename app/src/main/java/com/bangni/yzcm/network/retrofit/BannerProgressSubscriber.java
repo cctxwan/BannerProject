@@ -1,15 +1,11 @@
 package com.bangni.yzcm.network.retrofit;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-
-
+import android.graphics.Color;
 import com.bangni.yzcm.network.util.ErrorCodeUtils;
 import com.bangni.yzcm.utils.BannerLog;
-import com.bangni.yzcm.utils.LoadsUtils;
-import com.bangni.yzcm.utils.ToastUtils;
-
+import com.zyao89.view.zloading.ZLoadingDialog;
+import com.zyao89.view.zloading.Z_TYPE;
 import rx.Subscriber;
 
 /**
@@ -23,13 +19,25 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
     private BannerSubscriberOnNextListener<T> mListener;
     private Context mContext;
     private boolean mIsShowDialog;
+    private ZLoadingDialog dialog;
 
     public BannerProgressSubscriber(BannerSubscriberOnNextListener<T> listener, Context context, boolean isShowDialog) {
         this.mListener = listener;
         this.mContext = context;
         this.mIsShowDialog = isShowDialog;
         if(isShowDialog){
-            LoadsUtils.getInstance((Activity) mContext).startLoad();
+            if(dialog == null){
+                dialog = new ZLoadingDialog(mContext);
+                dialog.setLoadingBuilder(Z_TYPE.SNAKE_CIRCLE)//设置类型
+                        .setLoadingColor(Color.BLUE)//颜色
+                        .setHintText("")
+                        .setHintTextSize(16) // 设置字体大小 dp
+                        .setHintTextColor(Color.BLACK)  // 设置字体颜色
+                        .setDurationTime(0.5) // 设置动画时间百分比 - 0.5倍
+                        .setCanceledOnTouchOutside(false)
+                        .setDialogBackgroundColor(Color.TRANSPARENT) // 设置背景色，默认白色
+                        .show();
+            }
         }
     }
 
@@ -42,7 +50,9 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
     @Override
     public void onCompleted() {
         if(mIsShowDialog){
-            LoadsUtils.getInstance((Activity) mContext).stopLoad();
+            if (dialog != null){
+                dialog.dismiss();
+            }
         }
     }
 
@@ -55,7 +65,9 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
         if(mIsShowDialog){
-            LoadsUtils.getInstance((Activity) mContext).stopLoad();
+            if (dialog != null){
+                dialog.dismiss();
+            }
         }
         //失败时取消所有请求
         //遇到取消订阅的情况可以直接调用
@@ -78,13 +90,20 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
     @Override
     public void onNext(T t) {
         BannerLog.d("b_cc", "onNext");
+        if(mIsShowDialog){
+            if (dialog != null){
+                dialog.dismiss();
+            }
+        }
         BannerBaseResponse response = (BannerBaseResponse) t;
-        if (response.code.equals("200")) {
+        if (response.code.equals("10000")) {
             if (mListener != null) {
                 mListener.onNext(t);
             }
-        } else if (response.code.equals("404")) {
-
+        } else {
+            if (mListener != null) {
+                mListener.onError(response.info);
+            }
         }
     }
 }

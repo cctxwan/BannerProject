@@ -269,7 +269,6 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserRegisterBean> response) {
-                BannerLog.d("b_cc", "注册成功返回参数为：" + response.toString());
                 startActivity(new Intent(mContext, LoginActivity.class));
                 finish();
             }

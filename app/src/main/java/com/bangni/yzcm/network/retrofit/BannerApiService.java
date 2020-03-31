@@ -1,6 +1,7 @@
 package com.bangni.yzcm.network.retrofit;
 
 
+import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -37,5 +38,9 @@ public interface BannerApiService {
     //用户意见反馈
     @POST(BannerConstants.FEEDBOOK_URL)
     Observable<BannerBaseResponse<UserFeedBookBean>> userFeedBook(@Body RequestBody route);
+
+    //用户个人信息
+    @POST(BannerConstants.ACCOUNTINFO_URL)
+    Observable<BannerBaseResponse<InfoFragmentBean>> userAccountInfo();
 
 }

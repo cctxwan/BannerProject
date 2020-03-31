@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -46,7 +47,6 @@ public class BannerRetrofitUtil {
     public static final int DEFAULT_TIMEOUT = 5;
     private Retrofit mRetrofit;
     private BannerApiService mApiService;
-    private static BannerRetrofitUtil mInstance;
 
 
     public static BannerRetrofitUtil getInstance() {
@@ -151,6 +151,11 @@ public class BannerRetrofitUtil {
     //用户意见反馈
     public void userFeedBook(@Body RequestBody route, Subscriber<BannerBaseResponse<UserFeedBookBean>> subscriber) {
         toSubscribe(mApiService.userFeedBook(route), subscriber);
+    }
+
+    //用户信息
+    public void userAccountInfo(Subscriber<BannerBaseResponse<InfoFragmentBean>> subscriber) {
+        toSubscribe(mApiService.userAccountInfo(), subscriber);
     }
 
 }

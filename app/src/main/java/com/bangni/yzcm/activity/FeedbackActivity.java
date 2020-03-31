@@ -98,8 +98,6 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
-                BannerLog.d("b_cc", "反馈成功返回参数为：" + response.toString());
-                startActivity(new Intent(mContext, MainActivity.class));
                 finish();
             }
 

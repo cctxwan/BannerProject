@@ -31,6 +31,7 @@ import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.SystemUtil;
 import com.bangni.yzcm.utils.ToastUtils;
@@ -159,7 +160,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onNext(BannerBaseResponse<UserLoginBean> response) {
-                BannerLog.d("b_cc", "登录成功返回参数为：" + response.toString());
+                //非空
+                if(response.data == null) return;
+
+                //存入token
+                new BannerPreferenceStorage(LoginActivity.this).setToken(response.data.getToken());
+
+                //去主界面
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
@@ -274,7 +281,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
-                BannerLog.d("b_cc", "验证码获取成功返回参数为：" + response.toString());
                 //倒计时
                 ISGETCODE = true;
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
@@ -338,7 +344,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onNext(BannerBaseResponse<UserGetCodeLoginBean> response) {
-                BannerLog.d("b_cc", "验证码登录成功返回参数为：" + response.toString());
+
+                //非空
+                if(response.data == null) return;
+
+                //存入token
+                new BannerPreferenceStorage(LoginActivity.this).setToken(response.data.getToken());
+
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
@@ -379,9 +391,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return;
         }
 
-//        login(username, password);
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        login(username, password);
+//        startActivity(new Intent(this, MainActivity.class));
+//        finish();
     }
 
     Handler getCodeHandler = new Handler(){

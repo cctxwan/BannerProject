@@ -21,7 +21,6 @@ import com.bangni.yzcm.adapter.OrderAdapter;
 import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
-import com.bangni.yzcm.utils.LoadsUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;

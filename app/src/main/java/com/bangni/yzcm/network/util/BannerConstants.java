@@ -10,7 +10,7 @@ public class BannerConstants {
     public static final String APP_NAME = "banner";
 
     /** 本地测试 */
-    public static final String BASE_URL = "http://192.168.0.188:9003";
+    public static final String BASE_URL = "http://192.168.0.188:8870";
 
 
 
