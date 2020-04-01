@@ -41,6 +41,17 @@
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/dimen_23_dip" />
 
+        <TextView
+            android:id="@+id/txt_choosetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dimen_25_dip"
+            android:layout_marginRight="0dp"
+            android:text="选择日期"
+            android:textColor="#333333"
+            android:textSize="@dimen/dimen_15_dip" />
+
     </RelativeLayout>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -61,7 +72,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_record_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

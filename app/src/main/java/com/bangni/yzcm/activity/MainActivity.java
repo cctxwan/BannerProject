@@ -2,9 +2,6 @@ package com.bangni.yzcm.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import com.bangni.yzcm.R;
@@ -12,6 +9,10 @@ import com.bangni.yzcm.fragment.OrderFragment;
 import com.bangni.yzcm.fragment.InfoFragment;
 import com.bangni.yzcm.fragment.BroadCastFragment;
 import java.util.HashMap;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

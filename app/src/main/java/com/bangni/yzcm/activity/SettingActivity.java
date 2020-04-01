@@ -8,9 +8,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +22,10 @@ import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import java.io.File;
+
+import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -214,8 +215,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 Glide.with(SettingActivity.this).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable =
-                                RoundedBitmapDrawableFactory.create(getResources(), resource);
+                        RoundedBitmapDrawable circularBitmapDrawable;
+                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
                         circularBitmapDrawable.setCircular(true);
                         img_userimg.setImageDrawable(circularBitmapDrawable);
                     }

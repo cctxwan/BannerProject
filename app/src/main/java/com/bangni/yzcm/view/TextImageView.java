@@ -7,10 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.bangni.yzcm.R;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 /**
  * textview
  */
-public class TextImageView  extends android.support.v7.widget.AppCompatTextView {
+public class TextImageView  extends AppCompatTextView {
 
     private int mLeftWidth;
     private int mLeftHeight;

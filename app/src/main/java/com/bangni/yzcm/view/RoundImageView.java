@@ -16,10 +16,12 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.bangni.yzcm.R;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 /**
  * 自定义圆头像
  */
-public class RoundImageView extends android.support.v7.widget.AppCompatImageView {
+public class RoundImageView extends AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 

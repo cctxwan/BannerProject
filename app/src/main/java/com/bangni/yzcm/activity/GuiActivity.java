@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -18,6 +17,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.utils.BannerLog;
+
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kr.co.namee.permissiongen.PermissionFail;

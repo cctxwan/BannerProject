@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smart:refresh-footer-ball:2.0.0-alpha-1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-footer-ball-2.0.0-alpha-1.aar/b9a0b5795c01425d0c414c28a299da95/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-footer-ball-2.0.0-alpha-1.aar/b9a0b5795c01425d0c414c28a299da95/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-refresh-footer-ball-2.0.0-alpha-1.aar/706756ff9cabcf938e6842f491bd38a1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-refresh-footer-ball-2.0.0-alpha-1.aar/706756ff9cabcf938e6842f491bd38a1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

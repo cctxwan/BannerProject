@@ -1,18 +1,25 @@
 package com.bangni.yzcm.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.adapter.RecordAdapter;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,7 +27,7 @@ import butterknife.OnClick;
 /**
  * 监播记录界面
  */
-public class BroadcastRecordActivity extends BannerActivity implements View.OnClickListener {
+public class BroadcastRecordActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.rv_record_list)
     RecyclerView rv_record_list;
@@ -29,6 +36,9 @@ public class BroadcastRecordActivity extends BannerActivity implements View.OnCl
     RefreshLayout record_swipeRefreshLayout;
 
     RecordAdapter recordAdapter;
+
+
+    private DatePickerDialog dpd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +52,8 @@ public class BroadcastRecordActivity extends BannerActivity implements View.OnCl
     }
 
     private void initView() {
-        rv_record_list.setLayoutManager(new LinearLayoutManager(mContext));
-        recordAdapter = new RecordAdapter(mContext, null);
+        rv_record_list.setLayoutManager(new LinearLayoutManager(BroadcastRecordActivity.this));
+        recordAdapter = new RecordAdapter(BroadcastRecordActivity.this, null);
         rv_record_list.setAdapter(recordAdapter);
 
         /**
@@ -52,7 +62,7 @@ public class BroadcastRecordActivity extends BannerActivity implements View.OnCl
         recordAdapter.setLinster(new RecordAdapter.ItemOnClickLinster() {
             @Override
             public void textItemOnClick(View view, int position) {
-                startActivity(new Intent(mContext, BroadcastActivity.class));
+                startActivity(new Intent(BroadcastRecordActivity.this, BroadcastActivity.class));
             }
         });
 
@@ -74,12 +84,75 @@ public class BroadcastRecordActivity extends BannerActivity implements View.OnCl
         });
     }
 
-    @OnClick({R.id.img_record_back})
+    @OnClick({R.id.img_record_back, R.id.txt_choosetime})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
         if(temdId == R.id.img_record_back){
             finish();
+        }else if(temdId == R.id.txt_choosetime){
+            //选择日期
+            chooseTime();
         }
     }
+
+    /**
+     * 选择日期
+     */
+    private void chooseTime() {
+        Calendar now = Calendar.getInstance();
+        if (dpd == null) {
+            dpd = DatePickerDialog.newInstance(
+                    BroadcastRecordActivity.this,
+                    now.get(Calendar.YEAR),
+                    now.get(Calendar.MONTH),
+                    now.get(Calendar.DAY_OF_MONTH)
+            );
+        } else {
+            dpd.initialize(
+                    BroadcastRecordActivity.this,
+                    now.get(Calendar.YEAR),
+                    now.get(Calendar.MONTH),
+                    now.get(Calendar.DAY_OF_MONTH)
+            );
+        }
+
+
+        dpd.setThemeDark(false);
+        dpd.vibrate(true);
+        dpd.showYearPickerFirst(true);
+
+        dpd.setScrollOrientation(DatePickerDialog.ScrollOrientation.HORIZONTAL);
+
+        dpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Log.d("DatePickerDialog", "Dialog was cancelled");
+                dpd = null;
+            }
+        });
+        dpd.show(getSupportFragmentManager(), "Datepickerdialog");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dpd = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DatePickerDialog dpd = (DatePickerDialog) getSupportFragmentManager().findFragmentByTag("Datepickerdialog");
+        if(dpd != null) dpd.setOnDateSetListener(this);
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = "你选择的是：" + +year + "年" + (++monthOfYear) + "月" + dayOfMonth +"日";
+        BannerLog.d("b_cc", date);
+        ToastUtils.success(this, date);
+        dpd = null;
+    }
+
 }

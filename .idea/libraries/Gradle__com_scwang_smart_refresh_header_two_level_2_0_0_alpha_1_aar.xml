@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smart:refresh-header-two-level:2.0.0-alpha-1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-two-level-2.0.0-alpha-1.aar/35bdf89111037a78b9e6d70a4be6cc9d/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-two-level-2.0.0-alpha-1.aar/35bdf89111037a78b9e6d70a4be6cc9d/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-refresh-header-two-level-2.0.0-alpha-1.aar/b0b44a24014ff764e3618509908038e7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-refresh-header-two-level-2.0.0-alpha-1.aar/b0b44a24014ff764e3618509908038e7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

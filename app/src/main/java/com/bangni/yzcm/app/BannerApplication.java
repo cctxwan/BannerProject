@@ -2,8 +2,9 @@ package com.bangni.yzcm.app;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 import com.tencent.bugly.crashreport.CrashReport;
+
+import androidx.multidex.MultiDex;
 
 /**
  * 程序入口
