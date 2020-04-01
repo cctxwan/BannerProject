@@ -33,7 +33,6 @@ import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
-import com.bangni.yzcm.utils.SystemUtil;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -72,6 +71,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     @BindView(R.id.img_login_loogpsd)
     ImageView img_login_loogpsd;
+
 
     //是否是账号登录
     private boolean ISUSERLOGIN = true;
@@ -391,9 +391,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             return;
         }
 
+        //账号密码登录
         login(username, password);
-//        startActivity(new Intent(this, MainActivity.class));
-//        finish();
     }
 
     Handler getCodeHandler = new Handler(){

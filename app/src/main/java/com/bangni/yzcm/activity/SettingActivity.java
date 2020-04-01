@@ -3,45 +3,28 @@ package com.bangni.yzcm.activity;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.dialog.CommomDialog;
-import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
-import com.bangni.yzcm.view.RoundImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,22 +32,10 @@ import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
 
+/**
+ * 设置界面
+ */
 public class SettingActivity extends BannerActivity implements View.OnClickListener {
-
-    @BindView(R.id.rel_change_img)
-    RelativeLayout rel_change_img;
-
-    @BindView(R.id.rel_change_name)
-    RelativeLayout rel_change_name;
-
-    @BindView(R.id.rel_change_account)
-    RelativeLayout rel_change_account;
-
-    @BindView(R.id.rel_change_pass)
-    RelativeLayout rel_change_pass;
-
-    @BindView(R.id.rel_clear_hc)
-    RelativeLayout rel_clear_hc;
 
     @BindView(R.id.txt_loginout)
     TextView txt_loginout;
@@ -75,9 +46,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     @BindView(R.id.txt_getHc)
     TextView txt_getHc;
 
-    @BindView(R.id.img_setting_back)
-    LinearLayout img_setting_back;
-
+    //上传图片
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
 
     @Override

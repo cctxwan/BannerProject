@@ -17,7 +17,6 @@ public class BannerConstants {
 
 
 
-
     /** 账号密码登录 */
     public static final String LOGIN_URL = "/monitor/user/login";
 

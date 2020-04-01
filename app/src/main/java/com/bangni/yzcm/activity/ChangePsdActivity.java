@@ -2,7 +2,6 @@ package com.bangni.yzcm.activity;
 
 import android.app.Dialog;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -14,15 +13,12 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.ToastUtils;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,9 +27,6 @@ import butterknife.OnClick;
  * 修改密码
  */
 public class ChangePsdActivity extends BannerActivity implements View.OnClickListener {
-
-    @BindView(R.id.img_changepsd_back)
-    LinearLayout img_changepsd_back;
 
     @BindView(R.id.et_oldpsd)
     EditText et_oldpsd;

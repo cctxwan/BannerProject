@@ -1,41 +1,30 @@
 package com.bangni.yzcm.fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.activity.BroadcastActivity;
 import com.bangni.yzcm.activity.OrderDetailActivity;
-import com.bangni.yzcm.adapter.BroadcastAdapter;
 import com.bangni.yzcm.adapter.OrderAdapter;
-import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
-import com.bangni.yzcm.utils.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by admin on 2018/4/10.
+ * 订单fragment
  */
-
 public class OrderFragment extends Fragment {
 
     View view;

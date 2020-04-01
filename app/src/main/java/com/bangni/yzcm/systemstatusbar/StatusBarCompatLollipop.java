@@ -187,4 +187,5 @@ class StatusBarCompatLollipop {
     }
 
     private static ValueAnimator sAnimator;
+
 }

@@ -1,26 +1,19 @@
 package com.bangni.yzcm.activity;
 
-import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.adapter.FeedListAdapter;
-import com.bangni.yzcm.adapter.OrderAdapter;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,9 +22,6 @@ import butterknife.OnClick;
  * 反馈记录
  */
 public class FeedListActivity extends BannerActivity implements View.OnClickListener {
-
-    @BindView(R.id.img_feedlist_back)
-    LinearLayout img_feedlist_back;
 
     @BindView(R.id.txt_feedbooklist_title)
     TextView txt_feedbooklist_title;

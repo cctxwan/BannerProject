@@ -2,10 +2,8 @@ package com.bangni.yzcm.network.util;
 
 import android.content.Context;
 import android.content.Intent;
-
 import com.bangni.yzcm.activity.LoginActivity;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
-
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 

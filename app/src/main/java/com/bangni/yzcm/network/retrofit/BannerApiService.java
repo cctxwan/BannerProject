@@ -8,7 +8,6 @@ import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
 import com.bangni.yzcm.network.bean.UserLoginBean;
 import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.util.BannerConstants;
-
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

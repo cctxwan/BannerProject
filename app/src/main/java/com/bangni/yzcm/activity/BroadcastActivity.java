@@ -1,19 +1,12 @@
 package com.bangni.yzcm.activity;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
-import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,9 +15,6 @@ import butterknife.OnClick;
  * 监播详情
  */
 public class BroadcastActivity extends BannerActivity implements View.OnClickListener {
-
-    @BindView(R.id.img_broadcast_back)
-    LinearLayout img_broadcast_back;
 
     @BindView(R.id.txt_broadcase_name)
     TextView txt_broadcase_name;

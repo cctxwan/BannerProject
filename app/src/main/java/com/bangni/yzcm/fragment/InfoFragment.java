@@ -10,8 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.AboutActivity;
 import com.bangni.yzcm.activity.FeedbackActivity;
@@ -21,36 +19,21 @@ import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
-import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.ToastUtils;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import okhttp3.RequestBody;
 
 /**
- * Created by admin on 2018/4/10.
+ * 个人中心fragment
  */
-
 public class InfoFragment extends Fragment implements View.OnClickListener {
 
     View view;
 
-    @BindView(R.id.rel_setting)
-    RelativeLayout rel_setting;
-
-    @BindView(R.id.rel_feedbook)
-    RelativeLayout rel_feedbook;
-
-    @BindView(R.id.rel_about)
-    RelativeLayout rel_about;
-
     private Unbinder unbinder;
-
 
     @Nullable
     @Override

@@ -3,7 +3,6 @@ package com.bangni.yzcm.utils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

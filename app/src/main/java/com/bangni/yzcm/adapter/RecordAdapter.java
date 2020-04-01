@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.RecordInfos;
-
 import java.util.List;
 
 /**

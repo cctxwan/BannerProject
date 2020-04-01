@@ -9,7 +9,6 @@ public class SystemUtil {
 
     /**
      * 获取当前手机系统语言。
-     *
      * @return 返回当前系统语言。例如：当前设置的是“中文-中国”，则返回“zh-CN”
      */
     public static String getSystemLanguage() {
@@ -18,7 +17,6 @@ public class SystemUtil {
 
     /**
      * 获取当前系统上的语言列表(Locale列表)
-     *
      * @return 语言列表
      */
     public static Locale[] getSystemLanguageList() {
@@ -27,7 +25,6 @@ public class SystemUtil {
 
     /**
      * 获取当前手机系统版本号
-     *
      * @return 系统版本号
      */
     public static String getSystemVersion() {
@@ -36,7 +33,6 @@ public class SystemUtil {
 
     /**
      * 获取手机型号
-     *
      * @return 手机型号
      */
     public static String getSystemModel() {
@@ -45,7 +41,6 @@ public class SystemUtil {
 
     /**
      * 获取手机厂商
-     *
      * @return 手机厂商
      */
     public static String getDeviceBrand() {

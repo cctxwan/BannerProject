@@ -6,7 +6,6 @@ package com.bangni.yzcm.network.retrofit;
  * 由于我们数据类型未知，所以这里也传入一个泛型。
  * Created by Fsh on 2017/3/16.
  */
-
 public interface BannerSubscriberOnNextListener<T> {
     void onNext(T t);
     void onError(String msg);

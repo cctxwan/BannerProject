@@ -67,4 +67,5 @@ public class StatusBarCompat {
             StatusBarCompatKitKat.setStatusBarColorForCollapsingToolbar(activity, appBarLayout, collapsingToolbarLayout, toolbar, statusColor);
         }
     }
+
 }

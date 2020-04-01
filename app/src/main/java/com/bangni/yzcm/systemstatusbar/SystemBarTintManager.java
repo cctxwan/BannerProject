@@ -11,6 +11,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+/**
+ * 状态栏管理类
+ */
 public class SystemBarTintManager {
 
     public static final int DEFAULT_TINT_COLOR = 0x99000000;

@@ -1,9 +1,6 @@
 package com.bangni.yzcm.network.retrofit;
 
-
 import android.util.Log;
-
-import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
@@ -14,11 +11,9 @@ import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.util.BannerConstants;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;

@@ -2,8 +2,6 @@ package com.bangni.yzcm.fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,30 +12,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.activity.BroadcastActivity;
 import com.bangni.yzcm.activity.BroadcastRecordActivity;
 import com.bangni.yzcm.adapter.BroadcastAdapter;
-import com.bangni.yzcm.adapter.OrderAdapter;
 import com.bangni.yzcm.dialog.CommomDialog;
-import com.bangni.yzcm.systemstatusbar.StatusBarCompat;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * Created by admin on 2018/4/10.
+ * 监播fragment
  */
-
 public class BroadCastFragment extends Fragment implements View.OnClickListener {
 
     View view;

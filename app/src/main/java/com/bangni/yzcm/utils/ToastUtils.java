@@ -3,9 +3,7 @@ package com.bangni.yzcm.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.Toast;
-
 import com.bangni.yzcm.R;
-
 import es.dmoral.toasty.Toasty;
 
 /**

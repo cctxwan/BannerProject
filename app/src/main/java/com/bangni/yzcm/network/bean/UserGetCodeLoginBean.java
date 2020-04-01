@@ -1,6 +1,8 @@
 package com.bangni.yzcm.network.bean;
 
+
 public class UserGetCodeLoginBean {
+
     /**
      * token : 1ed6fd285986470a8104808a81ba3cda
      */
@@ -14,4 +16,5 @@ public class UserGetCodeLoginBean {
     public void setToken(String token) {
         this.token = token;
     }
+
 }

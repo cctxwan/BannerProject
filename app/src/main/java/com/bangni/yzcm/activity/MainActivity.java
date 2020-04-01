@@ -7,44 +7,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.fragment.OrderFragment;
 import com.bangni.yzcm.fragment.InfoFragment;
 import com.bangni.yzcm.fragment.BroadCastFragment;
-
 import java.util.HashMap;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    /** 底部导航栏 */
-    @BindView(R.id.Lin_one)
-    LinearLayout Lin_one;
-
-    @BindView(R.id.Lin_two)
-    LinearLayout Lin_two;
-
-    @BindView(R.id.Lin_three)
-    LinearLayout Lin_three;
-
-
-
-
-    @BindView(R.id.txt_one_bottom)
-    TextView txt_one_bottom;
-
-    @BindView(R.id.txt_two_bottom)
-    TextView txt_two_bottom;
-
-    @BindView(R.id.txt_three_bottom)
-    TextView txt_three_bottom;
-
 
 
     //获取底部导航栏的ImageView

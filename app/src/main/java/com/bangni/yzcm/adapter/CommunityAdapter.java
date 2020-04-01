@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.network.bean.BroadcastInfos;
 import com.bangni.yzcm.network.bean.CommunityInfos;
-
 import java.util.List;
 
 /**

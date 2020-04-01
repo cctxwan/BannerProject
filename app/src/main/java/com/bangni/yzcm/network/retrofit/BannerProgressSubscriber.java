@@ -41,7 +41,6 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
         }
     }
 
-
     /**
      * 无参方法，表示事件正常结束
      * 当没有onNext()方法发出的时候

@@ -3,25 +3,23 @@ package com.bangni.yzcm.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 订单详情界面
+ */
 public class OrderDetailActivity extends BannerActivity implements View.OnClickListener {
 
     @BindView(R.id.txt_orderdetail_title)
@@ -32,9 +30,6 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 
     @BindView(R.id.txt_broadcasenumber)
     TextView txt_broadcasenumber;
-
-    @BindView(R.id.img_orderdetail_back)
-    LinearLayout img_orderdetail_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -59,9 +59,6 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     @BindView(R.id.txt_register)
     TextView txt_register;
 
-    @BindView(R.id.txt_yhxy)
-    TextView txt_yhxy;
-
     @BindView(R.id.txt_tologin)
     TextView txt_tologin;
 
