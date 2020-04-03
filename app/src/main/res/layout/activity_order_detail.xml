@@ -82,7 +82,7 @@
             android:layout_marginTop="@dimen/dimen_21_dip"
             android:textSize="@dimen/dimen_20_dip"
             android:textColor="#333333"
-            android:text="基本信息"/>
+            android:text="监播信息"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,6 +93,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rel_orderdetail_sqname"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_60_dip"
                 android:orientation="horizontal">
@@ -100,7 +101,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="广告名称"
+                    android:text="社区名称"
                     android:textColor="#464646"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/dimen_20_dip"/>
@@ -108,48 +109,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="馨灵瑜伽"
+                    android:text="大兴景苑"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
+                    android:layout_marginRight="@dimen/dimen_56_dip"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rel_order_community"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60_dip"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="投放社区"
-                    android:textColor="#464646"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/dimen_20_dip"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10个"
-                    android:textSize="@dimen/dimen_20_dip"
-                    android:textColor="#1C1C1C"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/dimen_30_dip"/>
+                    android:layout_centerVertical="true" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/right_back"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:src="@mipmap/bottom_back"
+                    android:layout_marginRight="@dimen/dimen_23_dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rel_orderdetail_ggdw"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_60_dip"
                 android:orientation="horizontal">
@@ -157,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="开始时间"
+                    android:text="广告点位"
                     android:textColor="#464646"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/dimen_20_dip"/>
@@ -165,15 +143,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2020年3月20日   15:00"
+                    android:text="1号楼西梯"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_56_dip"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bottom_back"
+                    android:layout_marginRight="@dimen/dimen_23_dip"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rel_orderdetail_jctime"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_60_dip"
                 android:orientation="horizontal">
@@ -181,7 +169,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="结束时间"
+                    android:text="监测时间"
                     android:textColor="#464646"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/dimen_20_dip"/>
@@ -189,35 +177,104 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2020年6月20日   15:00"
+                    android:text="2020-3-3"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_56_dip"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bottom_back"
+                    android:layout_marginRight="@dimen/dimen_23_dip"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/txt_broadcase_takephoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_13_dip"
+                android:text="投影仪拍照图片"
+                android:gravity="center"
+                android:textColor="#464646"
+                android:textSize="@dimen/dimen_20_dip"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_219_dip"
+                android:layout_marginTop="@dimen/dimen_30_dip"
+                android:src="@color/slategrey"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="摄像头拍照图片识别结果"
+                android:layout_marginTop="@dimen/dimen_30_dip"
+                android:gravity="center"
+                android:textColor="#464646"
+                android:textSize="@dimen/dimen_20_dip"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60_dip"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_37_dip">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="广告费用"
-                    android:textColor="#464646"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/dimen_20_dip"/>
+                    android:text="性别"
+                    android:textSize="@dimen/dimen_20_dip"
+                    android:textColor="#464646"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¥1000"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:text="2男2女"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_30_dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="年龄段"
+                    android:textSize="@dimen/dimen_20_dip"
+                    android:textColor="#464646"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0-12岁(1人) 12-25岁(2人)"
+                        android:textColor="#1C1C1C"
+                        android:textSize="@dimen/dimen_20_dip"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_30_dip"
+                        android:text="25-55岁(1人) 55岁以上(1人)"
+                        android:textColor="#1C1C1C"
+                        android:textSize="@dimen/dimen_20_dip"/>
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -241,10 +298,10 @@
                 android:textColor="#333333"/>
 
             <TextView
-                android:id="@+id/orderdetail_txt_allbroadcast"
+                android:id="@+id/orderdetail_txt_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="全部"
+                android:text="详情"
                 android:gravity="right"
                 android:textSize="@dimen/dimen_20_dip"
                 android:layout_marginRight="@dimen/dimen_18_dip"
@@ -257,80 +314,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_19_dip"
-            android:background="@drawable/feedbook_bg"
-            android:padding="@dimen/dimen_20_dip"
-            android:orientation="vertical">
+            android:weightSum="2"
+            android:orientation="horizontal">
 
-            <RelativeLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60_dip"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="监播信息"
-                    android:textColor="#464646"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/dimen_20_dip"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/right_back"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60_dip"
-                android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@mipmap/rjbgl"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="累计流量"
-                    android:textColor="#464646"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/dimen_20_dip"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10000(人次)"
+                    android:layout_marginTop="@dimen/dimen_15_dip"
+                    android:layout_marginLeft="@dimen/dimen_17_dip"
+                    android:text="日均曝光量"
                     android:textSize="@dimen/dimen_20_dip"
-                    android:textColor="#1C1C1C"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:textColor="#FFFFFF"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60_dip"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="累计播放"
-                    android:textColor="#464646"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/dimen_20_dip"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_13_dip"
+                android:background="@mipmap/rjbfl"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1000(次)"
+                    android:layout_marginTop="@dimen/dimen_15_dip"
+                    android:layout_marginLeft="@dimen/dimen_17_dip"
+                    android:text="日均播放量"
                     android:textSize="@dimen/dimen_20_dip"
-                    android:textColor="#1C1C1C"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:textColor="#FFFFFF"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

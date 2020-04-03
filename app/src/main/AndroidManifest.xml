@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ChangeAccountActivity"></activity>
+        <activity android:name=".activity.StatisticDetailActivity"></activity>
+        <activity android:name=".activity.ChangeAccountActivity" />
         <activity android:name=".activity.BroadcastRecordActivity" />
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.FeedListActivity" />
@@ -45,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

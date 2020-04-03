@@ -26,7 +26,7 @@
                 android:layout_width="@dimen/dimen_22_dip"
                 android:layout_height="@dimen/dimen_26_dip"
                 android:scaleType="center"
-                android:src="@mipmap/order"/>
+                android:src="@mipmap/boardcast"/>
 
             <TextView
                 android:id="@+id/txt_one_bottom"
@@ -35,7 +35,7 @@
                 android:textColor="#272727"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="订单"
+                android:text="监播"
                 android:layout_marginTop="@dimen/dimen_7_dip"
                 android:textSize="@dimen/dimen_13_dip"/>
 
@@ -48,6 +48,7 @@
             android:layout_height="60dp"
             android:layout_weight="2"
             android:orientation="vertical"
+            android:visibility="gone"
             android:gravity="center">
 
             <ImageView

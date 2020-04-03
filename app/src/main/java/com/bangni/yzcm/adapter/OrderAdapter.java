@@ -84,7 +84,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         /** 获取item的控件 */
-        public TextView order_item_state, order_item_name, order_item_tfdw, order_item_ljll, order_item_ljbf, order_item_kssj;
+        public TextView order_item_state, order_item_name, order_item_tfdw, order_item_ljbf, order_item_kssj, order_item_jssj;
         public LinearLayout lin_order_rv;
 
         public ViewHolder(View rootView) {
@@ -92,9 +92,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             this.order_item_state = rootView.findViewById(R.id.order_item_state);
             this.order_item_name = rootView.findViewById(R.id.order_item_name);
             this.order_item_tfdw = rootView.findViewById(R.id.order_item_tfdw);
-            this.order_item_ljll = rootView.findViewById(R.id.order_item_ljll);
             this.order_item_ljbf = rootView.findViewById(R.id.order_item_ljbf);
             this.order_item_kssj = rootView.findViewById(R.id.order_item_kssj);
+            this.order_item_jssj = rootView.findViewById(R.id.order_item_jssj);
 
             this.lin_order_rv = rootView.findViewById(R.id.lin_order_rv);
 

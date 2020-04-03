@@ -9,27 +9,18 @@
     android:layout_marginBottom="@dimen/dimen_20_dip"
     android:background="@drawable/feedbook_bg">
 
-    <TextView
-        android:id="@+id/order_item_state"
-        android:layout_width="@dimen/dimen_103_dip"
-        android:layout_height="@dimen/dimen_32_dip"
-        android:text="进行中"
-        android:background="@mipmap/jxz"
-        android:gravity="center"
-        android:layout_gravity="right"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/dimen_20_dip"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dimen_10_dip"
         android:layout_marginLeft="@dimen/dimen_30_dip"
         android:orientation="horizontal">
 
         <View
             android:layout_width="@dimen/dimen_4_dip"
             android:layout_height="@dimen/dimen_23_dip"
+            android:layout_centerVertical="true"
             android:background="#FFB944"/>
 
         <TextView
@@ -38,10 +29,23 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
             android:text="三只松鼠"
+            android:layout_centerVertical="true"
             android:textSize="@dimen/dimen_23_dip"
             android:textColor="#30313C"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/order_item_state"
+            android:layout_width="@dimen/dimen_103_dip"
+            android:layout_height="@dimen/dimen_53_dip"
+            android:text="进行中..."
+            android:layout_alignParentRight="true"
+            android:background="@drawable/order_item_bg_blue"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/dimen_22_dip"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -78,14 +82,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ljll"/>
+            android:src="@mipmap/bgl"/>
 
         <TextView
-            android:id="@+id/order_item_ljll"
+            android:id="@+id/order_item_bgl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="累计流量：1000000(人次)"
+            android:text="曝光量：100000(人次)"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -109,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="累计播放：10000(次)"
+            android:text="播放量：1000(次)"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -134,6 +138,30 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
             android:text="开始时间：2020年12月12日 8:00"
+            android:textColor="#30313C"
+            android:textSize="@dimen/dimen_18_dip"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_18_dip"
+        android:layout_marginLeft="@dimen/dimen_30_dip"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/jssj"/>
+
+        <TextView
+            android:id="@+id/order_item_jssj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_13_dip"
+            android:text="结束时间：2020年12月12日 8:00"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
