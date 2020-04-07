@@ -35,14 +35,20 @@ public class BannerConstants {
     /** 查看意见反馈列表 */
     public static final String FEEDBOOKLIST_URL = "/monitor/user/get/feedback";
 
-    /** 账号信息 */
+    /** 获取个人信息 */
     public static final String ACCOUNTINFO_URL = "/monitor/user/getinfo";
+
+    /** 修改个人信息 */
+    public static final String CHANGEACCOUNTINFO_URL = "/monitor/user/update";
+
+    /** 修改账号 */
+    public static final String CHANGEACCOUNT_URL = "/monitor/user/username/update";
 
     /** 订单列表 */
     public static final String ORDERLIST_URL = "/monitor/order/list";
 
-    /** 订单列表所有 */
-    public static final String ORDERLISTALL_URL = "/monitor/order/list/all";
+//    /** 订单列表所有 */
+//    public static final String ORDERLISTALL_URL = "/monitor/order/list/all";
 
     /** 订单详情 */
     public static final String ORDERDETAIL_URL = "/monitor/order/detail";
@@ -50,8 +56,8 @@ public class BannerConstants {
     /** 播放统计 */
     public static final String PLAYSTATISTICS_URL = "/monitor/order/play/statistics";
 
-    /** 投放社区列表 */
-    public static final String COMMUNITYLIST_URL = "/monitor/order/community/list";
+//    /** 投放社区列表 */
+//    public static final String COMMUNITYLIST_URL = "/monitor/order/community/list";
 
     /** 投放社区列表所有 */
     public static final String COMMUNITYLISTALL_URL = "/monitor/order/community/list/all";
@@ -61,6 +67,9 @@ public class BannerConstants {
 
     /** 监播列表 */
     public static final String BROADCASTLIST_URL = "/monitor/list";
+
+    /** 统计详情 */
+    public static final String STATISITCSDETAIL_URL = "/monitor/order/statistics/detail";
 
     /** 监播详情 */
     public static final String BROADCASTDETAILLIST_URL = "/monitor/detail";

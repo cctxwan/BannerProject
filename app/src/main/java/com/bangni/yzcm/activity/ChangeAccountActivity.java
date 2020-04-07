@@ -85,7 +85,6 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                 ToastUtils.warning(this, "手机号不能为空");
                 return;
             }
-
             getCode();
         }
     }
