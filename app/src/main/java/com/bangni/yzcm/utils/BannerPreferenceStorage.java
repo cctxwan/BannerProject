@@ -23,6 +23,10 @@ public class BannerPreferenceStorage {
         this.context = context;
     }
 
+    /**
+     * 保存token
+     * @param token
+     */
     public void setToken(String token) {
         SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
                 Activity.MODE_PRIVATE);// 实例化SharedPreferences对象；Constant.APP_NAME是一个常量，是创建的数据库表的名字
@@ -31,10 +35,36 @@ public class BannerPreferenceStorage {
         editor.commit();// 提交数据
     }
 
+    /**
+     * 获取token
+     * @return
+     */
     public String getToken() {
         SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
                 Activity.MODE_PRIVATE);
-        return sp.getString("token", "");// 获取用户名
+        return sp.getString("token", "");// 获取token
+    }
+
+    /**
+     * 保存手机号
+     * @param phone
+     */
+    public void setPhone(String phone) {
+        SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
+                Activity.MODE_PRIVATE);// 实例化SharedPreferences对象；Constant.APP_NAME是一个常量，是创建的数据库表的名字
+        SharedPreferences.Editor editor = sp.edit();// 实例化SharedPreferences.Editor对象
+        editor.putString("phone", phone);// 保存数据
+        editor.commit();// 提交数据
+    }
+
+    /**
+     * 获取手机号
+     * @return
+     */
+    public String getPhone() {
+        SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
+                Activity.MODE_PRIVATE);
+        return sp.getString("phone", "");// 获取手机号
     }
 
     /**

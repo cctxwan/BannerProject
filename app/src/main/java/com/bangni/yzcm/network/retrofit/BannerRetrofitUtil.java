@@ -2,7 +2,10 @@ package com.bangni.yzcm.network.retrofit;
 
 import android.util.Log;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.network.bean.ChangepsdModel;
+import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -148,9 +151,24 @@ public class BannerRetrofitUtil {
         toSubscribe(mApiService.userFeedBook(route), subscriber);
     }
 
+    //查看用户意见反馈列表
+    public void getFeedbookLists(@Body RequestBody route, Subscriber<BannerBaseResponse<FeedBookListModel>> subscriber) {
+        toSubscribe(mApiService.getFeedbookLists(route), subscriber);
+    }
+
     //用户信息
     public void userAccountInfo(Subscriber<BannerBaseResponse<InfoFragmentBean>> subscriber) {
         toSubscribe(mApiService.userAccountInfo(), subscriber);
+    }
+
+    //订单列表
+    public void userOrderLists(@Body RequestBody route, Subscriber<BannerBaseResponse<OrderInfos>> subscriber) {
+        toSubscribe(mApiService.userOrderLists(route), subscriber);
+    }
+
+    //修改密码
+    public void changePsd(@Body RequestBody route, Subscriber<BannerBaseResponse<ChangepsdModel>> subscriber) {
+        toSubscribe(mApiService.changePsd(route), subscriber);
     }
 
 }

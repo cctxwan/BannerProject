@@ -88,7 +88,6 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
             BannerLog.d("b_cc", "离开了我的界面");
         }else{
             BannerLog.d("b_cc", "进入了我的界面");
-            getInfos.post(getRunnable);
         }
     }
 
@@ -112,5 +111,12 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
             //关于我们
             startActivity(new Intent(getActivity(), AboutActivity.class));
         }
+    }
+
+    /**
+     * 进入此fragment调用方法
+     */
+    public void getData() {
+        getInfos.post(getRunnable);
     }
 }

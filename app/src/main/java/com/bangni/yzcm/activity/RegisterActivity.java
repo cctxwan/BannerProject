@@ -266,7 +266,10 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserRegisterBean> response) {
-                startActivity(new Intent(mContext, LoginActivity.class));
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
+                startActivity(intent);
                 finish();
             }
 

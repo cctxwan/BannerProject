@@ -14,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
 import com.bumptech.glide.Glide;
@@ -47,6 +49,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     @BindView(R.id.txt_getHc)
     TextView txt_getHc;
 
+    @BindView(R.id.txt_change_phone)
+    TextView txt_change_phone;
+
     //上传图片
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
 
@@ -67,6 +72,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         public void run() {
             try {
                 txt_getHc.setText(ClearDataUtils.getTotalCacheSize(mContext));
+                txt_change_phone.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone());
             } catch (Exception e) {
                 e.printStackTrace();
             }

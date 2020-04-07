@@ -1,8 +1,10 @@
 package com.bangni.yzcm.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -17,11 +19,24 @@ import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.dialog.CommomDialog;
+import com.bangni.yzcm.network.bean.ChangepsdModel;
+import com.bangni.yzcm.network.bean.FeedBookListModel;
+import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
+import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
+import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
+import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 修改密码
@@ -243,7 +258,7 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
         }
 
         //两次输入的密码不一致
-        if(!et_oldpsd.getText().toString().trim().equals(et_newpsd.getText().toString().trim())){
+        if(!et_newpsd_r.getText().toString().trim().equals(et_newpsd.getText().toString().trim())){
             ToastUtils.warning(mContext, "两次输入的密码不一致");
             return;
         }
@@ -255,6 +270,7 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
                 if(content.equals("yes_hc")){
                     dialog.dismiss();
                     //提交数据到服务器
+                    changepsd.post(getDatas);
                 }else if(content.equals("no_hc")){
                     dialog.dismiss();
                 }
@@ -262,4 +278,34 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
         }, 5).show();
 
     }
+
+    Handler changepsd = new Handler();
+
+    Runnable getDatas = new Runnable() {
+        @Override
+        public void run() {
+            Map<String, String> map = new HashMap<>();
+            map.put("oldPassword", et_oldpsd.getText().toString().trim());
+            map.put("newPassword", et_newpsd.getText().toString().trim());
+            map.put("newPassword2", et_newpsd_r.getText().toString().trim());
+            Gson gson = new Gson();
+            String entity = gson.toJson(map);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+            BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<ChangepsdModel>>() {
+
+                @Override
+                public void onNext(BannerBaseResponse<ChangepsdModel> response) {
+                    finishAllActivity();
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                }
+
+                @Override
+                public void onError(String msg) {
+                    ToastUtils.error(mContext, msg);
+                }
+            };
+            BannerRetrofitUtil.getInstance().changePsd(body, new BannerProgressSubscriber<BannerBaseResponse<ChangepsdModel>>(mListener, mContext, true));
+        }
+    };
+
 }

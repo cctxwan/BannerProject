@@ -32,6 +32,9 @@ public class BannerConstants {
     /** 意见反馈 */
     public static final String FEEDBOOK_URL = "/monitor/user/feedback";
 
+    /** 查看意见反馈列表 */
+    public static final String FEEDBOOKLIST_URL = "/monitor/user/get/feedback";
+
     /** 账号信息 */
     public static final String ACCOUNTINFO_URL = "/monitor/user/getinfo";
 
@@ -61,5 +64,8 @@ public class BannerConstants {
 
     /** 监播详情 */
     public static final String BROADCASTDETAILLIST_URL = "/monitor/detail";
+
+    /** 修改密码 */
+    public static final String CHANGEPSD_URL = "/monitor/user/pwd/update";
 
 }

@@ -1,7 +1,10 @@
 package com.bangni.yzcm.network.retrofit;
 
 
+import com.bangni.yzcm.network.bean.ChangepsdModel;
+import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -38,8 +41,19 @@ public interface BannerApiService {
     @POST(BannerConstants.FEEDBOOK_URL)
     Observable<BannerBaseResponse<UserFeedBookBean>> userFeedBook(@Body RequestBody route);
 
+    //查看用户意见反馈列表
+    @POST(BannerConstants.FEEDBOOKLIST_URL)
+    Observable<BannerBaseResponse<FeedBookListModel>> getFeedbookLists(@Body RequestBody route);
+
     //用户个人信息
     @POST(BannerConstants.ACCOUNTINFO_URL)
     Observable<BannerBaseResponse<InfoFragmentBean>> userAccountInfo();
 
+    //订单列表
+    @POST(BannerConstants.ORDERLIST_URL)
+    Observable<BannerBaseResponse<OrderInfos>> userOrderLists(@Body RequestBody route);
+
+    //修改密码
+    @POST(BannerConstants.CHANGEPSD_URL)
+    Observable<BannerBaseResponse<ChangepsdModel>> changePsd(@Body RequestBody route);
 }

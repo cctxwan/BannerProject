@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.img_three_bottom)
     ImageView img_three_bottom;
 
-
+    OrderFragment orderFragment = new OrderFragment();
+    BroadCastFragment broadCastFragment = new BroadCastFragment();
+    InfoFragment infoFragment = new InfoFragment();
 
     /** 第一个fragment */
     public static final int PAGE_COMMON = 0;
@@ -66,9 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initFrag() {
-        fragments.put(PAGE_COMMON, new OrderFragment());
-        fragments.put(PAGE_TRANSLUCENT, new BroadCastFragment());
-        fragments.put(PAGE_COORDINATOR, new InfoFragment());
+        fragments.put(PAGE_COMMON, orderFragment);
+        fragments.put(PAGE_TRANSLUCENT, broadCastFragment);
+        fragments.put(PAGE_COORDINATOR, infoFragment);
     }
 
     private void defaultFragment() {
@@ -152,10 +154,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int temdId = v.getId();
         if(temdId == R.id.Lin_one || temdId == R.id.txt_one_bottom || temdId == R.id.img_one_bottom){
             changeTab(PAGE_COMMON);
-        } else if (temdId == R.id.Lin_two || temdId == R.id.txt_two_bottom || temdId == R.id.img_two_bottom){
-            changeTab(PAGE_TRANSLUCENT);
-        } else if (temdId == R.id.Lin_three || temdId == R.id.txt_three_bottom || temdId == R.id.img_three_bottom){
+            orderFragment.getData();
+        }
+//        else if (temdId == R.id.Lin_two || temdId == R.id.txt_two_bottom || temdId == R.id.img_two_bottom){
+//            changeTab(PAGE_TRANSLUCENT);
+//        }
+        else if (temdId == R.id.Lin_three || temdId == R.id.txt_three_bottom || temdId == R.id.img_three_bottom){
             changeTab(PAGE_COORDINATOR);
+            infoFragment.getData();
         }
     }
 

@@ -16,11 +16,15 @@ import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
 import com.bangni.yzcm.network.bean.UserLoginBean;
@@ -85,6 +89,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     //倒计时60s
     private int min = 60;
 
+    private String username, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +109,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
     private void initView() {
+        Intent intent = getIntent();
+        if(intent != null){
+            username = intent.getStringExtra("username");
+            password = intent.getStringExtra("password");
+
+            BannerLog.d("b_cc", "注册传过来的账号：" + username + "和密码：" + password);
+        }
+
         //加粗
         txt_login_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         txt_getcodelogin.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
@@ -149,7 +163,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
 
-    private void login(String username, String password){
+    private void login(){
         Map<String, String> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
@@ -164,7 +178,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 if(response.data == null) return;
 
                 //存入token
-                new BannerPreferenceStorage(LoginActivity.this).setToken(response.data.getToken());
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setPhone(username);
 
                 //去主界面
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -349,7 +364,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 if(response.data == null) return;
 
                 //存入token
-                new BannerPreferenceStorage(LoginActivity.this).setToken(response.data.getToken());
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setPhone(username);
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
@@ -367,8 +383,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
      * 账号密码登录
      */
     private void userLoginCheck() {
-        String username = et_username.getText().toString().trim();
-        String password = et_password.getText().toString().trim();
+        username = et_username.getText().toString().trim();
+        password = et_password.getText().toString().trim();
         //账号判断
         if(TextUtils.isEmpty(username)){
             ToastUtils.warning(this, "手机号不能为空");
@@ -392,7 +408,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
 
         //账号密码登录
-        login(username, password);
+        login();
     }
 
     Handler getCodeHandler = new Handler(){
@@ -417,5 +433,31 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         ISGETCODE = false;
     }
 
+
+    long temptime;
+
+    /**
+     * 点击两次返回才退出
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN)) {
+            if(System.currentTimeMillis() - temptime > 2000){
+                System.out.println(Toast.LENGTH_LONG);
+                Toast.makeText(this, "请在按一次返回退出", Toast.LENGTH_LONG).show();
+                temptime = System.currentTimeMillis();
+            } else {
+                // 仿返回键退出界面,但不销毁，程序仍在后台运行
+//                moveTaskToBack(false); // 关键的一行代码
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

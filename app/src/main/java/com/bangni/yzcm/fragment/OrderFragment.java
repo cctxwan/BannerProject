@@ -1,18 +1,33 @@
 package com.bangni.yzcm.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.OrderDetailActivity;
 import com.bangni.yzcm.adapter.OrderAdapter;
+import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderInfos;
+import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
+import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
+import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
+import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.ToastUtils;
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,6 +36,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 订单fragment
@@ -38,6 +55,13 @@ public class OrderFragment extends Fragment {
     RefreshLayout order_swipeRefreshLayout;
 
     OrderAdapter orderAdapter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        BannerLog.d("b_cc", "onAttach()");
+        orderHandler.post(getOrderLists);
+    }
 
     @Nullable
     @Override
@@ -101,10 +125,81 @@ public class OrderFragment extends Fragment {
         }
     }
 
+    /**
+     * 实现runnable接口处理异步操作
+     */
+    Runnable getOrderLists = new Runnable() {
+        @Override
+        public void run() {
+            Map<String, String> map = new HashMap<>();
+            map.put("pageNum", 1 + "");
+            map.put("pageSize", 10 + "");
+            Gson gson = new Gson();
+            String entity = gson.toJson(map);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+            BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<OrderInfos>>() {
+
+                @Override
+                public void onNext(BannerBaseResponse<OrderInfos> response) {
+
+                }
+
+                @Override
+                public void onError(String msg) {
+                    ToastUtils.error(getActivity(), msg);
+                }
+            };
+            BannerRetrofitUtil.getInstance().userOrderLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderInfos>>(mListener, getActivity(), true));
+
+        }
+    };
+
+    /**
+     * 订单列表handler
+     */
+    Handler orderHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+        }
+    };
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    /**
+     * 进入此fragment执行此方法
+     */
+    public void getData() {
+        orderHandler.post(getOrderLists);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BannerLog.d("b_cc", "onResume()");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BannerLog.d("b_cc", "onStop()");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BannerLog.d("b_cc", "onPause()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BannerLog.d("b_cc", "onDestroy()");
+    }
+
 
 }
