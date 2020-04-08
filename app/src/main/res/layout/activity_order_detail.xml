@@ -315,6 +315,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_19_dip"
             android:weightSum="2"
+            android:layout_marginBottom="@dimen/dimen_53_dip"
             android:orientation="horizontal">
 
             <LinearLayout

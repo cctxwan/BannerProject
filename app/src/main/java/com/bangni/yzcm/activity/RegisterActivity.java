@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -70,6 +71,9 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     @BindView(R.id.img_register_lookpsd)
     ImageView img_register_lookpsd;
 
+    @BindView(R.id.txt_yhxy)
+    TextView txt_yhxy;
+
     //是否获取过验证码
     private boolean ISGETCODE = false;
 
@@ -94,6 +98,8 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     }
 
     private void initView() {
+        String textSource = "点击立即注册表示您已阅读并同意<font color='#1D65FF'>《用户协议》</font>";
+        txt_yhxy.setText(Html.fromHtml(textSource));
         //加粗
         txt_register_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         txt_rg_getcode.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));

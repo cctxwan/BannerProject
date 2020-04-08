@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.stx.xhb.xbanner.XBanner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +82,8 @@ public class OrderFragment extends Fragment {
     }
 
     private void initView() {
+
+
         rv_order_list.setLayoutManager(new LinearLayoutManager(getActivity()));
         orderAdapter = new OrderAdapter(getActivity(), null);
         rv_order_list.setAdapter(orderAdapter);

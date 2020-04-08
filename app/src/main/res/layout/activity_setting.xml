@@ -84,6 +84,7 @@
             android:id="@+id/rel_change_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60_dip"
+            android:layout_marginTop="@dimen/dimen_5_dip"
             android:orientation="horizontal">
 
             <TextView
@@ -118,6 +119,7 @@
             android:id="@+id/rel_change_account"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60_dip"
+            android:layout_marginTop="@dimen/dimen_5_dip"
             android:orientation="horizontal">
 
             <TextView
@@ -152,6 +154,7 @@
             android:id="@+id/rel_change_pass"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60_dip"
+            android:layout_marginTop="@dimen/dimen_5_dip"
             android:orientation="horizontal">
 
             <TextView

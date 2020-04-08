@@ -137,7 +137,7 @@
             android:textColor="#868686"
             android:layout_marginTop="@dimen/dimen_25_dip"
             android:textSize="@dimen/dimen_17_dip"
-            android:text="点击注册表示您已阅读并同意《云蛛传媒用户协议》"/>
+            android:text="点击立即注册表示您已阅读并同意《用户协议》"/>
 
         <TextView
             android:id="@+id/txt_register"

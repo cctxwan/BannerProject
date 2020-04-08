@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
@@ -28,7 +29,7 @@ import butterknife.OnClick;
 /**
  * 订单详情界面
  */
-public class OrderDetailActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class OrderDetailActivity extends BannerActivity implements View.OnClickListener {
 
     @BindView(R.id.txt_orderdetail_title)
     TextView txt_orderdetail_title;
@@ -38,8 +39,6 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     @BindView(R.id.txt_broadcasenumber)
     TextView txt_broadcasenumber;
-
-    private DatePickerDialog dpd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,58 +125,19 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
      */
     private void chooseTime() {
         Calendar now = Calendar.getInstance();
-        if (dpd == null) {
-            dpd = DatePickerDialog.newInstance(
-                    OrderDetailActivity.this,
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
-            );
-        } else {
-            dpd.initialize(
-                    OrderDetailActivity.this,
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
-            );
-        }
-
-
-        dpd.setThemeDark(false);
-        dpd.vibrate(true);
-        dpd.showYearPickerFirst(true);
-
-        dpd.setScrollOrientation(DatePickerDialog.ScrollOrientation.HORIZONTAL);
-
-        dpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+        new android.app.DatePickerDialog(mContext, new android.app.DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onCancel(DialogInterface dialog) {
-                Log.d("DatePickerDialog", "Dialog was cancelled");
-                dpd = null;
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String date = "你选择的是：" + +year + "年" + month + "月" + dayOfMonth +"日";
+                BannerLog.d("b_cc", date);
+                ToastUtils.success(mContext, date);
             }
-        });
-        dpd.show(getSupportFragmentManager(), "Datepickerdialog");
+        },
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        ).show();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        dpd = null;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        DatePickerDialog dpd = (DatePickerDialog) getSupportFragmentManager().findFragmentByTag("Datepickerdialog");
-        if(dpd != null) dpd.setOnDateSetListener(this);
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = "你选择的是：" + +year + "年" + (++monthOfYear) + "月" + dayOfMonth +"日";
-        BannerLog.d("b_cc", date);
-        ToastUtils.success(this, date);
-        dpd = null;
-    }
 
 }

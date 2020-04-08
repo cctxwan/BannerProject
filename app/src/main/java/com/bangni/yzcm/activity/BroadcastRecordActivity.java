@@ -26,6 +26,7 @@ import butterknife.OnClick;
 
 /**
  * 监播记录界面
+ * (第一版没有这个界面)
  */
 public class BroadcastRecordActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
