@@ -1,5 +1,6 @@
 package com.bangni.yzcm.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
@@ -266,11 +268,20 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserRegisterBean> response) {
-                Intent intent = new Intent(mContext, LoginActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("password", password);
-                startActivity(intent);
-                finish();
+                new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
+
+                    @Override
+                    public void onClick(Dialog dialog, String content) {
+                        if(content.equals("tologin")){
+                            dialog.dismiss();
+                            Intent intent = new Intent(mContext, LoginActivity.class);
+                            intent.putExtra("username", username);
+                            intent.putExtra("password", password);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }, 7).show();
             }
 
             @Override

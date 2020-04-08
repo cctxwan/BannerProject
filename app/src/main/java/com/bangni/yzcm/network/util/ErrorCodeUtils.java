@@ -27,7 +27,6 @@ public class ErrorCodeUtils {
         } else {
             if (e.getMessage().contains("401")) {
                 ERROR_MSG = "登录失效，请重新登录";
-                new BannerPreferenceStorage(mContext).setUserInfo(null);
                 mContext.startActivity(new Intent(mContext, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         }

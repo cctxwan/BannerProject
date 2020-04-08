@@ -4,11 +4,14 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,14 +19,26 @@ import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
+import com.bangni.yzcm.fragment.InfoFragment;
+import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderInfos;
+import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
+import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
+import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
+import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
+import com.bangni.yzcm.utils.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.google.gson.Gson;
+
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -34,6 +49,8 @@ import butterknife.OnClick;
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 设置界面
@@ -52,6 +69,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     @BindView(R.id.txt_change_phone)
     TextView txt_change_phone;
 
+    @BindView(R.id.txt_set_nickname)
+    TextView txt_set_nickname;
+
     //上传图片
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
 
@@ -64,21 +84,62 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
 
-        new Handler().post(initView);
+        try {
+            initView();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    Runnable initView = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                txt_getHc.setText(ClearDataUtils.getTotalCacheSize(mContext));
-                txt_change_phone.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    private void initView() throws Exception {
+        txt_getHc.setText(ClearDataUtils.getTotalCacheSize(mContext));
+        //加粗
+        txt_loginout.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
-            //加粗
-            txt_loginout.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        //给头像、昵称和账号赋值
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
+            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable;
+                    circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    img_userimg.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+        }
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){
+            txt_set_nickname.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
+        }else{
+            txt_set_nickname.setText("请设置昵称");
+        }
+        txt_change_phone.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone());
+    }
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(msg.what == 1){
+                String nickname = (String) msg.obj;
+                txt_set_nickname.setText(nickname);
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setNickName(nickname);
+//                ToastUtils.success(mContext, "昵称修改成功");
+            }else if(msg.what == 2){
+                Uri path = (Uri) msg.obj;
+                // 4、当拍照或从图库选取图片成功后回调
+                Glide.with(SettingActivity.this).load(path).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable;
+                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(path.toString());
+            }
         }
     };
 
@@ -96,6 +157,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         }else if(temdId == R.id.rel_change_pass){
             startActivity(new Intent(mContext, ChangePsdActivity.class));
         }else if(temdId == R.id.rel_clear_hc){
+            if(txt_getHc.getText().toString().trim().equals("0.00K")) return;
             clearHC();
         }else if(temdId == R.id.txt_loginout){
             loginout();
@@ -114,6 +176,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             public void onClick(Dialog dialog, String content) {
                 if(content.equals("yes_hc")){
                     dialog.dismiss();
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
+                    startActivity(new Intent(mContext, LoginActivity.class));
                     //退出登录
                 }else if(content.equals("no_hc")){
                     dialog.dismiss();
@@ -163,6 +227,28 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                     dialog.dismiss();
                     BannerLog.d("b_cc", "更改昵称所返回的昵称为：" + str);
                     //修改
+                    Map<String, String> map = new HashMap<>();
+                    map.put("nickname", str);
+                    map.put("faceimg", new BannerPreferenceStorage(mContext).getInfoImg());
+                    Gson gson = new Gson();
+                    String entity = gson.toJson(map);
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+                    BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+
+                        @Override
+                        public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                            Message msg = handler.obtainMessage();
+                            msg.what = 1;
+                            msg.obj = str;
+                            handler.sendMessage(msg);
+                        }
+
+                        @Override
+                        public void onError(String msg) {
+                            ToastUtils.error(mContext, msg);
+                        }
+                    };
+                    BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
                 }else if(content.equals("close")){
                     dialog.dismiss();
                 }
@@ -217,16 +303,29 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(this, new LQRPhotoSelectUtils.PhotoSelectListener() {
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
-                // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(SettingActivity.this).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                //修改
+                Map<String, String> map = new HashMap<>();
+                map.put("nickname", new BannerPreferenceStorage(mContext).getNickName());
+                map.put("faceimg", outputUri.toString());
+                Gson gson = new Gson();
+                String entity = gson.toJson(map);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+
                     @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable;
-                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                        Message msg = handler.obtainMessage();
+                        msg.what = 2;
+                        msg.obj = outputUri;
+                        handler.sendMessage(msg);
                     }
-                });
+
+                    @Override
+                    public void onError(String msg) {
+                        ToastUtils.error(mContext, msg);
+                    }
+                };
+                BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
             }
         }, false);//true裁剪，false不裁剪
 
@@ -240,15 +339,30 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(SettingActivity.this).load(outputUri).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                //修改
+                Map<String, String> map = new HashMap<>();
+                map.put("nickname", new BannerPreferenceStorage(mContext).getNickName());
+                map.put("faceimg", outputUri.toString());
+                Gson gson = new Gson();
+                String entity = gson.toJson(map);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+
                     @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable =
-                                RoundedBitmapDrawableFactory.create(getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                        Message msg = handler.obtainMessage();
+                        msg.what = 2;
+                        msg.obj = outputUri;
+                        handler.sendMessage(msg);
                     }
-                });
+
+                    @Override
+                    public void onError(String msg) {
+                        ToastUtils.error(mContext, msg);
+                    }
+                };
+                BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
+
             }
         }, false);//true裁剪，false不裁剪
         mLqrPhotoSelectUtils.selectPhoto();

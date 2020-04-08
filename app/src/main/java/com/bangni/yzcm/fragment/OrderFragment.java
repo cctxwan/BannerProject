@@ -180,25 +180,25 @@ public class OrderFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        BannerLog.d("b_cc", "onResume()");
+        BannerLog.d("b_cc", "orderfragment的onResume()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BannerLog.d("b_cc", "onStop()");
+        BannerLog.d("b_cc", "orderfragment的onStop()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        BannerLog.d("b_cc", "onPause()");
+        BannerLog.d("b_cc", "orderfragment的onPause()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BannerLog.d("b_cc", "onDestroy()");
+        BannerLog.d("b_cc", "orderfragment的onDestroy()");
     }
 
 

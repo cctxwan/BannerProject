@@ -23,6 +23,9 @@ public class BannerPreferenceStorage {
         this.context = context;
     }
 
+
+
+
     /**
      * 保存token
      * @param token
@@ -44,6 +47,9 @@ public class BannerPreferenceStorage {
                 Activity.MODE_PRIVATE);
         return sp.getString("token", "");// 获取token
     }
+
+
+
 
     /**
      * 保存手机号
@@ -67,32 +73,52 @@ public class BannerPreferenceStorage {
         return sp.getString("phone", "");// 获取手机号
     }
 
+
+
     /**
-     * 保存登录信息
-     * @param userInfo
+     * 保存昵称
+     * @param nickname
      */
-    public void setUserInfo(UserLoginBean userInfo) {
+    public void setNickName(String nickname) {
         SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
                 Activity.MODE_PRIVATE);// 实例化SharedPreferences对象；Constant.APP_NAME是一个常量，是创建的数据库表的名字
         SharedPreferences.Editor editor = sp.edit();// 实例化SharedPreferences.Editor对象
-        Gson gson = new Gson();
-        String json = gson.toJson(userInfo);
-        editor.putString("userInfo", json);// 保存数据
+        editor.putString("nickname", nickname);// 保存数据
         editor.commit();// 提交数据
     }
 
     /**
-     * 获取登录信息
+     * 获取昵称
      * @return
      */
-    public UserLoginBean getUserInfo() {
+    public String getNickName() {
         SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
                 Activity.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sp.getString("userInfo", null);
-        Type type = new TypeToken<UserLoginBean>() {
-        }.getType();
-        return gson.fromJson(json, type);
+        return sp.getString("nickname", "");// 获取昵称
+    }
+
+
+
+    /**
+     * 保存头像
+     * @param infoimg
+     */
+    public void setInfoImg(String infoimg) {
+        SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
+                Activity.MODE_PRIVATE);// 实例化SharedPreferences对象；Constant.APP_NAME是一个常量，是创建的数据库表的名字
+        SharedPreferences.Editor editor = sp.edit();// 实例化SharedPreferences.Editor对象
+        editor.putString("infoimg", infoimg);// 保存数据
+        editor.commit();// 提交数据
+    }
+
+    /**
+     * 获取头像
+     * @return
+     */
+    public String getInfoImg() {
+        SharedPreferences sp = context.getSharedPreferences(BannerConstants.APP_NAME,
+                Activity.MODE_PRIVATE);
+        return sp.getString("infoimg", "");// 获取头像
     }
 
 }

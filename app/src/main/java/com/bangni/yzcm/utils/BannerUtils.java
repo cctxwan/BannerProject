@@ -1,8 +1,20 @@
 package com.bangni.yzcm.utils;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bangni.yzcm.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +50,30 @@ public class BannerUtils {
         Pattern p = Pattern.compile("^(13[0-9]|14[57]|15[0-35-9]|17[6-8]|18[0-9])[0-9]{8}$");
         Matcher m = p.matcher(mobiles);
         return m.matches();
+    }
+
+    /**
+     * 显示文本+图片的Toast
+     * dialog_changeaccount_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+     */
+    public static void showImageToas(Context context, String message){
+        View toastview = LayoutInflater.from(context).inflate(R.layout.dialog_changeaccountsucc,null);
+
+        LinearLayout lin_changeaccountsucc = toastview.findViewById(R.id.lin_changeaccountsucc);
+        //动态设置toast控件的宽高度，宽高分别是130dp
+        //这里用了一个将dp转换为px的工具类PxUtil
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) PxUtil.dpToPx(context, 300), (int)PxUtil.dpToPx(context, 153));
+        lin_changeaccountsucc.setLayoutParams(layoutParams);
+
+
+        TextView text = toastview.findViewById(R.id.dialog_changeaccount_title);
+        text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        text.setText(message);    //要提示的文本
+        Toast toast = new Toast(context);   //上下文
+        toast.setGravity(Gravity.CENTER,0,0);   //位置居中
+        toast.setDuration(Toast.LENGTH_LONG);  //设置短暂提示
+        toast.setView(toastview);   //把定义好的View布局设置到Toast里面
+        toast.show();
     }
 
 }

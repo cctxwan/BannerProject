@@ -1,5 +1,7 @@
 package com.bangni.yzcm.activity;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,13 +12,19 @@ import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.dialog.CommomDialog;
+import com.bangni.yzcm.network.bean.ChangeAccountModel;
+import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
+import com.bangni.yzcm.utils.BannerUtils;
+import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.google.gson.Gson;
 
@@ -47,10 +55,13 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
     TextView txt_changeaccount_comple;
 
     //两次的验证码先为空
-    private boolean old_getCode, new_getCode = false;
+    private boolean getCode = false;
 
     //倒计时60s
     private int min = 60;
+
+    //存储旧验证码
+    private String oldCodeStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +89,13 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
         if(temdId == R.id.img_changeaccount_back){
             finish();
         }else if(temdId == R.id.txt_changeaccount_comple){
-            //下一步
-            next();
+            if(txt_changeaccount_comple.getText().toString().trim().equals("下一步")){
+                //下一步
+                next();
+            }else if(txt_changeaccount_comple.getText().toString().trim().equals("更换手机号码")){
+                //更换
+                comple();
+            }
         }else if(temdId == R.id.txt_changeaccount_getcode){
             if(TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
                 ToastUtils.warning(this, "手机号不能为空");
@@ -88,6 +104,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
             getCode();
         }
     }
+
 
     /**
      * 先获取验证码
@@ -104,7 +121,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
             @Override
             public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
                 //倒计时
-                old_getCode = true;
+                getCode = true;
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
             }
 
@@ -136,11 +153,14 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
         min = 60;
         getCodeHandler.removeMessages(1);
         txt_changeaccount_getcode.setText("获取验证码");
-        old_getCode = false;
+        getCode = false;
     }
 
-    private void next() {
-        if(!old_getCode){
+    /**
+     * 确认更换手机号
+     */
+    private void comple() {
+        if(!getCode){
             ToastUtils.warning(this, "请先获取验证码");
             return;
         }
@@ -149,6 +169,74 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
             ToastUtils.warning(this, "验证码不能为空");
         }
 
-//        if()
+
+        new CommomDialog(mContext, R.style.dialog, new CommomDialog.OnCloseListener() {
+
+            @Override
+            public void onClick(Dialog dialog, String content) {
+                if(content.equals("yes_hc")){
+                    dialog.dismiss();
+                    //修改
+                    Map<String, String> map = new HashMap<>();
+                    map.put("phone", et_changeaccount_phone.getText().toString().trim());
+                    map.put("code", et_changeaccount_code.getText().toString().trim());
+                    map.put("oldCode", oldCodeStr);
+                    Gson gson = new Gson();
+                    String entity = gson.toJson(map);
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+                    BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<ChangeAccountModel>>() {
+
+                        @Override
+                        public void onNext(BannerBaseResponse<ChangeAccountModel> response) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    BannerUtils.showImageToas(mContext, "更换成功,请重新登录");
+                                }
+                            });
+                            startActivity(new Intent(mContext, LoginActivity.class));
+                        }
+
+                        @Override
+                        public void onError(String msg) {
+                            ToastUtils.error(mContext, msg);
+                        }
+                    };
+                    BannerRetrofitUtil.getInstance().changeAccount(body, new BannerProgressSubscriber<BannerBaseResponse<ChangeAccountModel>>(mListener, mContext, true));
+                }else if(content.equals("no_hc")){
+                    dialog.dismiss();
+                }
+            }
+        }, 5).show();
+    }
+
+    /**
+     * 下一步
+     */
+    private void next() {
+        if(!getCode){
+            ToastUtils.warning(this, "请先获取验证码");
+            return;
+        }
+
+        if(TextUtils.isEmpty(et_changeaccount_code.getText().toString().trim())){
+            ToastUtils.warning(this, "验证码不能为空");
+        }
+
+        //旧验证码
+        oldCodeStr = et_changeaccount_code.getText().toString().trim();
+
+
+        initGetCode();
+        txt_changeaccount_comple.setText("更换手机号码");
+        getCode = false;
+
+        //手机号可输入并默认获取焦点
+        et_changeaccount_phone.setFocusableInTouchMode(true);
+        et_changeaccount_phone.setFocusable(true);
+        et_changeaccount_phone.requestFocus();
+
+        et_changeaccount_phone.setText("");
+        et_changeaccount_code.setText("");
     }
 }

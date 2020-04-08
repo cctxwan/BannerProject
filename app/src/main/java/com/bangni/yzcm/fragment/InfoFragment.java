@@ -1,16 +1,23 @@
 package com.bangni.yzcm.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.AboutActivity;
 import com.bangni.yzcm.activity.FeedbackActivity;
 import com.bangni.yzcm.activity.SettingActivity;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
@@ -18,14 +25,26 @@ import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 个人中心fragment
@@ -35,6 +54,15 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     View view;
 
     private Unbinder unbinder;
+
+    @BindView(R.id.img_info_path)
+    ImageView img_info_path;
+
+    @BindView(R.id.txt_info_name)
+    TextView txt_info_name;
+
+    @BindView(R.id.txt_info_account)
+    TextView txt_info_account;
 
     @Nullable
     @Override
@@ -53,11 +81,21 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     Runnable getRunnable = new Runnable() {
         @Override
         public void run() {
+            Map<String, String> map = new HashMap<>();
+            map.put("", "");
+            Gson gson = new Gson();
+            String entity = gson.toJson(map);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
             BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
 
                 @Override
                 public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                    if(response.data != null);
 
+                    //给handler
+                    Message msg = getInfos.obtainMessage();
+                    msg.obj = response.data;
+                    getInfos.sendMessage(msg);
                 }
 
                 @Override
@@ -65,7 +103,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                     ToastUtils.error(getActivity(), msg);
                 }
             };
-            BannerRetrofitUtil.getInstance().userAccountInfo(new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, getActivity(), true));
+            BannerRetrofitUtil.getInstance().userAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, getActivity(), true));
         }
     };
 
@@ -76,6 +114,34 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if(msg.obj != null){
+                InfoFragmentBean infoFragmentBean = (InfoFragmentBean) msg.obj;
+                if(!TextUtils.isEmpty(infoFragmentBean.getFaceimg())){
+                    //保存头像
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(infoFragmentBean.getFaceimg());
+                    Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_info_path) {
+                        @Override
+                        protected void setResource(Bitmap resource) {
+                            RoundedBitmapDrawable circularBitmapDrawable;
+                            circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
+                            circularBitmapDrawable.setCircular(true);
+                            img_info_path.setImageDrawable(circularBitmapDrawable);
+                        }
+                    });
+                }
+                if(!TextUtils.isEmpty(infoFragmentBean.getNickname())){
+                    txt_info_name.setText(infoFragmentBean.getNickname());
+
+                    //保存昵称
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setNickName(infoFragmentBean.getNickname());
+                }
+                if(!TextUtils.isEmpty(infoFragmentBean.getLoginAccount())){
+                    txt_info_account.setText(infoFragmentBean.getLoginAccount());
+
+                    //保存手机号
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setPhone(infoFragmentBean.getLoginAccount());
+                }
+            }
         }
     };
 
@@ -83,7 +149,6 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         StatusBarUtil.setImmersiveStatusBar(getActivity(), true);
-
         if(hidden){
             BannerLog.d("b_cc", "离开了我的界面");
         }else{
@@ -119,4 +184,48 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     public void getData() {
         getInfos.post(getRunnable);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BannerLog.d("b_cc", "infofragment的onResume()");
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
+            //保存头像
+            new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg());
+            Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_info_path) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable;
+                    circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    img_info_path.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+        }
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){
+            txt_info_name.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
+        }
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone())){
+            txt_info_account.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone());
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BannerLog.d("b_cc", "infofragment的onStop()");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BannerLog.d("b_cc", "infofragment的onPause()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BannerLog.d("b_cc", "infofragment的onDestroy()");
+    }
+
 }

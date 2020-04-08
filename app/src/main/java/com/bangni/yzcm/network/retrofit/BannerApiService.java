@@ -1,6 +1,7 @@
 package com.bangni.yzcm.network.retrofit;
 
 
+import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
@@ -47,7 +48,15 @@ public interface BannerApiService {
 
     //用户个人信息
     @POST(BannerConstants.ACCOUNTINFO_URL)
-    Observable<BannerBaseResponse<InfoFragmentBean>> userAccountInfo();
+    Observable<BannerBaseResponse<InfoFragmentBean>> userAccountInfo(@Body RequestBody route);
+
+    //修改用户个人信息
+    @POST(BannerConstants.CHANGEACCOUNTINFO_URL)
+    Observable<BannerBaseResponse<InfoFragmentBean>> changeUserAccountInfo(@Body RequestBody route);
+
+    //修改用户账号
+    @POST(BannerConstants.CHANGEACCOUNT_URL)
+    Observable<BannerBaseResponse<ChangeAccountModel>> changeAccount(@Body RequestBody route);
 
     //订单列表
     @POST(BannerConstants.ORDERLIST_URL)

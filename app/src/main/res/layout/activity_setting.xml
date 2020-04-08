@@ -63,7 +63,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/dimen_20_dip"/>
 
-            <ImageView
+            <com.bangni.yzcm.view.RoundImageView
                 android:id="@+id/img_userimg"
                 android:layout_width="@dimen/dimen_73_dip"
                 android:layout_height="@dimen/dimen_73_dip"
@@ -95,9 +95,10 @@
                 android:textSize="@dimen/dimen_20_dip"/>
 
             <TextView
+                android:id="@+id/txt_set_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Joker"
+                android:text="请设置昵称"
                 android:textSize="@dimen/dimen_20_dip"
                 android:textColor="#1C1C1C"
                 android:layout_alignParentRight="true"

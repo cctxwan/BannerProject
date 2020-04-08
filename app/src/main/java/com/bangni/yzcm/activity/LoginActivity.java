@@ -179,7 +179,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 //存入token
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
-                new BannerPreferenceStorage(BannerApplication.getInstance()).setPhone(username);
 
                 //去主界面
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -365,7 +364,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 //存入token
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
-                new BannerPreferenceStorage(BannerApplication.getInstance()).setPhone(username);
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();

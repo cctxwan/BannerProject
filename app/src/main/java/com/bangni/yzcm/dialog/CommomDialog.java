@@ -42,6 +42,12 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
     private String WheelViewSelectStr;
     private TextView txt_wheelview_ok, txt_wheelview_cancal;
 
+    //登录成功
+    private TextView dialog_registersucc_login, dialog_register_title;
+
+    //切换账号成功
+    private TextView dialog_changeaccount_title;
+
     //网络请求 成功
     static final int SUCC_CODE = 0;
 
@@ -111,6 +117,10 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             initView();
         }else if(num == 6){
             setContentView(R.layout.dialog_wheelview);
+            setCanceledOnTouchOutside(false);
+            initView();
+        }else if(num == 7){
+            setContentView(R.layout.dialog_registersucc);
             setCanceledOnTouchOutside(false);
             initView();
         }
@@ -186,6 +196,13 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                     BannerLog.d("b_cc", "当前选中的是：" + items.get(index));
                 }
             });
+        }else if(num == 7){
+            dialog_register_title = findViewById(R.id.dialog_register_title);
+            dialog_registersucc_login = findViewById(R.id.dialog_registersucc_login);
+
+            dialog_registersucc_login.setOnClickListener(this);
+            //加粗
+            dialog_register_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
     }
 
@@ -271,6 +288,14 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                 case R.id.txt_wheelview_ok:
                     if(listenerParmes != null){
                         listenerParmes.onClickParmes(this, "ok", WheelViewSelectStr);
+                    }
+                    break;
+            }
+        }else if(num == 7){
+            switch (v.getId()){
+                case R.id.dialog_registersucc_login:
+                    if(listener != null){
+                        listener.onClick(this, "tologin");
                     }
                     break;
             }

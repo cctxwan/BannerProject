@@ -2,6 +2,7 @@ package com.bangni.yzcm.network.retrofit;
 
 import android.util.Log;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
@@ -157,8 +158,13 @@ public class BannerRetrofitUtil {
     }
 
     //用户信息
-    public void userAccountInfo(Subscriber<BannerBaseResponse<InfoFragmentBean>> subscriber) {
-        toSubscribe(mApiService.userAccountInfo(), subscriber);
+    public void userAccountInfo(@Body RequestBody route, Subscriber<BannerBaseResponse<InfoFragmentBean>> subscriber) {
+        toSubscribe(mApiService.userAccountInfo(route), subscriber);
+    }
+
+    //修改用户信息
+    public void changeUserAccountInfo(@Body RequestBody route, Subscriber<BannerBaseResponse<InfoFragmentBean>> subscriber) {
+        toSubscribe(mApiService.changeUserAccountInfo(route), subscriber);
     }
 
     //订单列表
@@ -169,6 +175,11 @@ public class BannerRetrofitUtil {
     //修改密码
     public void changePsd(@Body RequestBody route, Subscriber<BannerBaseResponse<ChangepsdModel>> subscriber) {
         toSubscribe(mApiService.changePsd(route), subscriber);
+    }
+
+    //修改密码
+    public void changeAccount(@Body RequestBody route, Subscriber<BannerBaseResponse<ChangeAccountModel>> subscriber) {
+        toSubscribe(mApiService.changeAccount(route), subscriber);
     }
 
 }

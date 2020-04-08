@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void SelectColor(int position) {
         if(position == 0){
             //设置图片颜色
-            img_one_bottom.setColorFilter(Color.BLUE);
-            img_two_bottom.setColorFilter(Color.GRAY);
-            img_three_bottom.setColorFilter(Color.GRAY);
+            img_one_bottom.setImageResource(R.mipmap.broadcast_selected);
+//            img_two_bottom.setColorFilter(Color.GRAY);
+            img_three_bottom.setImageResource(R.mipmap.wode_select);
         } else if (position == 1){
             //设置图片颜色
             img_one_bottom.setColorFilter(Color.GRAY);
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             img_three_bottom.setColorFilter(Color.GRAY);
         } else if (position == 2){
             //设置图片颜色
-            img_one_bottom.setColorFilter(Color.GRAY);
-            img_two_bottom.setColorFilter(Color.GRAY);
-            img_three_bottom.setColorFilter(Color.BLUE);
+            img_one_bottom.setImageResource(R.mipmap.broadcast_select);
+//            img_two_bottom.setColorFilter(Color.GRAY);
+            img_three_bottom.setImageResource(R.mipmap.wode_selected);
         }
     }
 

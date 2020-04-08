@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lin_changeaccountsucc"
+        android:background="@drawable/feedbook_bg"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_51_dip"
+        android:layout_marginRight="@dimen/dimen_51_dip"
+        android:layout_width="@dimen/dimen_384_dip"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/register_succ"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_26_dip"/>
+
+        <TextView
+            android:id="@+id/dialog_changeaccount_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更换成功,请重新登录"
+            android:textColor="#24262A"
+            android:layout_marginLeft="@dimen/dimen_30_dip"
+            android:layout_marginRight="@dimen/dimen_30_dip"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_30_dip"
+            android:layout_marginBottom="@dimen/dimen_27_dip"
+            android:textSize="@dimen/dimen_24_dip"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
