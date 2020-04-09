@@ -7,7 +7,9 @@ import com.bangni.yzcm.network.bean.CommunityDWInfos;
 import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderDetailInfo;
 import com.bangni.yzcm.network.bean.OrderInfos;
+import com.bangni.yzcm.network.bean.StatisitcsInfos;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -78,4 +80,13 @@ public interface BannerApiService {
     //获取点位列表
     @POST(BannerConstants.BROADCASTDWLIST_URL)
     Observable<BannerBaseResponse<List<CommunityDWInfos>>> getDwLists(@Body RequestBody route);
+
+    //获取统计详情
+    @POST(BannerConstants.STATISITCSDETAIL_URL)
+    Observable<BannerBaseResponse<StatisitcsInfos>> statisitcsDetail(@Body RequestBody route);
+
+    //获取广告详情
+    @POST(BannerConstants.ORDERDETAIL_URL)
+    Observable<BannerBaseResponse<OrderDetailInfo>> getOrderDetail(@Body RequestBody route);
+
 }

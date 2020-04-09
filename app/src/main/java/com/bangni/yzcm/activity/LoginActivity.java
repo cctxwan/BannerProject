@@ -219,7 +219,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
      * 点击事件
      * @param v
      */
-    @OnClick({R.id.txt_login, R.id.txt_getcode, R.id.txt_register, R.id.txt_getcodelogin, R.id.img_login_loogpsd})
+    @OnClick({R.id.txt_login, R.id.txt_getcode, R.id.txt_register, R.id.txt_getcodelogin, R.id.img_login_loogpsd, R.id.txt_login_ysxy})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
@@ -247,6 +247,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 //验证码登录
                 getCodeLoginCheck();
             }
+        }else if(temdId == R.id.txt_login_ysxy){
+            //隐私协议
+            startActivity(new Intent(LoginActivity.this, AgreementActivity.class));
         }else if(temdId == R.id.txt_register){
             initGetCode();
             //注册

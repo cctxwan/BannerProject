@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
@@ -26,6 +27,8 @@ import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
+import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.google.gson.Gson;
 
@@ -310,7 +313,7 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
 
                 @Override
                 public void onNext(BannerBaseResponse<ChangepsdModel> response) {
-                    finishAllActivity();
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                     startActivity(new Intent(mContext, LoginActivity.class));
                 }
 

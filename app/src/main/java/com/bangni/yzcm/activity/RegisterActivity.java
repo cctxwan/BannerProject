@@ -170,6 +170,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
         }else if(temdId == R.id.txt_yhxy){
             initGetCode();
             //用户协议
+            startActivity(new Intent(mContext, AgreementActivity.class));
         }else if(temdId == R.id.txt_tologin){
             //去登录界面
             initGetCode();

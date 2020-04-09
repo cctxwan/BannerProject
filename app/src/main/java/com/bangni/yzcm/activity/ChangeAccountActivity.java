@@ -122,7 +122,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
             public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
                 //倒计时
                 getCode = true;
-                txt_changeaccount_getcode.setClickable(true);
+                txt_changeaccount_getcode.setClickable(false);
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
             }
 
@@ -155,7 +155,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
         getCodeHandler.removeMessages(1);
         txt_changeaccount_getcode.setText("获取验证码");
         getCode = false;
-        txt_changeaccount_getcode.setClickable(false);
+        txt_changeaccount_getcode.setClickable(true);
     }
 
     /**
@@ -193,18 +193,9 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                                     BannerUtils.showImageToas(mContext, "更换成功,请重新登录");
-                                    new Thread(){
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                this.sleep(3000);
-                                                startActivity(new Intent(mContext, LoginActivity.class));
-                                            } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    }.start();
+                                    startActivity(new Intent(mContext, LoginActivity.class));
                                 }
                             });
                         }

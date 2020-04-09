@@ -8,7 +8,9 @@ import com.bangni.yzcm.network.bean.CommunityDWInfos;
 import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderDetailInfo;
 import com.bangni.yzcm.network.bean.OrderInfos;
+import com.bangni.yzcm.network.bean.StatisitcsInfos;
 import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -193,6 +195,16 @@ public class BannerRetrofitUtil {
     //获取点位列表
     public void getDwLists(@Body RequestBody route, Subscriber<BannerBaseResponse<List<CommunityDWInfos>>> subscriber) {
         toSubscribe(mApiService.getDwLists(route), subscriber);
+    }
+
+    //获取统计详情
+    public void statisitcsDetail(@Body RequestBody route, Subscriber<BannerBaseResponse<StatisitcsInfos>> subscriber) {
+        toSubscribe(mApiService.statisitcsDetail(route), subscriber);
+    }
+
+    //获取广告详情
+    public void getOrderDetail(@Body RequestBody route, Subscriber<BannerBaseResponse<OrderDetailInfo>> subscriber) {
+        toSubscribe(mApiService.getOrderDetail(route), subscriber);
     }
 
 }

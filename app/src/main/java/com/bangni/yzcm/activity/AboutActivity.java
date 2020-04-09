@@ -1,5 +1,6 @@
 package com.bangni.yzcm.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.bangni.yzcm.R;
@@ -23,12 +24,15 @@ public class AboutActivity extends BannerActivity implements View.OnClickListene
         StatusBarUtil.setImmersiveStatusBar(this, true);
     }
 
-    @OnClick({R.id.img_about_back})
+    @OnClick({R.id.img_about_back, R.id.txt_about_ysxy})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
         if(temdId == R.id.img_about_back){
             finish();
+        }else if(temdId == R.id.txt_about_ysxy){
+            //隐私协议
+            startActivity(new Intent(mContext, AgreementActivity.class));
         }
     }
 }
