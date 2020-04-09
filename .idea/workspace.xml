@@ -19,32 +19,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc7ffde-9730-4521-beeb-46992a8edaa1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/AgreementActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/OrderDetailInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/StatisitcsInfos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_agreement.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/AboutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/AboutActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangePsdActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangePsdActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/RegisterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerRetrofitUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerRetrofitUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +63,7 @@
           <entry key="class" value="1" />
           <entry key="gradle" value="9" />
           <entry key="iml" value="1" />
-          <entry key="java" value="466" />
+          <entry key="java" value="469" />
           <entry key="png" value="7" />
           <entry key="properties" value="4" />
           <entry key="xml" value="250" />
@@ -93,7 +75,7 @@
           <entry key="Groovy" value="9" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="7" />
-          <entry key="JAVA" value="466" />
+          <entry key="JAVA" value="469" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="250" />
         </counts>
@@ -102,7 +84,7 @@
         <counts>
           <entry key="dummy" value="10" />
           <entry key="gradle" value="75" />
-          <entry key="java" value="10621" />
+          <entry key="java" value="10690" />
           <entry key="properties" value="1" />
           <entry key="txt" value="3" />
           <entry key="xml" value="2789" />
@@ -111,7 +93,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="75" />
-          <entry key="JAVA" value="10621" />
+          <entry key="JAVA" value="10690" />
           <entry key="PLAIN_TEXT" value="13" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="2789" />
@@ -130,15 +112,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
-              <caret line="189" column="48" selection-start-line="189" selection-start-column="48" selection-end-line="189" selection-end-column="48" />
+            <state relative-caret-position="205">
+              <caret line="164" column="22" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="22" />
               <folding>
-                <element signature="e#5164#5323#0" expanded="true" />
                 <element signature="e#5322#5323#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="157" column="53" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="86" column="49" lean-forward="true" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -181,7 +180,6 @@
       <find>getRunnable</find>
       <find>mContext</find>
       <find>getActivity()</find>
-      <find>next</find>
       <find>txt_yhxy</find>
       <find>et_rg_password</find>
       <find>}img_new_lookpsd.setImageResource(R.mipmap.hide_pass);</find>
@@ -199,6 +197,7 @@
       <find>sendEmptyMessage</find>
       <find>selectCommunityDwPid</find>
       <find>communityNameLists</find>
+      <find>next</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -238,7 +237,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/view/ContainsEmojiEditText.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_feedback.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/changename.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_changeaccountsucc.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/InfoFragment.java" />
@@ -254,7 +252,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_agreement.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangePsdActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/AgreementActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
@@ -268,6 +265,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java" />
       </list>
     </option>
   </component>
@@ -348,115 +347,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="yzcm" type="462c0819:PsiDirectoryNode" />
               <item name="activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="dialog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="fragment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-              <item name="bean" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -591,7 +481,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23454158" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23454158" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -911,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="195" column="36" selection-start-line="195" selection-start-column="36" selection-end-line="197" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangePsdActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
@@ -937,13 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="23" column="56" lean-forward="true" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="262" column="41" selection-start-line="262" selection-start-column="41" selection-end-line="262" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -980,13 +856,6 @@
             <element signature="e#2636#3799#0" expanded="true" />
             <element signature="e#3798#3799#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="104" column="4" selection-start-line="85" selection-start-column="8" selection-end-line="104" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1080,6 +949,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="164" column="22" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="22" />
+          <folding>
+            <element signature="e#5322#5323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="356" column="9" lean-forward="true" selection-start-line="353" selection-start-column="8" selection-end-line="356" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1091,14 +977,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/ChangeAccountActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="189" column="48" selection-start-line="189" selection-start-column="48" selection-end-line="189" selection-end-column="48" />
-          <folding>
-            <element signature="e#5164#5323#0" expanded="true" />
-            <element signature="e#5322#5323#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="157" column="53" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="86" column="49" lean-forward="true" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
         </state>
       </provider>
     </entry>

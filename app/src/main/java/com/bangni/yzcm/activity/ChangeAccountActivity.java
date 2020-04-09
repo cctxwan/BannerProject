@@ -162,6 +162,16 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
      * 确认更换手机号
      */
     private void comple() {
+        if(!TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
+            ToastUtils.warning(this, "手机号不能为空");
+            return;
+        }
+
+        if(!BannerUtils.isMobileNO(et_changeaccount_phone.getText().toString().trim())){
+            ToastUtils.warning(this, "请输入正确格式的手机号");
+            return;
+        }
+
         if(!getCode){
             ToastUtils.warning(this, "请先获取验证码");
             return;

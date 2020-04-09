@@ -16,6 +16,7 @@ import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.bangni.yzcm.view.ContainsEmojiEditText;
 import com.google.gson.Gson;
@@ -92,7 +93,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
-                ToastUtils.success(mContext, "提交反馈成功");
+                BannerUtils.showImageToasPsdError(mContext, "提交反馈成功");
                 finish();
             }
 
