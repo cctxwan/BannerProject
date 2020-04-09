@@ -130,7 +130,12 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
                 }else{
                     img_register_lookpsd.setVisibility(View.GONE);
                 }
-                if(s.length() == 0) img_register_lookpsd.setImageResource(R.mipmap.hide_pass);
+                if(s.length() == 0) {
+                    isLookPsd = false;
+                    et_rg_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    img_register_lookpsd.setImageResource(R.mipmap.hide_pass);
+                    et_rg_password.setSelection(et_rg_password.getText().length());
+                }
             }
         });
     }
@@ -204,6 +209,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
                 //倒计时
                 ISGETCODE = true;
+                txt_rg_getcode.setClickable(false);
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
             }
 
@@ -244,12 +250,9 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
 
         //密码判断
-        if(TextUtils.isEmpty(password)){
-            ToastUtils.warning(this, "密码不能为空");
-            return;
-        }
-        if(password.length() < 6){
-            ToastUtils.warning(this, "密码不能小于6位");
+        if(TextUtils.isEmpty(password) || password.length() < 6){
+//            ToastUtils.warning(this, "请输入6-20位大小写字母和数字组合");
+            BannerUtils.showImageToasPsdError(mContext, "请输入6-20位大小写字母和数字组合");
             return;
         }
 
@@ -301,7 +304,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
     Handler getCodeHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            txt_rg_getcode.setText("倒计时" + min-- + "s");
+            txt_rg_getcode.setText(min-- + "s");
             if(min == -1) {
                 initGetCode();
             }else{
@@ -318,6 +321,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
         getCodeHandler.removeMessages(1);
         txt_rg_getcode.setText("获取验证码");
         ISGETCODE = false;
+        txt_rg_getcode.setClickable(true);
     }
 
 }

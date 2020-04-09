@@ -22,7 +22,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     Activity context;
 
     /** 数据源 */
-    List<OrderInfos> data;
+    List<OrderInfos.ListBean> data;
 
     /** 控件 */
     LayoutInflater inflater;
@@ -32,7 +32,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
      * @param activity
      * @param datas
      */
-    public OrderAdapter(Activity activity, List<OrderInfos> datas){
+    public OrderAdapter(Activity activity, List<OrderInfos.ListBean> datas){
         this.context = activity;
         this.data = datas;
 
@@ -64,6 +64,26 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder viewHolder, int position) {
 
         //赋值
+        if(data.get(position).getStatus() == 1){
+            viewHolder.order_item_state.setText("未开始");
+            viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_yellow);
+        }else if(data.get(position).getStatus() == 2){
+            viewHolder.order_item_state.setText("进行中");
+
+            viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_blue);
+        }else if(data.get(position).getStatus() == 3){
+            viewHolder.order_item_state.setText("已下架");
+
+            viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_grey);
+        }
+
+
+        viewHolder.order_item_tfdw.setText("投放点位：" + data.get(position).getPutNum());
+        viewHolder.order_item_bgl.setText("曝光量：" + data.get(position).getCumulativeNumber());
+        viewHolder.order_item_ljbf.setText("累计播放：" + data.get(position).getCumulativePlay());
+        viewHolder.order_item_kssj.setText("开始时间：" + data.get(position).getStartTime());
+        viewHolder.order_item_jssj.setText("结束时间：" + data.get(position).getEndTime());
+
 
         //设置tag
         viewHolder.itemView.setTag(position);
@@ -75,7 +95,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
      */
     @Override
     public int getItemCount() {
-        return 20;
+        return data.size();
     }
 
     /**
@@ -84,7 +104,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         /** 获取item的控件 */
-        public TextView order_item_state, order_item_name, order_item_tfdw, order_item_ljbf, order_item_kssj, order_item_jssj;
+        public TextView order_item_state, order_item_name, order_item_tfdw, order_item_ljbf, order_item_kssj, order_item_jssj, order_item_bgl;
         public LinearLayout lin_order_rv;
 
         public ViewHolder(View rootView) {
@@ -92,6 +112,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             this.order_item_state = rootView.findViewById(R.id.order_item_state);
             this.order_item_name = rootView.findViewById(R.id.order_item_name);
             this.order_item_tfdw = rootView.findViewById(R.id.order_item_tfdw);
+            this.order_item_bgl = rootView.findViewById(R.id.order_item_bgl);
             this.order_item_ljbf = rootView.findViewById(R.id.order_item_ljbf);
             this.order_item_kssj = rootView.findViewById(R.id.order_item_kssj);
             this.order_item_jssj = rootView.findViewById(R.id.order_item_jssj);

@@ -4,6 +4,8 @@ import android.util.Log;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
+import com.bangni.yzcm.network.bean.CommunityDWInfos;
+import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.OrderInfos;
@@ -17,6 +19,7 @@ import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -180,6 +183,16 @@ public class BannerRetrofitUtil {
     //修改密码
     public void changeAccount(@Body RequestBody route, Subscriber<BannerBaseResponse<ChangeAccountModel>> subscriber) {
         toSubscribe(mApiService.changeAccount(route), subscriber);
+    }
+
+    //获取社区列表
+    public void getCommunityLists(@Body RequestBody route, Subscriber<BannerBaseResponse<List<CommunityInfos>>> subscriber) {
+        toSubscribe(mApiService.getCommunityLists(route), subscriber);
+    }
+
+    //获取点位列表
+    public void getDwLists(@Body RequestBody route, Subscriber<BannerBaseResponse<List<CommunityDWInfos>>> subscriber) {
+        toSubscribe(mApiService.getDwLists(route), subscriber);
     }
 
 }

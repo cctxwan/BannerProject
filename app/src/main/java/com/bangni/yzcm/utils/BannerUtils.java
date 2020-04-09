@@ -2,6 +2,7 @@ package com.bangni.yzcm.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.bangni.yzcm.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,7 +56,7 @@ public class BannerUtils {
     }
 
     /**
-     * 显示文本+图片的Toast
+     * 更换账号成功的Toast
      * dialog_changeaccount_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
      */
     public static void showImageToas(Context context, String message){
@@ -72,8 +75,71 @@ public class BannerUtils {
         Toast toast = new Toast(context);   //上下文
         toast.setGravity(Gravity.CENTER,0,0);   //位置居中
         toast.setDuration(Toast.LENGTH_LONG);  //设置短暂提示
+
         toast.setView(toastview);   //把定义好的View布局设置到Toast里面
         toast.show();
+    }
+
+    /**
+     * 修改密码错误的Toast
+     * dialog_changeaccount_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+     */
+    public static void showImageToasPsdError(Context context, String message){
+        View toastview = LayoutInflater.from(context).inflate(R.layout.dialog_psderror,null);
+
+        LinearLayout lin_changeaccountsucc = toastview.findViewById(R.id.lin_psderror);
+        //动态设置toast控件的宽高度，宽高分别是130dp
+        //这里用了一个将dp转换为px的工具类PxUtil
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) PxUtil.dpToPx(context, 280), (int)PxUtil.dpToPx(context, 165));
+        lin_changeaccountsucc.setLayoutParams(layoutParams);
+
+
+        TextView text = toastview.findViewById(R.id.dialog_psderror_title);
+        text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        text.setText(message);    //要提示的文本
+        Toast toast = new Toast(context);   //上下文
+        toast.setGravity(Gravity.CENTER,0,0);   //位置居中
+        toast.setDuration(Toast.LENGTH_LONG);  //设置短暂提示
+
+        toast.setView(toastview);   //把定义好的View布局设置到Toast里面
+        toast.show();
+    }
+
+    /**
+     * 验证码登录提示没有账号的Toast
+     * dialog_changeaccount_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+     */
+    public static void showToLoginNoAccount(Context context, String message){
+        View toastview = LayoutInflater.from(context).inflate(R.layout.dialog_codeloginaccount,null);
+
+        LinearLayout lin_changeaccountsucc = toastview.findViewById(R.id.lin_codeloginnoaccount);
+        //动态设置toast控件的宽高度，宽高分别是130dp
+        //这里用了一个将dp转换为px的工具类PxUtil
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) PxUtil.dpToPx(context, 214), (int)PxUtil.dpToPx(context, 39));
+        lin_changeaccountsucc.setLayoutParams(layoutParams);
+
+
+        TextView text = toastview.findViewById(R.id.dialog_codeloginnoaccount_title);
+        text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        text.setText(message);    //要提示的文本
+        Toast toast = new Toast(context);   //上下文
+        toast.setGravity(Gravity.CENTER,0,0);   //位置居中
+        toast.setDuration(Toast.LENGTH_LONG);  //设置短暂提示
+
+        toast.setView(toastview);   //把定义好的View布局设置到Toast里面
+        toast.show();
+    }
+
+    /*
+     * 将时间戳转换为时间
+     */
+    public static String stampToDate(String s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long lt = new Long(s);
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
     }
 
 }

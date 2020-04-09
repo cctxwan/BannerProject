@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bigkoo.pickerview.adapter.ArrayWheelAdapter;
 import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
@@ -141,6 +143,9 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             close = findViewById(R.id.close);
             lin_changeclose.setOnClickListener(this);
             txt_changename.setOnClickListener(this);
+
+            //显示之前的昵称
+            et_changename.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
 
             close.setColorFilter(Color.parseColor("#959595"));
         }else if(num == 3){

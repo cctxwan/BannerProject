@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lin_codeloginnoaccount"
+        android:background="@drawable/feedbook_2black_bg"
+        android:gravity="center"
+        android:layout_width="@dimen/dimen_273_dip"
+        android:orientation="vertical"
+        android:layout_height="@dimen/dimen_50_dip">
+
+        <TextView
+            android:id="@+id/dialog_codeloginnoaccount_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="该手机号码暂未注册任何用户"
+            android:textColor="#FFFEFE"
+            android:textSize="@dimen/dimen_18_dip"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

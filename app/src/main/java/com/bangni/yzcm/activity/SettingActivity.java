@@ -98,7 +98,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
         //给头像、昵称和账号赋值
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
-            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable;
@@ -128,7 +128,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             }else if(msg.what == 2){
                 Uri path = (Uri) msg.obj;
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(SettingActivity.this).load(path).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_userimg) {
+                Glide.with(SettingActivity.this).load(path).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable;
@@ -157,7 +157,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         }else if(temdId == R.id.rel_change_pass){
             startActivity(new Intent(mContext, ChangePsdActivity.class));
         }else if(temdId == R.id.rel_clear_hc){
-            if(txt_getHc.getText().toString().trim().equals("0.00K")) return;
+//            if(txt_getHc.getText().toString().trim().equals("0.00K")) return;
             clearHC();
         }else if(temdId == R.id.txt_loginout){
             loginout();
@@ -387,7 +387,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // 2、在Activity中的onActivityResult()方法里与LQRPhotoSelectUtils关联
-        mLqrPhotoSelectUtils.attachToActivityForResult(requestCode, resultCode, data);
+        if(mLqrPhotoSelectUtils != null){
+            mLqrPhotoSelectUtils.attachToActivityForResult(requestCode, resultCode, data);
+        }
     }
 
 }

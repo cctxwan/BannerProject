@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.network.bean.BroadcastInfos;
+import com.bangni.yzcm.network.bean.BroadcastListInfos;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +21,7 @@ public class BroadcastAdapter extends RecyclerView.Adapter<BroadcastAdapter.View
     Activity context;
 
     /** 数据源 */
-    List<BroadcastInfos> data;
+    List<BroadcastListInfos> data;
 
     /** 控件 */
     LayoutInflater inflater;
@@ -31,7 +31,7 @@ public class BroadcastAdapter extends RecyclerView.Adapter<BroadcastAdapter.View
      * @param activity
      * @param datas
      */
-    public BroadcastAdapter(Activity activity, List<BroadcastInfos> datas){
+    public BroadcastAdapter(Activity activity, List<BroadcastListInfos> datas){
         this.context = activity;
         this.data = datas;
 

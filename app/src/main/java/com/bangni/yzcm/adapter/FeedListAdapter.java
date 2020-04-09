@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
-import com.bangni.yzcm.network.bean.BroadcastInfos;
+import com.bangni.yzcm.network.bean.FeedBookListModel;
+import com.bangni.yzcm.utils.BannerUtils;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +22,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
     Activity context;
 
     /** 数据源 */
-    List<BroadcastInfos> data;
+    List<FeedBookListModel.ListBean> data;
 
     /** 控件 */
     LayoutInflater inflater;
@@ -30,7 +32,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
      * @param activity
      * @param datas
      */
-    public FeedListAdapter(Activity activity, List<BroadcastInfos> datas){
+    public FeedListAdapter(Activity activity, List<FeedBookListModel.ListBean> datas){
         this.context = activity;
         this.data = datas;
 
@@ -62,6 +64,10 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder viewHolder, int position) {
 
         //赋值
+        viewHolder.txt_feedlist_time.setText(BannerUtils.stampToDate(data.get(position).getFeedbackTime() + ""));
+        viewHolder.txt_feedlist_content.setText(data.get(position).getFeedbackContent());
+        viewHolder.txt_feedlist_kf_content.setText(data.get(position).getReplyContent());
+        viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDate(data.get(position).getReplyTime() + ""));
 
         //设置tag
         viewHolder.itemView.setTag(position);
@@ -73,7 +79,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
      */
     @Override
     public int getItemCount() {
-        return 20;
+        return data.size();
     }
 
     /**

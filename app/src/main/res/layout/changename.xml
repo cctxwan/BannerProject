@@ -50,6 +50,7 @@
         android:background="@drawable/changename_bg"
         android:hint="输入昵称"
         android:textColorHint="#9E9E9E"
+        android:maxLength="8"
         android:textSize="@dimen/dimen_20_dip"
         android:layout_marginRight="@dimen/dimen_30_dip"
         android:layout_marginLeft="@dimen/dimen_30_dip"

@@ -51,13 +51,14 @@
 
     </RelativeLayout>
     
-    <EditText
+    <com.bangni.yzcm.view.ContainsEmojiEditText
         android:id="@+id/et_feedbook_content"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dimen_43_dip"
         android:layout_height="@dimen/dimen_289_dip"
         android:gravity="left|top"
         android:padding="@dimen/dimen_10_dip"
+        android:maxLength="100"
         android:hint="请详细描述您遇到的问题以便尽快为您解决..."
         android:textColorHint="#999999"
         android:textColor="@color/black"

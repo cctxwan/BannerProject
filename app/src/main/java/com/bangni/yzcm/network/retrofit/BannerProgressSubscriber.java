@@ -1,9 +1,15 @@
 package com.bangni.yzcm.network.retrofit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+
+import com.bangni.yzcm.activity.LoginActivity;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.util.ErrorCodeUtils;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
+import com.bangni.yzcm.utils.ToastUtils;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 import rx.Subscriber;
@@ -101,7 +107,19 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
             }
         } else {
             if (mListener != null) {
-                mListener.onError(response.info);
+                if(response.code.equals("403")){
+                    //账号在其他设备登录
+                    ToastUtils.warning(mContext, response.info);
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
+                    mContext.startActivity(new Intent(mContext, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }else if(response.code.equals("401")){
+                    //登录失效或登录token为空！
+                    ToastUtils.warning(mContext, response.info);
+                    new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
+                    mContext.startActivity(new Intent(mContext, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }else{
+                    mListener.onError(response.info);
+                }
             }
         }
     }

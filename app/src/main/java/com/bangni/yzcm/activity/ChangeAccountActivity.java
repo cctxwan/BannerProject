@@ -122,6 +122,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
             public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
                 //倒计时
                 getCode = true;
+                txt_changeaccount_getcode.setClickable(true);
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
             }
 
@@ -137,7 +138,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
     Handler getCodeHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            txt_changeaccount_getcode.setText("倒计时" + min-- + "s");
+            txt_changeaccount_getcode.setText(min-- + "s");
             if(min == -1) {
                 initGetCode();
             }else{
@@ -154,6 +155,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
         getCodeHandler.removeMessages(1);
         txt_changeaccount_getcode.setText("获取验证码");
         getCode = false;
+        txt_changeaccount_getcode.setClickable(false);
     }
 
     /**
@@ -192,9 +194,19 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                                 @Override
                                 public void run() {
                                     BannerUtils.showImageToas(mContext, "更换成功,请重新登录");
+                                    new Thread(){
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                this.sleep(3000);
+                                                startActivity(new Intent(mContext, LoginActivity.class));
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }.start();
                                 }
                             });
-                            startActivity(new Intent(mContext, LoginActivity.class));
                         }
 
                         @Override
@@ -221,6 +233,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
 
         if(TextUtils.isEmpty(et_changeaccount_code.getText().toString().trim())){
             ToastUtils.warning(this, "验证码不能为空");
+            return;
         }
 
         //旧验证码

@@ -58,7 +58,7 @@
                 android:layout_height="@dimen/dimen_37_dip"
                 android:layout_marginLeft="@dimen/dimen_3_dip"
                 android:background="@drawable/while_orderdetail_bg"
-                android:text="广告信息"
+                android:text="广告状态"
                 android:textColor="#3A82EA"
                 android:textSize="@dimen/dimen_20_dip"
                 android:gravity="center"
@@ -107,9 +107,10 @@
                     android:textSize="@dimen/dimen_20_dip"/>
 
                 <TextView
+                    android:id="@+id/txt_orderdetail_community"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="大兴景苑"
+                    android:text="请选择社区"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
                     android:layout_marginRight="@dimen/dimen_56_dip"
@@ -141,9 +142,10 @@
                     android:textSize="@dimen/dimen_20_dip"/>
 
                 <TextView
+                    android:id="@+id/txt_orderdetail_communitydw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1号楼西梯"
+                    android:text="请选择点位"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
                     android:layout_alignParentRight="true"
@@ -175,9 +177,10 @@
                     android:textSize="@dimen/dimen_20_dip"/>
 
                 <TextView
+                    android:id="@+id/txt_orderdetail_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2020-3-3"
+                    android:text="请选择时间"
                     android:textSize="@dimen/dimen_20_dip"
                     android:textColor="#1C1C1C"
                     android:layout_alignParentRight="true"

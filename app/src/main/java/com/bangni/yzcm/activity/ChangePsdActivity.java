@@ -118,7 +118,12 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
                     img_old_lookpsd.setVisibility(View.GONE);
                 }
 
-                if(s.length() == 0) img_old_lookpsd.setImageResource(R.mipmap.hide_pass);
+                if(s.length() == 0) {
+                    isLookOldPsd = false;
+                    et_oldpsd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    img_old_lookpsd.setImageResource(R.mipmap.hide_pass);
+                    et_oldpsd.setSelection(et_oldpsd.getText().length());
+                }
             }
         });
 
@@ -148,7 +153,12 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
                 }else{
                     img_new_lookpsd.setVisibility(View.GONE);
                 }
-                if(s.length() == 0) img_new_lookpsd.setImageResource(R.mipmap.hide_pass);
+                if(s.length() == 0) {
+                    isLookNewPsd = false;
+                    et_newpsd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    img_new_lookpsd.setImageResource(R.mipmap.hide_pass);
+                    et_newpsd.setSelection(et_newpsd.getText().length());
+                }
             }
         });
 
@@ -179,7 +189,12 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
                 }else{
                     img_new_r_lookpsd.setVisibility(View.GONE);
                 }
-                if(s.length() == 0) img_new_r_lookpsd.setImageResource(R.mipmap.hide_pass);
+                if(s.length() == 0) {
+                    isLookNewRPsd = false;
+                    et_newpsd_r.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    img_new_r_lookpsd.setImageResource(R.mipmap.hide_pass);
+                    et_newpsd_r.setSelection(et_newpsd_r.getText().length());
+                }
             }
         });
     }
@@ -246,14 +261,14 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
         }
 
         //新密码
-        if(TextUtils.isEmpty(et_newpsd.getText().toString().trim())){
-            ToastUtils.warning(mContext, "新密码不能为空");
+        if(TextUtils.isEmpty(et_newpsd.getText().toString().trim()) || et_newpsd.getText().toString().trim().length() < 6){
+            ToastUtils.warning(mContext, "请输入6-20位大小写字母和数字组合");
             return;
         }
 
         //确认密码
-        if(TextUtils.isEmpty(et_newpsd_r.getText().toString().trim())){
-            ToastUtils.warning(mContext, "确认密码不能为空");
+        if(TextUtils.isEmpty(et_newpsd_r.getText().toString().trim()) || et_newpsd_r.getText().toString().trim().length() < 6){
+            ToastUtils.warning(mContext, "请输入6-20位大小写字母和数字组合");
             return;
         }
 

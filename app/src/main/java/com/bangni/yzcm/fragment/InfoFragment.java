@@ -119,7 +119,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                 if(!TextUtils.isEmpty(infoFragmentBean.getFaceimg())){
                     //保存头像
                     new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(infoFragmentBean.getFaceimg());
-                    Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_info_path) {
+                    Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_info_path) {
                         @Override
                         protected void setResource(Bitmap resource) {
                             RoundedBitmapDrawable circularBitmapDrawable;
@@ -192,7 +192,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
             //保存头像
             new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg());
-            Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(img_info_path) {
+            Glide.with(getActivity()).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_info_path) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable;

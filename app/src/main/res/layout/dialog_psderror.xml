@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lin_psderror"
+        android:background="@drawable/feedbook_black_bg"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_51_dip"
+        android:layout_marginRight="@dimen/dimen_51_dip"
+        android:layout_width="@dimen/dimen_359_dip"
+        android:orientation="vertical"
+        android:layout_height="@dimen/dimen_211_dip">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/psderror"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_63_dip"/>
+
+        <TextView
+            android:id="@+id/dialog_psderror_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请输入6-20位大小写字母和数字组合"
+            android:textColor="#FFFEFE"
+            android:layout_marginLeft="@dimen/dimen_30_dip"
+            android:layout_marginRight="@dimen/dimen_30_dip"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_37_dip"
+            android:layout_marginBottom="@dimen/dimen_27_dip"
+            android:textSize="@dimen/dimen_15_dip"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

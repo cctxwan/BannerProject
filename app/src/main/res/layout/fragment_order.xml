@@ -28,6 +28,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/lin_banner"
         android:layout_width="@dimen/dimen_462_dip"
         android:layout_height="@dimen/dimen_229_dip"
         android:layout_marginTop="@dimen/dimen_132_dip"
@@ -35,6 +36,29 @@
         android:layout_marginLeft="@dimen/dimen_8_dip"
         android:layout_marginRight="@dimen/dimen_8_dip"
         android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/order_lin_nodata"
+        android:layout_below="@+id/lin_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_72_dip"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/zw"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无数据"
+            android:textSize="@dimen/dimen_25_dip"
+            android:textColor="#666666"/>
 
     </LinearLayout>
 

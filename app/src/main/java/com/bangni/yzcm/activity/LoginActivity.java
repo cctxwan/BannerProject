@@ -76,6 +76,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @BindView(R.id.img_login_loogpsd)
     ImageView img_login_loogpsd;
 
+    @BindView(R.id.txt_login_ysxy)
+    TextView txt_login_ysxy;
+
+    @BindView(R.id.txt_login_forgetPsd)
+    TextView txt_login_forgetPsd;
+
 
     //是否是账号登录
     private boolean ISUSERLOGIN = true;
@@ -109,6 +115,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
     private void initView() {
+
+        if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getToken())){
+            //去主界面
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
         Intent intent = getIntent();
         if(intent != null){
             username = intent.getStringExtra("username");
@@ -127,6 +140,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         txt_register.setClickable(true);
         String textSource = "还没有账号，立即<font color='#1D65FF'>注册</font>";
         txt_register.setText(Html.fromHtml(textSource));
+
+        String textYsxy = "登录即同意<font color='#1D65FF'>《用户协议》</font>首次登录自动注册";
+        txt_login_ysxy.setText(Html.fromHtml(textYsxy));
+
         //密码
         et_password.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
         et_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
@@ -156,7 +173,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     }else{
                         img_login_loogpsd.setVisibility(View.GONE);
                     }
-                    if(s.length() == 0) img_login_loogpsd.setImageResource(R.mipmap.hide_pass);
+                    if(s.length() == 0) {
+                        isLookPsd = false;
+                        et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        img_login_loogpsd.setImageResource(R.mipmap.hide_pass);
+                        et_password.setSelection(et_password.getText().length());
+                    }
                 }
             }
         });
@@ -235,8 +257,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             if(txt_getcodelogin.getText().toString().trim().equals("验证码登录")){
                 ISUSERLOGIN = false;
                 txt_login_title.setText("手机快捷登录");
-                txt_register.setText("未注册手机验证后完成注册");
+                txt_register.setText("");
                 txt_register.setClickable(false);
+                txt_login_ysxy.setVisibility(View.VISIBLE);
+                txt_login_forgetPsd.setVisibility(View.GONE);
                 txt_getcode.setVisibility(View.VISIBLE);
                 img_login_loogpsd.setVisibility(View.GONE);
                 txt_getcodelogin.setText("账号密码登录");
@@ -251,7 +275,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 ISUSERLOGIN = true;
                 txt_login_title.setText("账号密码登录");
                 txt_register.setText((Html.fromHtml("还没有账号，立即<font color='#1D65FF'>注册</font>")));
+                txt_login_ysxy.setVisibility(View.GONE);
                 txt_register.setClickable(true);
+                txt_login_forgetPsd.setVisibility(View.VISIBLE);
                 txt_getcode.setVisibility(View.GONE);
                 img_login_loogpsd.setVisibility(View.GONE);
                 txt_getcodelogin.setText("验证码登录");
@@ -297,6 +323,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onNext(BannerBaseResponse<UserGetCodeBean> response) {
                 //倒计时
                 ISGETCODE = true;
+                txt_getcode.setClickable(false);
                 getCodeHandler.sendEmptyMessageDelayed(1, 1000);
             }
 
@@ -371,7 +398,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onError(String msg) {
-                ToastUtils.error(LoginActivity.this, msg);
+                if(msg.equals("账号不存在")){
+                    BannerUtils.showToLoginNoAccount(LoginActivity.this, "该手机号码暂未注册任何用户");
+                }else{
+                    ToastUtils.error(LoginActivity.this, msg);
+                }
             }
         };
         BannerRetrofitUtil.getInstance().userGetCodeLogin(body, new BannerProgressSubscriber<BannerBaseResponse<UserGetCodeLoginBean>>(mListener, this, true));
@@ -412,7 +443,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     Handler getCodeHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            txt_getcode.setText("倒计时" + min-- + "s");
+            txt_getcode.setText(min-- + "s");
             if(min == -1) {
                 initGetCode();
             }else{
@@ -429,6 +460,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         getCodeHandler.removeMessages(1);
         txt_getcode.setText("获取验证码");
         ISGETCODE = false;
+        txt_getcode.setClickable(true);
     }
 
 

@@ -3,6 +3,8 @@ package com.bangni.yzcm.network.retrofit;
 
 import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
+import com.bangni.yzcm.network.bean.CommunityDWInfos;
+import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.OrderInfos;
@@ -12,6 +14,9 @@ import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
 import com.bangni.yzcm.network.bean.UserLoginBean;
 import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.util.BannerConstants;
+
+import java.util.List;
+
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -65,4 +70,12 @@ public interface BannerApiService {
     //修改密码
     @POST(BannerConstants.CHANGEPSD_URL)
     Observable<BannerBaseResponse<ChangepsdModel>> changePsd(@Body RequestBody route);
+
+    //获取社区列表
+    @POST(BannerConstants.COMMUNITYLISTALL_URL)
+    Observable<BannerBaseResponse<List<CommunityInfos>>> getCommunityLists(@Body RequestBody route);
+
+    //获取点位列表
+    @POST(BannerConstants.BROADCASTDWLIST_URL)
+    Observable<BannerBaseResponse<List<CommunityDWInfos>>> getDwLists(@Body RequestBody route);
 }

@@ -17,6 +17,7 @@ import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.ContainsEmojiEditText;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
     TextView txt_feedbook_submit;
 
     @BindView(R.id.et_feedbook_content)
-    EditText et_feedbook_content;
+    ContainsEmojiEditText et_feedbook_content;
 
     @BindView(R.id.img_feedbook_back)
     LinearLayout img_feedbook_back;
@@ -91,6 +92,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
+                ToastUtils.success(mContext, "提交反馈成功");
                 finish();
             }
 
