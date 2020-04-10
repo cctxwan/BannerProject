@@ -27,116 +27,99 @@
 
     </RelativeLayout>
 
-    <com.scwang.smart.refresh.layout.SmartRefreshLayout
-        android:id="@+id/order_swipeRefreshLayout"
+    <LinearLayout
+        android:id="@+id/lin_banner"
+        android:layout_width="@dimen/dimen_462_dip"
+        android:layout_height="@dimen/dimen_229_dip"
+        android:layout_marginTop="@dimen/dimen_132_dip"
+        android:background="@mipmap/order_bg"
+        android:layout_marginLeft="@dimen/dimen_8_dip"
+        android:layout_marginRight="@dimen/dimen_8_dip"
+        android:orientation="horizontal">
+
+
+            <com.youth.banner.Banner
+                xmlns:banner="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                banner:indicator_selected_color="#0048E2"
+                banner:indicator_normal_color="@color/grey"/>
+
+            <com.youth.banner.indicator.RoundLinesIndicator
+                android:id="@+id/indicator"
+                android:layout_below="@+id/banner"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/order_lin_nodata"
+        android:layout_below="@+id/lin_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dimen_132_dip"
-        app:srlEnableFooterFollowWhenLoadFinished="true"
-        app:srlEnablePreviewInEditMode="false">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_72_dip"
+        android:orientation="vertical">
 
-    <com.scwang.smart.refresh.header.ClassicsHeader
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/zw"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无数据"
+            android:textSize="@dimen/dimen_25_dip"
+            android:textColor="#666666"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srlAccentColor="#ffffff"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_380_dip"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/order_swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:srlEnableFooterFollowWhenLoadFinished="true"
+            app:srlEnablePreviewInEditMode="false">
 
-            <LinearLayout
-                android:id="@+id/lin_banner"
-                android:layout_width="@dimen/dimen_462_dip"
-                android:layout_height="@dimen/dimen_229_dip"
-                android:background="@mipmap/order_bg"
-                android:layout_marginLeft="@dimen/dimen_8_dip"
-                android:layout_marginRight="@dimen/dimen_8_dip"
-                android:orientation="horizontal">
-
-                <com.youth.banner.Banner
-                    xmlns:banner="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/banner"
-                    android:layout_width="@dimen/dimen_462_dip"
-                    android:layout_height="@dimen/dimen_229_dip"
-                    banner:indicator_selected_color="#0048E2"
-                    banner:indicator_normal_color="@color/grey"/>
-
-                <com.youth.banner.indicator.RoundLinesIndicator
-                    android:id="@+id/indicator"
-                    android:layout_below="@+id/banner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:visibility="gone"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/order_lin_nodata"
-                android:layout_below="@+id/lin_banner"
+            <com.scwang.smart.refresh.header.ClassicsHeader
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dimen_72_dip"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/zw"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="暂无数据"
-                    android:textSize="@dimen/dimen_25_dip"
-                    android:textColor="#666666"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                app:srlAccentColor="#333333"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dimen_247_dip"
                 android:orientation="vertical">
 
-                <!--<com.scwang.smart.refresh.layout.SmartRefreshLayout-->
-                <!--android:id="@+id/order_swipeRefreshLayout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--app:srlEnableFooterFollowWhenLoadFinished="true"-->
-                <!--app:srlEnablePreviewInEditMode="false">-->
-
-                <!--<com.scwang.smart.refresh.header.ClassicsHeader-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:srlAccentColor="#333333"/>-->
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_order_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_order_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dimen_16_dip"
-                        android:layout_marginRight="@dimen/dimen_16_dip"
-                        android:layout_marginBottom="@dimen/dimen_30_dip"/>
-
-                </LinearLayout>
+                    android:layout_marginLeft="@dimen/dimen_16_dip"
+                    android:layout_marginRight="@dimen/dimen_16_dip"
+                    android:layout_marginBottom="@dimen/dimen_30_dip"/>
 
             </LinearLayout>
 
-        </RelativeLayout>
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlAccentColor="#333333"/>
 
-        <com.scwang.smart.refresh.footer.ClassicsFooter
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srlAccentColor="#333333"/>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -94,6 +94,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
             @Override
             public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
                 BannerUtils.showToLoginNoAccount(mContext, "提交反馈成功");
+//                et_feedbook_content.setText("");
                 finish();
             }
 

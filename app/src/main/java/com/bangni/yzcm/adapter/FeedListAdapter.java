@@ -76,7 +76,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
 
 
 
-        if(TextUtils.isEmpty(data.get(position).getReplyTime() + "")){
+        if(data.get(position).getReplyTime() == 0){
             viewHolder.txt_feedlist_kf_time.setVisibility(View.GONE);
         }else{
             viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDate(data.get(position).getReplyTime() + ""));

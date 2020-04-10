@@ -168,7 +168,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
      * 确认更换手机号
      */
     private void comple() {
-        if(!TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
+        if(TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
             ToastUtils.warning(this, "手机号不能为空");
             return;
         }
@@ -212,7 +212,17 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                                 public void run() {
                                     new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                                     BannerUtils.showImageToas(mContext, "更换成功,请重新登录");
-                                    startActivity(new Intent(mContext, LoginActivity.class));
+                                    new Thread(){
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                this.sleep(2000);
+                                                startActivity(new Intent(mContext, LoginActivity.class));
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }.start();
                                 }
                             });
                         }

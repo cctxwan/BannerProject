@@ -142,9 +142,9 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
         public void run() {
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
-            map.put("communityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));
+            map.put("putCommunityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));
             map.put("pointPid", selectCommunityDwPid(txt_orderdetail_communitydw.getText().toString().trim()));
-            map.put("monitorTime", 20200409 + "");//txt_orderdetail_time.getText().toString().trim()
+            map.put("monitorTime", System.currentTimeMillis() + "");//txt_orderdetail_time.getText().toString().trim()
             Gson gson = new Gson();
             String entity = gson.toJson(map);
             RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);

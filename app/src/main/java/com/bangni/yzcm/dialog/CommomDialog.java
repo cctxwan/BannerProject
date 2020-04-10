@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -292,7 +293,11 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                     break;
                 case R.id.txt_wheelview_ok:
                     if(listenerParmes != null){
-                        listenerParmes.onClickParmes(this, "ok", WheelViewSelectStr);
+                        if(!TextUtils.isEmpty(WheelViewSelectStr)){
+                            listenerParmes.onClickParmes(this, "ok", WheelViewSelectStr);
+                        }else{
+                            listenerParmes.onClickParmes(this, "ok", items.get(0));
+                        }
                     }
                     break;
             }

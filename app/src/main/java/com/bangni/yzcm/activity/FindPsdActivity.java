@@ -245,6 +245,7 @@ public class FindPsdActivity extends BannerActivity implements View.OnClickListe
 
             @Override
             public void onNext(BannerBaseResponse<FindPsdBean> response) {
+                BannerUtils.showToLoginNoAccount(mContext, "新密码设置成功");
                 finish();
             }
 

@@ -74,7 +74,7 @@ public class BannerUtils {
         text.setText(message);    //要提示的文本
         Toast toast = new Toast(context);   //上下文
         toast.setGravity(Gravity.CENTER,0,0);   //位置居中
-        toast.setDuration(Toast.LENGTH_LONG);  //设置短暂提示
+        toast.setDuration(Toast.LENGTH_SHORT);  //设置短暂提示
 
         toast.setView(toastview);   //把定义好的View布局设置到Toast里面
         toast.show();

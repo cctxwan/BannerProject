@@ -240,6 +240,7 @@ public class OrderFragment extends Fragment {
                 @Override
                 public void onNext(BannerBaseResponse<OrderInfos> response) {
                     if (response.data != null && response.data.getList() != null) {
+                        orderInfos.clear();
                         Message message = orderHandler.obtainMessage();
                         total = response.data.getTotal();
                         if(response.data.getList().size() > 0){

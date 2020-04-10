@@ -249,6 +249,7 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
             return;
         }
 
+        txt_rg_getcode.setClickable(true);
 
         //密码判断
         if(TextUtils.isEmpty(password) || password.length() < 6){
