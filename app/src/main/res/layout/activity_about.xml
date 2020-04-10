@@ -60,18 +60,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#333333"
-        android:layout_marginTop="@dimen/dimen_29_dip"
+        android:layout_marginTop="@dimen/dimen_39_dip"
         android:textSize="@dimen/dimen_17_dip"
-        android:text="         陕西帮你电子科技有限公司成立于2017年，依托有二十余年电梯行业经验的陕西三金配件有限公司建设和发展，致力于人工智能与深度学习在电梯行业的应用与研究。切实地将人工智能理念与实际应用背景相结合，开发出有价值的智能电梯产品。现有的开发团队实力强劲，有专业的深度学习算法工程师、系统架构师、软、硬件开发工程师、产品设计师和技术管理工程师。开发团队中博士学历占比4%、硕士学历占比36%。公司正倾力打造满足现实需求的电梯物联网平台，为客户提供可信的第三方人工智能产品。我们有实力相信，陕西帮你电子科技有限公司未来将会是电梯物联网生态链产业的核心驱动力。"/>
+        android:text="        从专业的角度，基于图像识别、智能传感器、大数据分析、云服务等技术为客户提供一个安全便捷的电梯智能解决方案。以科技描绘新未来，始终禀承 “客户为根”的原则，用产品智能，直达客户内心。"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:layout_marginTop="@dimen/dimen_31_dip"
+        android:textSize="@dimen/dimen_17_dip"
+        android:text="        为将电梯这一线下绝佳的流量入口发挥最大价值，公司开发了“全白送”平台，帮助中国7500万商户进行品牌的宣传和渗透，让再小的个体也拥有自己的品牌。让乘梯用户能更多的享受到科技和智能为社区三公里生活圈带来的便利性。"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:layout_marginTop="@dimen/dimen_31_dip"
+        android:textSize="@dimen/dimen_17_dip"
+        android:text="        陕西帮你电子科技有限公司成立于2017年，致力于人工智能与深度学习在电梯行业的应用与研究。切实地将人工智能理念与实际电梯应用背景相结合，开发出能提升电梯安全，优化整个电梯行业生态结构的智能软硬件产品。"/>
+
+
 
     <TextView
         android:id="@+id/txt_about_ysxy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#1D65FF"
+        android:textColor="#666666"
         android:textSize="@dimen/dimen_15_dip"
         android:layout_marginTop="@dimen/dimen_75_dip"
-        android:text="隐私条款"/>
+        android:text="029-68960905"/>
 
     <TextView
         android:layout_width="wrap_content"

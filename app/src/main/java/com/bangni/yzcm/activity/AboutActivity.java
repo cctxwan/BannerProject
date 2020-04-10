@@ -24,15 +24,12 @@ public class AboutActivity extends BannerActivity implements View.OnClickListene
         StatusBarUtil.setImmersiveStatusBar(this, true);
     }
 
-    @OnClick({R.id.img_about_back, R.id.txt_about_ysxy})
+    @OnClick({R.id.img_about_back})
     @Override
     public void onClick(View v) {
         int temdId = v.getId();
         if(temdId == R.id.img_about_back){
             finish();
-        }else if(temdId == R.id.txt_about_ysxy){
-            //隐私协议
-            startActivity(new Intent(mContext, AgreementActivity.class));
         }
     }
 }

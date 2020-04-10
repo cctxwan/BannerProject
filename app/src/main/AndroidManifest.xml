@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.AgreementActivity"></activity>
+        <activity android:name=".activity.FindPsdActivity"></activity>
+        <activity android:name=".activity.AgreementActivity" />
         <activity android:name=".activity.StatisticDetailActivity" />
         <activity android:name=".activity.ChangeAccountActivity" />
         <activity android:name=".activity.BroadcastRecordActivity" />

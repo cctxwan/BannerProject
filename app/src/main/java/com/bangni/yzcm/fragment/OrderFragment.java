@@ -14,8 +14,11 @@ import android.widget.LinearLayout;
 
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.OrderDetailActivity;
+import com.bangni.yzcm.adapter.MultipleTypesAdapter;
 import com.bangni.yzcm.adapter.OrderAdapter;
+import com.bangni.yzcm.network.bean.FindPsdBean;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderBannerModel;
 import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
@@ -28,7 +31,11 @@ import com.google.gson.Gson;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-import com.stx.xhb.xbanner.XBanner;
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.RectangleIndicator;
+import com.youth.banner.indicator.RoundLinesIndicator;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.util.BannerUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +75,12 @@ public class OrderFragment extends Fragment {
     @BindView(R.id.order_lin_nodata)
     LinearLayout order_lin_nodata;
 
+    @BindView(R.id.banner)
+    Banner banner;
+
+    @BindView(R.id.indicator)
+    RoundLinesIndicator indicator;
+
     /** 自定义刷新和加载的标识，默认为false */
     boolean isRef, isLoad = false;
 
@@ -76,11 +89,14 @@ public class OrderFragment extends Fragment {
 
     private int pageNo = 1, pageSize = 5, total = 0;//当前页数、数据总数量
 
+    //轮播图集合
+    List<OrderBannerModel.ListBean> bannerLists;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         BannerLog.d("b_cc", "onAttach()");
-        orderHandler.post(getOrderLists);
+        orderHandler.post(getBannerLists);
     }
 
     @Nullable
@@ -101,14 +117,26 @@ public class OrderFragment extends Fragment {
     }
 
     private void initView() {
+
+//        list.add(new OrderBannerModel(R.drawable.image1, "相信自己,你努力的样子真的很美", 1));
+//        list.add(new OrderBannerModel(R.drawable.image2, "极致简约,梦幻小屋", 3));
+//        list.add(new OrderBannerModel(R.drawable.image3, "超级卖梦人", 3));
+//        list.add(new OrderBannerModel(R.drawable.image4, "夏季新搭配", 1));
+//        list.add(new OrderBannerModel(R.drawable.image5, "绝美风格搭配", 1));
+//        list.add(new OrderBannerModel(R.drawable.image6, "微微一笑 很倾城", 3));
+//
+        //最大显示下拉高度/Header标准高度
+        order_swipeRefreshLayout.setHeaderMaxDragRate(2);
+
         order_swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 BannerLog.d("b_cc", "下拉刷新更多");
+                banner.stop();
                 order_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(false);
                 pageNo = 1;
                 isRef = true;
-                orderHandler.post(getOrderLists);
+                orderHandler.post(getBannerLists);
             }
         });
 
@@ -141,6 +169,59 @@ public class OrderFragment extends Fragment {
             BannerLog.d("b_cc", "进入了订单界面");
         }
     }
+
+    Runnable getBannerLists = new Runnable() {
+        @Override
+        public void run() {
+            Map<String, String> map = new HashMap<>();
+            map.put("pageNum", 1 + "");
+            map.put("pageSize", 20 + "");
+            Gson gson = new Gson();
+            String entity = gson.toJson(map);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+            BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<OrderBannerModel>>() {
+
+                @Override
+                public void onNext(BannerBaseResponse<OrderBannerModel> response) {
+                    if(response.data != null){
+                        OrderBannerModel orderBannerModel = response.data;
+                        if(orderBannerModel.getList().size() > 0){
+                            bannerLists = new ArrayList<>(orderBannerModel.getList());
+                            banner.setAdapter(new MultipleTypesAdapter(getActivity(), bannerLists));
+                            banner.setIndicator(new RectangleIndicator(getActivity()));
+                            banner.setIndicatorNormalWidth((int) BannerUtils.dp2px(12));
+                            banner.setIndicatorSpace((int) BannerUtils.dp2px(4));
+                            banner.setIndicatorRadius(0);
+                            //设置点击事件
+                            banner.setOnBannerListener(new OnBannerListener() {
+                                @Override
+                                public void OnBannerClick(Object data, int position) {
+
+                                }
+                            });
+
+                            //圆角
+                            banner.setBannerRound(BannerUtils.dp2px(5));
+
+
+
+                            orderHandler.post(getOrderLists);
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onError(String msg) {
+                    ToastUtils.error(getActivity(), msg);
+                    order_swipeRefreshLayout.finishRefresh(true);
+                    order_swipeRefreshLayout.finishLoadMore(true);
+                }
+            };
+            BannerRetrofitUtil.getInstance().getBannerLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderBannerModel>>(mListener, getActivity(), true));
+
+        }
+    };
 
     /**
      * 实现runnable接口处理异步操作
@@ -252,18 +333,22 @@ public class OrderFragment extends Fragment {
      * 进入此fragment执行此方法
      */
     public void getData() {
-        orderHandler.post(getOrderLists);
+        orderHandler.post(getBannerLists);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        //开始轮播
+        banner.start();
         BannerLog.d("b_cc", "orderfragment的onResume()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        //结束轮播
+        banner.stop();
         BannerLog.d("b_cc", "orderfragment的onStop()");
     }
 

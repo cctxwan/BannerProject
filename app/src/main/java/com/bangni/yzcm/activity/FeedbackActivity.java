@@ -93,7 +93,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onNext(BannerBaseResponse<UserFeedBookBean> response) {
-                BannerUtils.showImageToasPsdError(mContext, "提交反馈成功");
+                BannerUtils.showToLoginNoAccount(mContext, "提交反馈成功");
                 finish();
             }
 

@@ -9,9 +9,12 @@ public class BannerConstants {
     //banner
     public static final String APP_NAME = "banner";
 
+    /** 本地轮播图测试 */
+//    public static final String BASE_URL = "http://192.168.0.188:9003";
     /** 本地测试 */
-    public static final String BASE_URL = "http://192.168.0.188:8870";
+    public static final String BASE_URL = "http://192.168.0.188:8888";
 
+    public static final String BASE_IMAGE_URL = "http://images.81dd.cn/";//图片地址
 
 
 
@@ -76,5 +79,14 @@ public class BannerConstants {
 
     /** 修改密码 */
     public static final String CHANGEPSD_URL = "/monitor/user/pwd/update";
+
+    /** 忘记密码 */
+    public static final String FINDPSD_URL = "/monitor/user/pwd/reset";
+
+    /** 获取轮播图 */
+    public static final String GETBANNER_URL = "/advertisement/sys/carousel/figure/list";
+
+    /** 获取七牛云凭证 */
+    public static final String GETQNIUY_URL = "/advertisement/sys/qnuptoken";
 
 }

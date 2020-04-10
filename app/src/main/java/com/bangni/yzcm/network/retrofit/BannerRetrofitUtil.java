@@ -2,12 +2,15 @@ package com.bangni.yzcm.network.retrofit;
 
 import android.util.Log;
 import com.bangni.yzcm.app.BannerApplication;
+import com.bangni.yzcm.network.bean.BannerQNiuYModel;
 import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
 import com.bangni.yzcm.network.bean.CommunityDWInfos;
 import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
+import com.bangni.yzcm.network.bean.FindPsdBean;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderBannerModel;
 import com.bangni.yzcm.network.bean.OrderDetailInfo;
 import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.StatisitcsInfos;
@@ -205,6 +208,21 @@ public class BannerRetrofitUtil {
     //获取广告详情
     public void getOrderDetail(@Body RequestBody route, Subscriber<BannerBaseResponse<OrderDetailInfo>> subscriber) {
         toSubscribe(mApiService.getOrderDetail(route), subscriber);
+    }
+
+    //忘记密码
+    public void findPsd(@Body RequestBody route, Subscriber<BannerBaseResponse<FindPsdBean>> subscriber) {
+        toSubscribe(mApiService.findPsd(route), subscriber);
+    }
+
+    //获取轮播图
+    public void getBannerLists(@Body RequestBody route, Subscriber<BannerBaseResponse<OrderBannerModel>> subscriber) {
+        toSubscribe(mApiService.getBannerLists(route), subscriber);
+    }
+
+    //获取七牛云上传凭证
+    public void qNiuYtoken(Subscriber<BannerBaseResponse<BannerQNiuYModel>> subscriber) {
+        toSubscribe(mApiService.qNiuYtoken(), subscriber);
     }
 
 }

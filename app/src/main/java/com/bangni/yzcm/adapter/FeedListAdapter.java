@@ -1,6 +1,7 @@
 package com.bangni.yzcm.adapter;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,8 +67,20 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
         //赋值
         viewHolder.txt_feedlist_time.setText(BannerUtils.stampToDate(data.get(position).getFeedbackTime() + ""));
         viewHolder.txt_feedlist_content.setText(data.get(position).getFeedbackContent());
-        viewHolder.txt_feedlist_kf_content.setText(data.get(position).getReplyContent());
-        viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDate(data.get(position).getReplyTime() + ""));
+
+        if(TextUtils.isEmpty(data.get(position).getReplyContent())){
+            viewHolder.txt_feedlist_kf_content.setText("暂无");
+        }else{
+            viewHolder.txt_feedlist_kf_content.setText(data.get(position).getReplyContent());
+        }
+
+
+
+        if(TextUtils.isEmpty(data.get(position).getReplyTime() + "")){
+            viewHolder.txt_feedlist_kf_time.setVisibility(View.GONE);
+        }else{
+            viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDate(data.get(position).getReplyTime() + ""));
+        }
 
         //设置tag
         viewHolder.itemView.setTag(position);

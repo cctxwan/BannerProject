@@ -20,12 +20,14 @@ import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.fragment.InfoFragment;
+import com.bangni.yzcm.network.bean.BannerQNiuYModel;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
+import com.bangni.yzcm.network.util.BannerConstants;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
@@ -35,8 +37,15 @@ import com.bangni.yzcm.utils.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.google.gson.Gson;
+import com.qiniu.android.http.ResponseInfo;
+import com.qiniu.android.storage.UpCompletionHandler;
+import com.qiniu.android.storage.UploadManager;
+
+import org.json.JSONObject;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,6 +83,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
     //上传图片
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
+
+    String upImgUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +137,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setNickName(nickname);
 //                ToastUtils.success(mContext, "昵称修改成功");
             }else if(msg.what == 2){
-                Uri path = (Uri) msg.obj;
+                String path = (String) msg.obj;
                 // 4、当拍照或从图库选取图片成功后回调
                 Glide.with(SettingActivity.this).load(path).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
                     @Override
@@ -339,33 +350,85 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 // 4、当拍照或从图库选取图片成功后回调
-                //修改
-                Map<String, String> map = new HashMap<>();
-                map.put("nickname", new BannerPreferenceStorage(mContext).getNickName());
-                map.put("faceimg", outputUri.toString());
-                Gson gson = new Gson();
-                String entity = gson.toJson(map);
-                RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
-                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+                //上传
+                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<BannerQNiuYModel>>() {
 
                     @Override
-                    public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
-                        Message msg = handler.obtainMessage();
-                        msg.what = 2;
-                        msg.obj = outputUri;
-                        handler.sendMessage(msg);
+                    public void onNext(BannerBaseResponse<BannerQNiuYModel> beanBaseResponse) {
+                        BannerQNiuYModel bean = beanBaseResponse.data;
+                        if (bean != null) {
+                            uploadImageToQiniu(outputFile, bean.getUploadToken(), bean.getUploadKey());
+                        }
                     }
 
                     @Override
                     public void onError(String msg) {
-                        ToastUtils.error(mContext, msg);
+
                     }
                 };
-                BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
-
+                BannerRetrofitUtil.getInstance().qNiuYtoken(new BannerProgressSubscriber<BannerBaseResponse<BannerQNiuYModel>>(mListener, mContext, true));
             }
         }, false);//true裁剪，false不裁剪
         mLqrPhotoSelectUtils.selectPhoto();
+    }
+
+    /**
+     * 上传图片到七牛
+     *
+     * @param filePath 要上传的图片路径
+     * @param token    在七牛官网上注册的token
+     */
+    private void uploadImageToQiniu(File filePath, String token, String key) {
+        UploadManager uploadManager = new UploadManager();
+        // 设置图片名字
+        uploadManager.put(filePath, key, token, new UpCompletionHandler() {
+            @Override
+            public void complete(String key, ResponseInfo info, JSONObject res) {
+                // info.error中包含了错误信息，可打印调试
+                // 上传成功后将key值上传到自己的服务器
+                BannerLog.d("b_cc", "七牛云的k" + key);
+                upImgUrl = BannerConstants.BASE_IMAGE_URL + key;
+                // 4、当拍照或从图库选取图片成功后回调
+                Glide.with(SettingActivity.this).load(upImgUrl).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable;
+                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        img_userimg.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+                userRaceimgModify();
+            }
+        }, null);
+    }
+
+    /**
+     * 修改
+     */
+    private void userRaceimgModify() {
+        Map<String, String> map = new HashMap<>();
+        map.put("nickname", new BannerPreferenceStorage(mContext).getNickName());
+        map.put("faceimg", upImgUrl);
+        Gson gson = new Gson();
+        String entity = gson.toJson(map);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
+        BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+
+            @Override
+            public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                Message msg = handler.obtainMessage();
+                msg.what = 2;
+                msg.obj = upImgUrl;
+                handler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(String msg) {
+                ToastUtils.error(mContext, msg);
+            }
+        };
+        BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
     }
 
     @PermissionFail(requestCode = LQRPhotoSelectUtils.REQ_TAKE_PHOTO)

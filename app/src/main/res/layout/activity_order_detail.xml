@@ -208,10 +208,12 @@
                 android:textSize="@dimen/dimen_20_dip"/>
 
             <ImageView
+                android:id="@+id/img_orderdetail_url"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_219_dip"
                 android:layout_marginTop="@dimen/dimen_30_dip"
-                android:src="@color/slategrey"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/orderdetail_url"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -182,11 +182,6 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
         txt_feedbooklist_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
 
-        if(listBeanList.size() == 0){
-            feedlist_swipeRefreshLayout.setEnableLoadMore(false);
-            return;
-        }
-
         feedlist_swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {

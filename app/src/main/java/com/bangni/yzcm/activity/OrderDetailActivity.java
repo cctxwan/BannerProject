@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
@@ -68,6 +69,9 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 
     @BindView(R.id.txt_orderdetail_bgl)
     TextView txt_orderdetail_bgl;
+
+    @BindView(R.id.img_orderdetail_url)
+    ImageView img_orderdetail_url;
 
     @BindView(R.id.txt_orderdetail_bfl)
     TextView txt_orderdetail_bfl;

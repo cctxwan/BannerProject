@@ -1,12 +1,15 @@
 package com.bangni.yzcm.network.retrofit;
 
 
+import com.bangni.yzcm.network.bean.BannerQNiuYModel;
 import com.bangni.yzcm.network.bean.ChangeAccountModel;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
 import com.bangni.yzcm.network.bean.CommunityDWInfos;
 import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.FeedBookListModel;
+import com.bangni.yzcm.network.bean.FindPsdBean;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
+import com.bangni.yzcm.network.bean.OrderBannerModel;
 import com.bangni.yzcm.network.bean.OrderDetailInfo;
 import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.StatisitcsInfos;
@@ -88,5 +91,17 @@ public interface BannerApiService {
     //获取广告详情
     @POST(BannerConstants.ORDERDETAIL_URL)
     Observable<BannerBaseResponse<OrderDetailInfo>> getOrderDetail(@Body RequestBody route);
+
+    //忘记密码
+    @POST(BannerConstants.FINDPSD_URL)
+    Observable<BannerBaseResponse<FindPsdBean>> findPsd(@Body RequestBody route);
+
+    //获取轮播图
+    @POST(BannerConstants.GETBANNER_URL)
+    Observable<BannerBaseResponse<OrderBannerModel>> getBannerLists(@Body RequestBody route);
+
+    //获取七牛云凭证
+    @POST(BannerConstants.GETQNIUY_URL)
+    Observable<BannerBaseResponse<BannerQNiuYModel>> qNiuYtoken();
 
 }

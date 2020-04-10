@@ -54,7 +54,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
     @BindView(R.id.txt_changeaccount_comple)
     TextView txt_changeaccount_comple;
 
-    //两次的验证码先为空
+    //验证码先为空
     private boolean getCode = false;
 
     //倒计时60s
@@ -97,10 +97,16 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                 comple();
             }
         }else if(temdId == R.id.txt_changeaccount_getcode){
-            if(TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
-                ToastUtils.warning(this, "手机号不能为空");
-                return;
-            }
+
+            //固定格式的手机号码
+//            if(TextUtils.isEmpty(et_changeaccount_phone.getText().toString().trim())){
+//                ToastUtils.warning(this, "手机号不能为空");
+//                return;
+//            }
+//            if(!BannerUtils.isMobileNO(et_changeaccount_phone.getText().toString().trim())){
+//                ToastUtils.warning(this, "请输入正确格式的手机号");
+//                return;
+//            }
             getCode();
         }
     }
@@ -179,6 +185,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
 
         if(TextUtils.isEmpty(et_changeaccount_code.getText().toString().trim())){
             ToastUtils.warning(this, "验证码不能为空");
+            return;
         }
 
 
