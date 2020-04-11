@@ -162,6 +162,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     Runnable getOrderDetailDatas = new Runnable() {
         @Override
         public void run() {
+            if(txt_orderdetail_communitydw.getText().toString().trim().equals("请选择点位")) return;
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
             map.put("putCommunityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));
@@ -202,7 +203,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
                     //显示gpu识别
                     if(response.data.getGpuDiscernResult() != null){
                         //显示
-                        lin_gpuresult.setVisibility(View.VISIBLE);
+                        lin_gpuresult.setVisibility(View.GONE);
                     }else if(response.data.getGpuDiscernResult() == null){
                         lin_gpuresult.setVisibility(View.GONE);
                     }else{
@@ -245,6 +246,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     Runnable getCommunityDwDatas = new Runnable() {
         @Override
         public void run() {
+            if(txt_orderdetail_community.getText().toString().trim().equals("请选择社区")) return;
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
             map.put("communityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));

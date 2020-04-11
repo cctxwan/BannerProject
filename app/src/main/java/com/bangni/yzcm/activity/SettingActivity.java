@@ -317,28 +317,22 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 //修改
-                Map<String, String> map = new HashMap<>();
-                map.put("nickname", new BannerPreferenceStorage(mContext).getNickName());
-                map.put("faceimg", outputUri.toString());
-                Gson gson = new Gson();
-                String entity = gson.toJson(map);
-                RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
-                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<InfoFragmentBean>>() {
+                BannerSubscriberOnNextListener mListener = new BannerSubscriberOnNextListener<BannerBaseResponse<BannerQNiuYModel>>() {
 
                     @Override
-                    public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
-                        Message msg = handler.obtainMessage();
-                        msg.what = 2;
-                        msg.obj = outputUri.toString();
-                        handler.sendMessage(msg);
+                    public void onNext(BannerBaseResponse<BannerQNiuYModel> beanBaseResponse) {
+                        BannerQNiuYModel bean = beanBaseResponse.data;
+                        if (bean != null) {
+                            uploadImageToQiniu(outputFile, bean.getUploadToken(), bean.getUploadKey());
+                        }
                     }
 
                     @Override
                     public void onError(String msg) {
-                        ToastUtils.error(mContext, msg);
+
                     }
                 };
-                BannerRetrofitUtil.getInstance().changeUserAccountInfo(body, new BannerProgressSubscriber<BannerBaseResponse<InfoFragmentBean>>(mListener, mContext, true));
+                BannerRetrofitUtil.getInstance().qNiuYtoken(new BannerProgressSubscriber<BannerBaseResponse<BannerQNiuYModel>>(mListener, mContext, true));
             }
         }, false);//true裁剪，false不裁剪
 

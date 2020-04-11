@@ -246,7 +246,6 @@ public class OrderFragment extends Fragment {
                 public void onNext(BannerBaseResponse<OrderInfos> response) {
                     if (response.data != null) {
                         if(response.data.getList() != null){
-                            orderInfos.clear();
                             Message message = orderHandler.obtainMessage();
                             total = response.data.getTotal();
                             if(response.data.getList().size() > 0){
@@ -354,7 +353,7 @@ public class OrderFragment extends Fragment {
      * 进入此fragment执行此方法
      */
     public void getData() {
-        orderHandler.post(getBannerLists);
+        order_swipeRefreshLayout.autoRefresh();
     }
 
     @Override

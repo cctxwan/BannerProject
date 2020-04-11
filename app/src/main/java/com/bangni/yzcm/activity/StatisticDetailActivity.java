@@ -144,8 +144,11 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                         handler.sendEmptyMessage(1);
 
                         communityNameLists = response.data;
+
                         if(communityNameLists.size() > 0){
-                            txt_choosesq.setText(communityNameLists.get(0).getCommunityName());
+                            if(txt_static_communityname.getText().toString().trim().equals("全部")){
+                                txt_static_communityname.setText(communityNameLists.get(0).getCommunityName());
+                            }
                         }
 
                         for (int i = 0; i < communityNameLists.size(); i ++){
@@ -170,7 +173,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         public void run() {
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
-            map.put("communityPid", selectCommunityPid(txt_choosesq.getText().toString().trim()));
+            map.put("communityPid", selectCommunityPid(txt_static_communityname.getText().toString().trim()));
             Gson gson = new Gson();
             String entity = gson.toJson(map);
             RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
@@ -284,8 +287,10 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                     if(content.equals("ok")){
                         dialog.dismiss();
                         BannerLog.d("b_cc", "选择的是" + str);
+                        parmsCommunitys.clear();
                         //修改
-                        txt_choosesq.setText(str);
+                        txt_static_communityname.setText(str);
+//                        txt_choosesq.setText(str);
                         handler.post(getCommunityDatas);
                     }
                 }
