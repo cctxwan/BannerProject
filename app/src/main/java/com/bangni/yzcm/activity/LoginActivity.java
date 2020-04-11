@@ -38,6 +38,8 @@ import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.CheckEditForButton;
+import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
@@ -115,6 +117,29 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
     private void initView() {
+
+        txt_login.setClickable(false);
+
+        //1.创建工具类对象 设置监听空间
+        CheckEditForButton checkEditForButton = new CheckEditForButton(txt_login);
+
+        //2.把所有被监听的EditText设置进去
+        checkEditForButton.addEditText(et_username, et_password);
+
+        //3.根据接口回调的方法,分别进行操作
+        checkEditForButton.setListener(new EditTextChangeListener() {
+            @Override
+            public void allHasContent(boolean isHasContent) {
+                BannerLog.d("b_cc", "isHasContent=" + isHasContent);
+                if (isHasContent) {
+                    txt_login.setClickable(true);
+                    txt_login.setBackgroundResource(R.drawable.slategrey_bg);
+                } else {
+                    txt_login.setClickable(false);
+                    txt_login.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
 
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getToken())){
             //去主界面

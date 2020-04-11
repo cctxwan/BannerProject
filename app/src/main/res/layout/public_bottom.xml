@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="center"
+                android:layout_marginTop="@dimen/dimen_4_dip"
                 android:src="@mipmap/broadcast_select"/>
 
             <TextView
@@ -36,7 +37,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="监播"
-                android:layout_marginTop="@dimen/dimen_7_dip"
+                android:layout_marginTop="@dimen/dimen_3_dip"
                 android:textSize="@dimen/dimen_13_dip"/>
 
         </LinearLayout>
@@ -84,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="center"
+                android:layout_marginTop="@dimen/dimen_4_dip"
                 android:src="@mipmap/wode_selected"/>
 
             <TextView
@@ -94,7 +96,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="我的"
-                android:layout_marginTop="@dimen/dimen_7_dip"
+                android:layout_marginTop="@dimen/dimen_3_dip"
                 android:textSize="@dimen/dimen_13_dip"/>
 
         </LinearLayout>

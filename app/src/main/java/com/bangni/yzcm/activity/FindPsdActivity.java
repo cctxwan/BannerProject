@@ -35,8 +35,11 @@ import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.CheckEditForButton;
+import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -92,6 +95,28 @@ public class FindPsdActivity extends BannerActivity implements View.OnClickListe
      * 初始化视图
      */
     private void initView() {
+        txt_findpsd.setClickable(false);
+        //1.创建工具类对象 设置监听空间
+        CheckEditForButton checkEditForButton = new CheckEditForButton(txt_findpsd);
+
+        //2.把所有被监听的EditText设置进去
+        checkEditForButton.addEditText(et_findpsd_username, et_findpsd_code, et_findpsd_password);
+
+        //3.根据接口回调的方法,分别进行操作
+        checkEditForButton.setListener(new EditTextChangeListener() {
+            @Override
+            public void allHasContent(boolean isHasContent) {
+                BannerLog.d("b_cc", "isHasContent=" + isHasContent);
+                if (isHasContent) {
+                    txt_findpsd.setClickable(true);
+                    txt_findpsd.setBackgroundResource(R.drawable.slategrey_bg);
+                } else {
+                    txt_findpsd.setClickable(false);
+                    txt_findpsd.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
+
         img_findpsd_lookpsd.setVisibility(View.GONE);
         et_findpsd_password.setKeyListener(DigitsKeyListener.getInstance("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"));
         et_findpsd_password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});

@@ -33,6 +33,8 @@ import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.CheckEditForButton;
+import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
@@ -93,11 +95,35 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
         StatusBarCompat.setStatusBarColor(this, Color.TRANSPARENT);
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
-        
+
+        addActivity(this);
         initView();
     }
 
     private void initView() {
+
+        txt_register.setClickable(false);
+        //1.创建工具类对象 设置监听空间
+        CheckEditForButton checkEditForButton = new CheckEditForButton(txt_register);
+
+        //2.把所有被监听的EditText设置进去
+        checkEditForButton.addEditText(et_rg_username, et_rg_code, et_rg_password);
+
+        //3.根据接口回调的方法,分别进行操作
+        checkEditForButton.setListener(new EditTextChangeListener() {
+            @Override
+            public void allHasContent(boolean isHasContent) {
+                BannerLog.d("b_cc", "isHasContent=" + isHasContent);
+                if (isHasContent) {
+                    txt_register.setClickable(true);
+                    txt_register.setBackgroundResource(R.drawable.slategrey_bg);
+                } else {
+                    txt_register.setClickable(false);
+                    txt_register.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
+
         String textSource = "点击立即注册表示您已阅读并同意<font color='#1D65FF'>《用户协议》</font>";
         txt_yhxy.setText(Html.fromHtml(textSource));
         //加粗

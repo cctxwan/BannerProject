@@ -142,7 +142,7 @@
             android:textSize="@dimen/dimen_24_dip"
             android:textColor="#FFFFFF"
             android:gravity="center"
-            android:background="@drawable/slategrey_bg"
+            android:background="@drawable/slategrey_helftrs_bg"
             android:layout_gravity="bottom"/>
 
     </LinearLayout>

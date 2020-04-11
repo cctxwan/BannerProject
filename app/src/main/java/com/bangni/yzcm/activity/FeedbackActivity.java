@@ -3,7 +3,10 @@ package com.bangni.yzcm.activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -16,6 +19,7 @@ import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.bangni.yzcm.view.ContainsEmojiEditText;
@@ -55,8 +59,36 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
     }
 
     private void initView() {
+
+        txt_feedbook_submit.setClickable(false);
+
+
         //加粗
         txt_feedbook_submit.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+
+        et_feedbook_content.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                BannerLog.d("b_cc", "count=" + count);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length() > 0){
+                    txt_feedbook_submit.setClickable(true);
+                    txt_feedbook_submit.setBackgroundResource(R.drawable.slategrey_bg);
+                }else{
+                    txt_feedbook_submit.setClickable(false);
+                    txt_feedbook_submit.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
     }
 
     @OnClick({R.id.txt_feedbook_submit, R.id.img_feedbook_back, R.id.txt_feedbook_list})

@@ -153,7 +153,7 @@
             android:gravity="center"
             android:textSize="@dimen/dimen_20_dip"
             android:textColor="@color/white"
-            android:background="@drawable/slategrey_bg"
+            android:background="@drawable/slategrey_helftrs_bg"
             android:text="确定修改"/>
 
 

@@ -75,7 +75,7 @@
         android:gravity="center"
         android:textSize="@dimen/dimen_24_dip"
         android:textColor="@color/white"
-        android:background="@drawable/slategrey_bg"
+        android:background="@drawable/slategrey_helftrs_bg"
         android:text="提交反馈"/>
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.network.bean.OrderInfos;
+import com.bangni.yzcm.utils.BannerUtils;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,7 +67,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         //赋值
         if(data.get(position).getStatus() == 1){
-            viewHolder.order_item_state.setText("未开始");
+            viewHolder.order_item_state.bringToFront();
+            viewHolder.order_item_state.setText("未开始...");
             viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_yellow);
 
             viewHolder.order_item_name.setText(data.get(position).getAdName());
@@ -76,11 +79,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             viewHolder.order_item_jssj.setText("暂无");
         }else {
             if(data.get(position).getStatus() == 2){
-                viewHolder.order_item_state.setText("进行中");
+                viewHolder.order_item_state.setText("进行中...");
 
                 viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_blue);
             }else if(data.get(position).getStatus() == 3){
-                viewHolder.order_item_state.setText("已下架");
+                viewHolder.order_item_state.setText("已下架...");
 
                 viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_grey);
             }
@@ -89,8 +92,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             viewHolder.order_item_tfdw.setText("投放点位：共" + data.get(position).getPutNum() + "个点位");
             viewHolder.order_item_bgl.setText("曝光量：" + data.get(position).getCumulativeNumber() + "（人次）");
             viewHolder.order_item_ljbf.setText("播放量：" + data.get(position).getCumulativePlay() + "(次)");
-            viewHolder.order_item_kssj.setText("开始时间：" + data.get(position).getStartTime());
-            viewHolder.order_item_jssj.setText("结束时间：" + data.get(position).getEndTime());
+            viewHolder.order_item_kssj.setText("开始时间：" + BannerUtils.stampToDatesss(String.valueOf(data.get(position).getStartTime())));
+            viewHolder.order_item_jssj.setText("结束时间：" + BannerUtils.stampToDatesss(String.valueOf(data.get(position).getEndTime())));
         }
 
 

@@ -26,6 +26,8 @@ import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.CheckEditForButton;
+import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -80,6 +82,31 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
      */
     private void initView() {
         et_changeaccount_phone.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getPhone());
+
+
+        txt_changeaccount_comple.setClickable(false);
+
+        //1.创建工具类对象 设置监听空间
+        CheckEditForButton checkEditForButton = new CheckEditForButton(txt_changeaccount_comple);
+
+        //2.把所有被监听的EditText设置进去
+        checkEditForButton.addEditText(et_changeaccount_phone, et_changeaccount_code);
+
+        //3.根据接口回调的方法,分别进行操作
+        checkEditForButton.setListener(new EditTextChangeListener() {
+            @Override
+            public void allHasContent(boolean isHasContent) {
+                BannerLog.d("b_cc", "isHasContent=" + isHasContent);
+                if (isHasContent) {
+                    txt_changeaccount_comple.setClickable(true);
+                    txt_changeaccount_comple.setBackgroundResource(R.drawable.slategrey_bg);
+                } else {
+                    txt_changeaccount_comple.setClickable(false);
+                    txt_changeaccount_comple.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
+
     }
 
     @OnClick({R.id.img_changeaccount_back, R.id.txt_changeaccount_getcode, R.id.txt_changeaccount_comple})

@@ -121,39 +121,48 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
 
                 @Override
                 public void onNext(BannerBaseResponse<FeedBookListModel> response) {
-                    if (response.data != null && response.data.getList() != null) {
-                        Message message = getfeedlistsHandler.obtainMessage();
-                        total = response.data.getTotal();
-                        if(response.data.getList().size() > 0){
-                            rv_feedlist.setVisibility(View.VISIBLE);
-                            feedlist_lin_nodata.setVisibility(View.GONE);
-                            feedlist_swipeRefreshLayout.setEnableLoadMore(true);
-                        }else{
-                            feedlist_lin_nodata.setVisibility(View.VISIBLE);
-                            feedlist_swipeRefreshLayout.setEnableLoadMore(false);
-                        }
-                        if(isRef){
-                            List<FeedBookListModel.ListBean> json = new ArrayList<>();
-                            json.addAll(response.data.getList());
-                            listBeanList.clear();
-                            for(int i = 0 ; i < json.size() ; i++) {
-                                listBeanList.add(json.get(i));
+                    if (response.data != null) {
+                        if(response.data.getList() != null){
+                            Message message = getfeedlistsHandler.obtainMessage();
+                            total = response.data.getTotal();
+                            if(response.data.getList().size() > 0){
+                                rv_feedlist.setVisibility(View.VISIBLE);
+                                feedlist_lin_nodata.setVisibility(View.GONE);
+                                feedlist_swipeRefreshLayout.setEnableLoadMore(true);
+                            }else{
+                                feedlist_lin_nodata.setVisibility(View.VISIBLE);
+                                feedlist_swipeRefreshLayout.setEnableLoadMore(false);
                             }
-                            isRef = false;
-                        }else {
-                            listBeanList.addAll(response.data.getList());
-                        }
-                        message.arg1 = 10000;
-                        getfeedlistsHandler.sendMessage(message);
-                        if(listBeanList.size() == total && pageNo == 1){
-                            if(total == 0) return;
-                            feedlist_swipeRefreshLayout.setEnableLoadMoreWhenContentNotFull(false);
-                            feedlist_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
-                            feedlist_swipeRefreshLayout.finishLoadMoreWithNoMoreData();
+                            if(isRef){
+                                List<FeedBookListModel.ListBean> json = new ArrayList<>();
+                                json.addAll(response.data.getList());
+                                listBeanList.clear();
+                                for(int i = 0 ; i < json.size() ; i++) {
+                                    listBeanList.add(json.get(i));
+                                }
+                                isRef = false;
+                            }else {
+                                listBeanList.addAll(response.data.getList());
+                            }
+                            message.arg1 = 10000;
+                            getfeedlistsHandler.sendMessage(message);
+                            if(listBeanList.size() == total && pageNo == 1){
+                                if(total == 0) return;
+                                feedlist_swipeRefreshLayout.setEnableLoadMoreWhenContentNotFull(false);
+                                feedlist_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
+                                feedlist_swipeRefreshLayout.finishLoadMoreWithNoMoreData();
+                            }
+                        }else{
+                            rv_feedlist.setVisibility(View.GONE);
+                            feedlist_lin_nodata.setVisibility(View.VISIBLE);
+                            feedlist_swipeRefreshLayout.finishRefresh(true);
+                            feedlist_swipeRefreshLayout.finishLoadMore(true);
                         }
                     }else{
                         rv_feedlist.setVisibility(View.GONE);
                         feedlist_lin_nodata.setVisibility(View.VISIBLE);
+                        feedlist_swipeRefreshLayout.finishRefresh(true);
+                        feedlist_swipeRefreshLayout.finishLoadMore(true);
                     }
                 }
 

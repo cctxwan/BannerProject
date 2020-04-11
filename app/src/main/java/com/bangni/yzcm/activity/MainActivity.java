@@ -2,8 +2,11 @@ package com.bangni.yzcm.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.fragment.OrderFragment;
 import com.bangni.yzcm.fragment.InfoFragment;
@@ -163,6 +166,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             changeTab(PAGE_COORDINATOR);
             infoFragment.getData();
         }
+    }
+
+    long temptime;
+
+    /**
+     * 点击两次返回才退出
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if((keyCode == KeyEvent.KEYCODE_BACK)&&(event.getAction() == KeyEvent.ACTION_DOWN)) {
+            if(System.currentTimeMillis() - temptime > 2000){
+                System.out.println(Toast.LENGTH_LONG);
+                Toast.makeText(this, "请在按一次返回退出", Toast.LENGTH_LONG).show();
+                temptime = System.currentTimeMillis();
+            } else {
+                // 仿返回键退出界面,但不销毁，程序仍在后台运行
+//                moveTaskToBack(false); // 关键的一行代码
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

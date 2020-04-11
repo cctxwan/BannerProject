@@ -100,6 +100,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        addActivity(this);
     }
 
     private void initView() throws Exception {
@@ -327,7 +329,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                     public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
                         Message msg = handler.obtainMessage();
                         msg.what = 2;
-                        msg.obj = outputUri;
+                        msg.obj = outputUri.toString();
                         handler.sendMessage(msg);
                     }
 

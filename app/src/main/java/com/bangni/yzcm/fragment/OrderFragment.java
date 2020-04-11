@@ -183,6 +183,9 @@ public class OrderFragment extends Fragment {
 
                 @Override
                 public void onNext(BannerBaseResponse<OrderBannerModel> response) {
+
+                    orderHandler.post(getOrderLists);
+
                     if(response.data != null){
                         OrderBannerModel orderBannerModel = response.data;
                         if(orderBannerModel.getList().size() > 0){
@@ -203,11 +206,13 @@ public class OrderFragment extends Fragment {
                             //圆角
                             banner.setBannerRound(BannerUtils.dp2px(5));
 
-
-
-                            orderHandler.post(getOrderLists);
-
+                        }else{
+                            order_swipeRefreshLayout.finishRefresh(true);
+                            order_swipeRefreshLayout.finishLoadMore(true);
                         }
+                    }else{
+                        order_swipeRefreshLayout.finishRefresh(true);
+                        order_swipeRefreshLayout.finishLoadMore(true);
                     }
                 }
 
@@ -239,40 +244,50 @@ public class OrderFragment extends Fragment {
 
                 @Override
                 public void onNext(BannerBaseResponse<OrderInfos> response) {
-                    if (response.data != null && response.data.getList() != null) {
-                        orderInfos.clear();
-                        Message message = orderHandler.obtainMessage();
-                        total = response.data.getTotal();
-                        if(response.data.getList().size() > 0){
-                            rv_order_list.setVisibility(View.VISIBLE);
-                            order_lin_nodata.setVisibility(View.GONE);
-                            order_swipeRefreshLayout.setEnableLoadMore(true);
-                        }else{
-                            order_lin_nodata.setVisibility(View.VISIBLE);
-                            order_swipeRefreshLayout.setEnableLoadMore(false);
-                        }
-                        if(isRef){
-                            List<OrderInfos.ListBean> json = new ArrayList<>();
-                            json.addAll(response.data.getList());
+                    if (response.data != null) {
+                        if(response.data.getList() != null){
                             orderInfos.clear();
-                            for(int i = 0 ; i < json.size() ; i++) {
-                                orderInfos.add(json.get(i));
+                            Message message = orderHandler.obtainMessage();
+                            total = response.data.getTotal();
+                            if(response.data.getList().size() > 0){
+                                rv_order_list.setVisibility(View.VISIBLE);
+                                order_lin_nodata.setVisibility(View.GONE);
+                                order_swipeRefreshLayout.setEnableLoadMore(true);
+                            }else{
+                                order_lin_nodata.setVisibility(View.VISIBLE);
+                                order_swipeRefreshLayout.setEnableLoadMore(false);
                             }
-                            isRef = false;
-                        }else {
-                            orderInfos.addAll(response.data.getList());
+                            if(isRef){
+                                List<OrderInfos.ListBean> json = new ArrayList<>();
+                                json.addAll(response.data.getList());
+                                orderInfos.clear();
+                                for(int i = 0 ; i < json.size() ; i++) {
+                                    orderInfos.add(json.get(i));
+                                }
+                                isRef = false;
+                            }else {
+                                orderInfos.addAll(response.data.getList());
+                            }
+                            message.arg1 = 10000;
+                            orderHandler.sendMessage(message);
+                            if(orderInfos.size() == total && pageNo == 1){
+                                if(total == 0) return;
+                                order_swipeRefreshLayout.setEnableLoadMoreWhenContentNotFull(false);
+                                order_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
+                                order_swipeRefreshLayout.finishLoadMoreWithNoMoreData();
+                            }
+                        }else{
+                            rv_order_list.setVisibility(View.GONE);
+                            order_lin_nodata.setVisibility(View.VISIBLE);
+                            order_swipeRefreshLayout.finishRefresh(true);
+                            order_swipeRefreshLayout.finishLoadMore(true);
                         }
-                        message.arg1 = 10000;
-                        orderHandler.sendMessage(message);
-                        if(orderInfos.size() == total && pageNo == 1){
-                            if(total == 0) return;
-                            order_swipeRefreshLayout.setEnableLoadMoreWhenContentNotFull(false);
-                            order_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
-                            order_swipeRefreshLayout.finishLoadMoreWithNoMoreData();
-                        }
+
                     }else{
                         rv_order_list.setVisibility(View.GONE);
                         order_lin_nodata.setVisibility(View.VISIBLE);
+                        order_swipeRefreshLayout.finishRefresh(true);
+                        order_swipeRefreshLayout.finishLoadMore(true);
                     }
                 }
 
@@ -315,9 +330,14 @@ public class OrderFragment extends Fragment {
                 orderAdapter.setLinster(new OrderAdapter.ItemOnClickLinster() {
                     @Override
                     public void textItemOnClick(View view, int position) {
-                        Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                        intent.putExtra("pid", orderInfos.get(position).getPid() + "");
-                        startActivity(intent);
+                        if(orderInfos.get(position).getStatus() != 1){
+                            Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                            intent.putExtra("pid", orderInfos.get(position).getPid() + "");
+                            intent.putExtra("startTime", orderInfos.get(position).getStartTime() + "");
+                            startActivity(intent);
+                        }else{
+                            ToastUtils.warning(getActivity(), "广告暂未投放，请稍后再试。");
+                        }
                     }
                 });
             }

@@ -6,21 +6,21 @@ package com.bangni.yzcm.network.bean;
 public class OrderDetailInfo {
     /**
      * avgNumber : 0
-     * avgPlay : 0
-     * gpuDiscernResult : null
-     * monitorImage :
-     * monitorTime : null
-     * pid : 0
-     * pointPid : 0
-     * putCommunityPid : 0
-     * status : 0
+     * avgPlay : 380
+     * gpuDiscernResult : {}
+     * monitorImage : http://images.81dd.cn/376c449b2b2047cdbdf5c22ca94d957a
+     * monitorTime : 1586573574000
+     * pid : 53
+     * pointPid : 64
+     * putCommunityPid : 20
+     * status : 2
      */
 
     private int avgNumber;
     private int avgPlay;
-    private Object gpuDiscernResult;
+    private GpuDiscernResultBean gpuDiscernResult;
     private String monitorImage;
-    private Object monitorTime;
+    private long monitorTime;
     private int pid;
     private int pointPid;
     private int putCommunityPid;
@@ -42,11 +42,11 @@ public class OrderDetailInfo {
         this.avgPlay = avgPlay;
     }
 
-    public Object getGpuDiscernResult() {
+    public GpuDiscernResultBean getGpuDiscernResult() {
         return gpuDiscernResult;
     }
 
-    public void setGpuDiscernResult(Object gpuDiscernResult) {
+    public void setGpuDiscernResult(GpuDiscernResultBean gpuDiscernResult) {
         this.gpuDiscernResult = gpuDiscernResult;
     }
 
@@ -58,11 +58,11 @@ public class OrderDetailInfo {
         this.monitorImage = monitorImage;
     }
 
-    public Object getMonitorTime() {
+    public long getMonitorTime() {
         return monitorTime;
     }
 
-    public void setMonitorTime(Object monitorTime) {
+    public void setMonitorTime(long monitorTime) {
         this.monitorTime = monitorTime;
     }
 
@@ -96,5 +96,8 @@ public class OrderDetailInfo {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public static class GpuDiscernResultBean {
     }
 }

@@ -27,9 +27,12 @@ import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
+import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bangni.yzcm.view.CheckEditForButton;
+import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -84,6 +87,31 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
     }
 
     private void initView() {
+
+        txt_changepsd_comple.setClickable(false);
+
+        //1.创建工具类对象 设置监听空间
+        CheckEditForButton checkEditForButton = new CheckEditForButton(txt_changepsd_comple);
+
+        //2.把所有被监听的EditText设置进去
+        checkEditForButton.addEditText(et_oldpsd, et_newpsd, et_newpsd_r);
+
+        //3.根据接口回调的方法,分别进行操作
+        checkEditForButton.setListener(new EditTextChangeListener() {
+            @Override
+            public void allHasContent(boolean isHasContent) {
+                BannerLog.d("b_cc", "isHasContent=" + isHasContent);
+                if (isHasContent) {
+                    txt_changepsd_comple.setClickable(true);
+                    txt_changepsd_comple.setBackgroundResource(R.drawable.slategrey_bg);
+                } else {
+                    txt_changepsd_comple.setClickable(false);
+                    txt_changepsd_comple.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                }
+            }
+        });
+
+
         //加粗
         txt_changepsd_comple.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 

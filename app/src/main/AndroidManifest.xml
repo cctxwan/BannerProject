@@ -25,13 +25,17 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.FindPsdActivity"></activity>
         <activity android:name=".activity.AgreementActivity" />
-        <activity android:name=".activity.StatisticDetailActivity" />
+        <activity
+            android:launchMode="singleTop"
+            android:name=".activity.StatisticDetailActivity" />
         <activity android:name=".activity.ChangeAccountActivity" />
         <activity android:name=".activity.BroadcastRecordActivity" />
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.FeedListActivity" />
         <activity android:name=".activity.ChangePsdActivity" />
-        <activity android:name=".activity.OrderDetailActivity" />
+        <activity
+            android:launchMode="singleTop"
+            android:name=".activity.OrderDetailActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.BroadcastActivity" />
         <activity android:name=".activity.AboutActivity" />

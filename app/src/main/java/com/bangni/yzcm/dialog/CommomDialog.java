@@ -5,7 +5,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import com.bangni.yzcm.R;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
+import com.bangni.yzcm.utils.ToastUtils;
 import com.bigkoo.pickerview.adapter.ArrayWheelAdapter;
 import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
@@ -142,6 +145,32 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             et_changename = findViewById(R.id.et_changename);
             txt_changename = findViewById(R.id.txt_changename);
             close = findViewById(R.id.close);
+
+            txt_changename.setClickable(false);
+
+            et_changename.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if(s.length() > 0){
+                        txt_changename.setClickable(true);
+                        txt_changename.setBackgroundResource(R.drawable.slategrey_bg);
+                    }else{
+                        txt_changename.setClickable(false);
+                        txt_changename.setBackgroundResource(R.drawable.slategrey_helftrs_bg);
+                    }
+                }
+            });
+
             lin_changeclose.setOnClickListener(this);
             txt_changename.setOnClickListener(this);
 
@@ -241,7 +270,12 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
                     break;
                 case R.id.txt_changename:
                     if(listenerParmes != null){
-                        listenerParmes.onClickParmes(this, "sub_name", et_changename.getText().toString().trim());
+                        if(TextUtils.isEmpty(et_changename.getText().toString().trim())){
+                            ToastUtils.warning(mContext, "请输入昵称");
+                            return;
+                        }else{
+                            listenerParmes.onClickParmes(this, "sub_name", et_changename.getText().toString().trim());
+                        }
                     }
                     break;
             }
