@@ -155,6 +155,18 @@ public class BannerUtils {
         return res;
     }
 
+    /*
+     * 将时间转换为时间戳
+     */
+    public static String stampToDatessssss(String s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分");
+        long lt = new Long(s);
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
     /**
      * 将日期转换为时间戳
      * @param dateString

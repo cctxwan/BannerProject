@@ -89,8 +89,8 @@
             android:layout_marginRight="@dimen/dimen_27_dip">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_28_dip"
+                android:layout_height="@dimen/dimen_28_dip"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/setting"/>
 
@@ -121,10 +121,10 @@
             android:layout_marginRight="@dimen/dimen_27_dip">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_28_dip"
+                android:layout_height="@dimen/dimen_28_dip"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/feedbook"/>
+                android:src="@mipmap/feedback"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,8 +153,8 @@
             android:layout_marginRight="@dimen/dimen_27_dip">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen_28_dip"
+                android:layout_height="@dimen/dimen_28_dip"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/about"/>
 

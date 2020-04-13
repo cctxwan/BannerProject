@@ -222,7 +222,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_219_dip"
                     android:layout_marginTop="@dimen/dimen_30_dip"
-                    android:scaleType="fitXY"
                     android:src="@mipmap/orderdetail_url"/>
 
                 <LinearLayout
@@ -362,7 +361,7 @@
                         android:id="@+id/txt_orderdetail_bgl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0.0次"
+                        android:text="0次"
                         android:textColor="#FFFFFF"
                         android:gravity="right"
                         android:layout_marginRight="@dimen/dimen_10_dip"
@@ -392,7 +391,7 @@
                         android:id="@+id/txt_orderdetail_bfl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0.0次"
+                        android:text="0次"
                         android:textColor="#FFFFFF"
                         android:gravity="right"
                         android:layout_marginRight="@dimen/dimen_10_dip"

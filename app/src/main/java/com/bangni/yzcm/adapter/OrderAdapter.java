@@ -83,7 +83,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
                 viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_blue);
             }else if(data.get(position).getStatus() == 3){
-                viewHolder.order_item_state.setText("已下架...");
+                viewHolder.order_item_state.setText("已结束");
 
                 viewHolder.order_item_state.setBackgroundResource(R.drawable.order_item_bg_grey);
             }
@@ -92,8 +92,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             viewHolder.order_item_tfdw.setText("投放点位：共" + data.get(position).getPutNum() + "个点位");
             viewHolder.order_item_bgl.setText("曝光量：" + data.get(position).getCumulativeNumber() + "（人次）");
             viewHolder.order_item_ljbf.setText("播放量：" + data.get(position).getCumulativePlay() + "(次)");
-            viewHolder.order_item_kssj.setText("开始时间：" + BannerUtils.stampToDatesss(String.valueOf(data.get(position).getStartTime())));
-            viewHolder.order_item_jssj.setText("结束时间：" + BannerUtils.stampToDatesss(String.valueOf(data.get(position).getEndTime())));
+
+
+
+            viewHolder.order_item_kssj.setText("开始时间：" + BannerUtils.stampToDatessssss(String.valueOf(data.get(position).getStartTime())));
+            viewHolder.order_item_jssj.setText("结束时间：" + BannerUtils.stampToDatessssss(String.valueOf(data.get(position).getEndTime())));
         }
 
 

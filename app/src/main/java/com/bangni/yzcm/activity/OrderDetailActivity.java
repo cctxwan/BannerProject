@@ -197,7 +197,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 //                    }else if(response.data.getStatus() == 3){
 //                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.grey_orderdetail_bg);
 //                        txt_orderdetail_title.setTextColor(Color.parseColor("#919194"));
-//                        txt_orderdetail_titletv.setText("已结束...");
+//                        txt_orderdetail_titletv.setText("已结束");
 //                    }else{
 //                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.yellew_orderdetail_bg);
 //                        txt_orderdetail_title.setTextColor(Color.parseColor("#FFB944"));
@@ -376,7 +376,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
         if(state == 3){
             lin_orderdetail_titlebg.setBackgroundResource(R.drawable.grey_orderdetail_bg);
             txt_orderdetail_title.setTextColor(Color.parseColor("#919194"));
-            txt_orderdetail_titletv.setText("已结束...");
+            txt_orderdetail_titletv.setText("已结束");
         }else{
             lin_orderdetail_titlebg.setBackgroundResource(R.drawable.blue_orderdetail_bg);
             txt_orderdetail_title.setTextColor(Color.parseColor("#1D65FF"));
