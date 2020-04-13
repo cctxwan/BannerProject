@@ -315,7 +315,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="监播统计"
+                    android:text="播放统计"
                     android:textSize="@dimen/dimen_20_dip"
                     android:layout_marginLeft="@dimen/dimen_18_dip"
                     android:layout_marginTop="@dimen/dimen_28_dip"
@@ -346,7 +346,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@mipmap/rjbgl"
+                    android:background="@mipmap/ljbgl"
                     android:orientation="vertical">
 
                     <TextView
@@ -376,7 +376,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginLeft="@dimen/dimen_13_dip"
-                    android:background="@mipmap/rjbfl"
+                    android:background="@mipmap/ljbfl"
                     android:orientation="vertical">
 
                     <TextView

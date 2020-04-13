@@ -132,11 +132,11 @@ public class BannerUtils {
     }
 
     /*
-     * 将时间戳转换为时间
+     * 将时间戳转换为时间（只要年月日）
      */
-    public static String stampToDate(String s) {
+    public static String stampToDateOnlyymd(String s) {
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         long lt = new Long(s);
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);

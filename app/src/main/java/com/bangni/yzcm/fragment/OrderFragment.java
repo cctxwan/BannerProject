@@ -37,6 +37,7 @@ import com.youth.banner.indicator.RoundLinesIndicator;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.util.BannerUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -331,8 +332,12 @@ public class OrderFragment extends Fragment {
                     public void textItemOnClick(View view, int position) {
                         if(orderInfos.get(position).getStatus() != 1){
                             Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                            intent.putExtra("pid", orderInfos.get(position).getPid() + "");
-                            intent.putExtra("startTime", orderInfos.get(position).getStartTime() + "");
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("pid", orderInfos.get(position).getPid());
+                            bundle.putInt("state", orderInfos.get(position).getStatus());
+                            bundle.putLong("startTime", orderInfos.get(position).getStartTime());
+                            bundle.putLong("endTime", orderInfos.get(position).getEndTime());
+                            intent.putExtras(bundle);
                             startActivity(intent);
                         }else{
                             ToastUtils.warning(getActivity(), "广告暂未投放，请稍后再试。");

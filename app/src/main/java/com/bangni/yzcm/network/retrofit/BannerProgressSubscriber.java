@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 
+import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.LoginActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.util.ErrorCodeUtils;
@@ -33,7 +34,7 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
         this.mIsShowDialog = isShowDialog;
         if(isShowDialog){
             if(dialog == null){
-                dialog = new ZLoadingDialog(mContext);
+                dialog = new ZLoadingDialog(mContext, R.style.zload_dialog);
                 dialog.setLoadingBuilder(Z_TYPE.SNAKE_CIRCLE)//设置类型
                         .setLoadingColor(Color.BLUE)//颜色
                         .setHintText("")

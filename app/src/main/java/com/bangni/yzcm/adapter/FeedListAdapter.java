@@ -65,7 +65,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder viewHolder, int position) {
 
         //赋值
-        viewHolder.txt_feedlist_time.setText(BannerUtils.stampToDate(data.get(position).getFeedbackTime() + ""));
+        viewHolder.txt_feedlist_time.setText(BannerUtils.stampToDatesss(data.get(position).getFeedbackTime() + ""));
         viewHolder.txt_feedlist_content.setText(data.get(position).getFeedbackContent());
 
         if(TextUtils.isEmpty(data.get(position).getReplyContent())){
@@ -79,7 +79,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
         if(data.get(position).getReplyTime() == 0){
             viewHolder.txt_feedlist_kf_time.setVisibility(View.GONE);
         }else{
-            viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDate(data.get(position).getReplyTime() + ""));
+            viewHolder.txt_feedlist_kf_time.setText(BannerUtils.stampToDatesss(data.get(position).getReplyTime() + ""));
         }
 
         //设置tag

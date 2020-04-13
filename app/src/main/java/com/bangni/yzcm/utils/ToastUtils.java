@@ -16,7 +16,7 @@ public class ToastUtils {
                 .tintIcon(false) // optional (apply textColor also to the icon)
                 .setToastTypeface(Typeface.DEFAULT) // optional
                 .setTextSize(R.dimen.dimen_130_dip) // optional
-                .allowQueue(false) // optional (prevents several Toastys from queuing)
+                .allowQueue(true) // optional (prevents several Toastys from queuing)
                 .apply(); // required
 
         Toasty.Config.reset();

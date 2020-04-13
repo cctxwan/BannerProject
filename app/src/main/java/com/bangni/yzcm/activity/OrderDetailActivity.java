@@ -10,8 +10,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +35,10 @@ import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -38,6 +46,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +99,16 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     @BindView(R.id.lin_gpuresult)
     LinearLayout lin_gpuresult;
 
-    //订单id
-    private String pid, startTime, putCommunityPid, pointPid, monitorTime;
+    //时间控件
+    private TimePickerView pvTime;
+
+    //订单id， 开始时间， 结束时间
+    private String pid, startTime, endTime;
+    //订单状态
+    private int state;
+
+    //设置时间控件的开始和结束时间
+    private Calendar startDate = Calendar.getInstance(), endDate = Calendar.getInstance();
 
     //社区名称
     List<CommunityInfos> communityNameLists = new ArrayList<>();
@@ -102,9 +119,8 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     List<String> parmsCommunityDws = new ArrayList<>();
 
 
-    int timeOver;
-
-    long stringToDate;
+    //默认选择当前日期的时间戳
+    String stringToDate = System.currentTimeMillis() + "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,12 +178,11 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     Runnable getOrderDetailDatas = new Runnable() {
         @Override
         public void run() {
-            if(txt_orderdetail_communitydw.getText().toString().trim().equals("请选择点位")) return;
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
             map.put("putCommunityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));
             map.put("pointPid", selectCommunityDwPid(txt_orderdetail_communitydw.getText().toString().trim()));
-            map.put("monitorTime", stringToDate + "");//txt_orderdetail_time.getText().toString().trim()
+            map.put("monitorTime", stringToDate);//txt_orderdetail_time.getText().toString().trim()
             Gson gson = new Gson();
             String entity = gson.toJson(map);
             RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), entity);
@@ -175,23 +190,19 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 
                 @Override
                 public void onNext(BannerBaseResponse<OrderDetailInfo> response) {
-                    if(response.data.getStatus() == 1){
-                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.yellew_orderdetail_bg);
-                        txt_orderdetail_title.setTextColor(Color.parseColor("#FFB944"));
-                        txt_orderdetail_titletv.setText("未开始...");
-                    }else if(response.data.getStatus() == 2){
-                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.blue_orderdetail_bg);
-                        txt_orderdetail_title.setTextColor(Color.parseColor("#1D65FF"));
-                        txt_orderdetail_titletv.setText("正在进行中...");
-                    }else if(response.data.getStatus() == 3){
-                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.grey_orderdetail_bg);
-                        txt_orderdetail_title.setTextColor(Color.parseColor("#919194"));
-                        txt_orderdetail_titletv.setText("已结束...");
-                    }else{
-                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.yellew_orderdetail_bg);
-                        txt_orderdetail_title.setTextColor(Color.parseColor("#FFB944"));
-                        txt_orderdetail_titletv.setText("未开始...");
-                    }
+//                    if(response.data.getStatus() == 2){
+//                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.blue_orderdetail_bg);
+//                        txt_orderdetail_title.setTextColor(Color.parseColor("#1D65FF"));
+//                        txt_orderdetail_titletv.setText("正在进行中...");
+//                    }else if(response.data.getStatus() == 3){
+//                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.grey_orderdetail_bg);
+//                        txt_orderdetail_title.setTextColor(Color.parseColor("#919194"));
+//                        txt_orderdetail_titletv.setText("已结束...");
+//                    }else{
+//                        lin_orderdetail_titlebg.setBackgroundResource(R.drawable.yellew_orderdetail_bg);
+//                        txt_orderdetail_title.setTextColor(Color.parseColor("#FFB944"));
+//                        txt_orderdetail_titletv.setText("未开始...");
+//                    }
 
                     //图片
                     if(!TextUtils.isEmpty(response.data.getMonitorImage())){
@@ -246,7 +257,6 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     Runnable getCommunityDwDatas = new Runnable() {
         @Override
         public void run() {
-            if(txt_orderdetail_community.getText().toString().trim().equals("请选择社区")) return;
             Map<String, String> map = new HashMap<>();
             map.put("pid", pid);
             map.put("communityPid", selectCommunityPid(txt_orderdetail_community.getText().toString().trim()));
@@ -318,7 +328,11 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
             super.handleMessage(msg);
             if(msg.what == 1){
                 //下一步
-                getDatasHandler.post(getCommunityDwDatas);
+                if(txt_orderdetail_community.getText().toString().trim().equals("请选择社区")) {
+                    getDatasHandler.post(getOrderDetailDatas);
+                }else{
+                    getDatasHandler.post(getCommunityDwDatas);
+                }
             }else if(msg.what == 2){
                 getDatasHandler.post(getOrderDetailDatas);
             }
@@ -326,41 +340,91 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     };
 
     private void initView() {
-        stringToDate = System.currentTimeMillis();
 
-
+        //接收传值
         Intent intent = getIntent();
-        pid = intent.getStringExtra("pid");
-        startTime = intent.getStringExtra("startTime");
+        pid = intent.getExtras().getInt("pid") + "";
+        state = intent.getExtras().getInt("state");
+        startTime = intent.getExtras().getLong("startTime") + "";
+        endTime = intent.getExtras().getLong("endTime") + "";
+
+
+        //只要pid不为空，便开始请求
         if(!TextUtils.isEmpty(pid)){
             getDatasHandler.post(getCommunityDatas);
         }
+
+        //
         if(!TextUtils.isEmpty(startTime)){
+            BannerLog.d("b_cc", "开始时间是：" + BannerUtils.stampToDatesss(startTime));
 
-            String s = BannerUtils.stampToDatesss(String.valueOf(startTime));
-            BannerLog.d("b_cc", "开始时间是：" + s);
-            int year = Integer.valueOf(s.substring(0, 4));
+            //设置控件开始时间
+            startDate.set(Integer.valueOf(BannerUtils.stampToDatesss(startTime).substring(0, 4))
+                    , Integer.valueOf(BannerUtils.stampToDatesss(startTime).substring(5, 7)) - 1
+                    , Integer.valueOf(BannerUtils.stampToDatesss(startTime).substring(8, 10)));
+        }
+        if(!TextUtils.isEmpty(endTime)){
+            BannerLog.d("b_cc", "结束时间是：" + BannerUtils.stampToDatesss(endTime));
 
-
-//            2020-04-10 10:25:41
-
-            int month = Integer.valueOf(s.substring(5, 7));
-            int day = Integer.valueOf(s.substring(8, 10));
-
-            timeOver = year + month + day;
-            BannerLog.d("b_cc", "截取后的时间是：" + timeOver);
-
+            //设置控件结束时间
+            endDate.set(Integer.valueOf(BannerUtils.stampToDatesss(endTime).substring(0, 4))
+                    , Integer.valueOf(BannerUtils.stampToDatesss(endTime).substring(5, 7)) - 1
+                    , Integer.valueOf(BannerUtils.stampToDatesss(endTime).substring(8, 10)));
         }
 
-        Calendar calendar = Calendar.getInstance();
-        //获取系统的日期
-        //年
-        int year = calendar.get(Calendar.YEAR);
-        //月
-        int month = calendar.get(Calendar.MONTH)+1;
-        //日
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        txt_orderdetail_time.setText(year + "-" + month + "-" + day);
+        //根据状态处理不同的数据
+        if(state == 3){
+            lin_orderdetail_titlebg.setBackgroundResource(R.drawable.grey_orderdetail_bg);
+            txt_orderdetail_title.setTextColor(Color.parseColor("#919194"));
+            txt_orderdetail_titletv.setText("已结束...");
+        }else{
+            lin_orderdetail_titlebg.setBackgroundResource(R.drawable.blue_orderdetail_bg);
+            txt_orderdetail_title.setTextColor(Color.parseColor("#1D65FF"));
+            txt_orderdetail_titletv.setText("正在进行中...");
+        }
+
+        //实例化时间控件
+        pvTime = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                //时间戳
+                stringToDate = String.valueOf(date.getTime());
+                //拿到时间
+                txt_orderdetail_time.setText(BannerUtils.stampToDateOnlyymd(String.valueOf(date.getTime())));
+                //请求数据
+                getDatasHandler.post(getOrderDetailDatas);
+            }
+        }).setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
+            @Override
+            public void onTimeSelectChanged(Date date) {
+
+            }
+        }).setType(new boolean[]{
+                true, true, true, false, false, false
+        }).isDialog(true)
+                .setLabel("年", "月", "日", "", "", "")
+                .setRangDate(startDate == null ? Calendar.getInstance() : startDate, endDate == null ? Calendar.getInstance() : endDate)//起始终止年月日设定
+                .setDate(Calendar.getInstance())
+                .build();
+
+        Dialog mDialog = pvTime.getDialog();
+        if (mDialog != null) {
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.BOTTOM);
+            params.leftMargin = 0;
+            params.rightMargin = 0;
+            pvTime.getDialogContainerLayout().setLayoutParams(params);
+            Window dialogWindow = mDialog.getWindow();
+            if (dialogWindow != null) {
+                dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim);//修改动画样式
+                dialogWindow.setGravity(Gravity.BOTTOM);//改成Bottom,底部显示
+            }
+        }
+
+        //给时间赋值当前时间
+        txt_orderdetail_time.setText(BannerUtils.stampToDateOnlyymd(String.valueOf(System.currentTimeMillis())));
 
         //加粗
         txt_orderdetail_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
@@ -413,7 +477,9 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
             }, 6).show();
         }else if(temdId == R.id.rel_orderdetail_jctime){
             //监测时间
-            chooseTime();
+            if (pvTime != null) {
+                pvTime.show(v);
+            }
         }else if(temdId == R.id.orderdetail_txt_detail){
             //进入统计详情
             Intent intent = new Intent(mContext, StatisticDetailActivity.class);
@@ -422,45 +488,5 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
             startActivity(intent);
         }
     }
-
-    /**
-     * 选择日期
-     */
-    private void chooseTime() {
-        Calendar now = Calendar.getInstance();
-        new android.app.DatePickerDialog(mContext, new android.app.DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(year, month, dayOfMonth);
-                SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日  HH:mm:ss");
-
-
-                //当前年月日不能大于广告开始时间
-                int nowTime = ((+year) + (month + 1) + dayOfMonth);
-                //大于则不能选择
-                if(nowTime < timeOver){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ToastUtils.warning(mContext, "时间不能小于广告开始时间");
-                        }
-                    });
-                    return;
-                }
-
-                BannerLog.d("b_cc", "转换后的时间为：" + format.format(calendar.getTime()));
-                stringToDate = BannerUtils.getStringToDate(format.format(calendar.getTime()), "yyyy年MM月dd日  HH:mm:ss");
-
-                txt_orderdetail_time.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
-                getDatasHandler.post(getOrderDetailDatas);
-            }
-        },
-                now.get(Calendar.YEAR),
-                now.get(Calendar.MONTH),
-                now.get(Calendar.DAY_OF_MONTH)
-        ).show();
-    }
-
 
 }

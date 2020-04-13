@@ -20,6 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc7ffde-9730-4521-beeb-46992a8edaa1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ljbfl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ljbgl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ljbfl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ljbgl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ljbfl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ljbgl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ljbfl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ljbgl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -33,11 +41,15 @@
       <change beforePath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/FeedListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/FeedListAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/ToastUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/ToastUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/rjbfl.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ljbfl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/rjbgl.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ljbgl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +68,7 @@
     <session id="2136623167">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -67,8 +79,9 @@
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.67" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,11 +89,11 @@
           <entry key="class" value="1" />
           <entry key="gradle" value="14" />
           <entry key="iml" value="1" />
-          <entry key="java" value="611" />
-          <entry key="png" value="11" />
+          <entry key="java" value="631" />
+          <entry key="png" value="15" />
           <entry key="pro" value="1" />
           <entry key="properties" value="6" />
-          <entry key="xml" value="329" />
+          <entry key="xml" value="340" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -88,105 +101,38 @@
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="14" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="Image" value="11" />
-          <entry key="JAVA" value="611" />
+          <entry key="Image" value="15" />
+          <entry key="JAVA" value="631" />
           <entry key="ProGuard File" value="1" />
           <entry key="Properties" value="6" />
-          <entry key="XML" value="329" />
+          <entry key="XML" value="340" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="10" />
           <entry key="gradle" value="94" />
-          <entry key="java" value="14245" />
+          <entry key="java" value="15161" />
           <entry key="pro" value="2" />
           <entry key="properties" value="3" />
           <entry key="txt" value="3" />
-          <entry key="xml" value="3536" />
+          <entry key="xml" value="3592" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="94" />
-          <entry key="JAVA" value="14245" />
+          <entry key="JAVA" value="15161" />
           <entry key="PLAIN_TEXT" value="13" />
           <entry key="ProGuard File" value="2" />
           <entry key="Properties" value="3" />
-          <entry key="XML" value="3536" />
+          <entry key="XML" value="3592" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="319" column="32" selection-start-line="319" selection-start-column="32" selection-end-line="319" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#12567#14108#0" expanded="true" />
-                <element signature="e#14107#14108#0" expanded="true" />
-                <element signature="e#14242#14243#0" expanded="true" />
-                <element signature="e#14281#14282#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="346" column="63" selection-start-line="346" selection-start-column="54" selection-end-line="346" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="105" column="65" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedListActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1453">
-              <caret line="140" column="62" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="62" />
-              <folding>
-                <element signature="e#2636#3799#0" expanded="true" />
-                <element signature="e#3798#3799#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -199,36 +145,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>communityNameLists</find>
-      <find>next</find>
-      <find>orderHandler.post(getOrderLists);</find>
-      <find>sendEmptyMessage</find>
-      <find>feedlist_swipeRefreshLayout</find>
-      <find>order_swipeRefreshLayout</find>
-      <find>txt_choosesq.setText</find>
-      <find>累计播放</find>
-      <find>chart</find>
-      <find>handler</find>
-      <find>order_item_state</find>
-      <find>2</find>
       <find>lin_changeclose</find>
       <find>timeOver</find>
       <find>isLoad</find>
       <find>getOrderLists</find>
       <find>转换后的时间为</find>
       <find>System.currentTimeMillis()</find>
-      <find>stringToDate</find>
       <find>gpuDiscernResult</find>
       <find>旧密码不能为空</find>
       <find>lin_gpuresult</find>
       <find>getDatasHandler</find>
       <find>/monitor/point/list</find>
-      <find>getCommunityDwDatas</find>
       <find>getDatasHandler.post(getCommunityDwDatas);</find>
       <find>communityPid</find>
       <find>orderHandler</find>
       <find>txt_choosesq</find>
       <find>txt_static_communityname</find>
+      <find>getCommunityDwDatas</find>
+      <find>getCommunityDatas</find>
+      <find>timeEnd</find>
+      <find>stringToDate</find>
+      <find>state</find>
+      <find>lin_orderdetail_titlebg</find>
+      <find>txt_orderdetail_titletv</find>
+      <find>onTimeSelect</find>
+      <find>timeBegin</find>
+      <find>startTime</find>
+      <find>getStringToDate</find>
+      <find>startDate</find>
+      <find>mThemeResId</find>
+      <find>mZLoadingDialog</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -247,8 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_info.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/AboutActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/OrderBannerModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/MultipleTypesAdapter.java" />
@@ -258,8 +202,6 @@
         <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/util/BannerConstants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/ToastUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/FeedListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/slategrey_helftrs_bg.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/ChangeAccountModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
@@ -270,13 +212,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/OrderDetailInfo.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/yellew_orderdetail_bg.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/grey_orderdetail_bg.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/order_rv_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/public_bottom.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedbackActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_feedback.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/changename.xml" />
@@ -292,12 +232,18 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_find_psd.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/RegisterActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/FeedListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" />
+        <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-zloading-1.2.0.aar/7eadd8b93040ecafe611b325676ff716/res/values/values.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/ToastUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" />
       </list>
     </option>
   </component>
@@ -314,8 +260,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -396,34 +340,35 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
               <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.zyao89:zloading:1.2.0@aar" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.zyao89:zloading:1.2.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.zyao89:zloading:1.2.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="values" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -435,6 +380,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,11 +403,11 @@
       <recent name="com.bangni.yzcm.adapter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\BannerProject\app\src\main\res\drawable" />
-      <recent name="E:\BannerProject\app\src\main\res\mipmap-hdpi" />
-      <recent name="E:\BannerProject\app\src\main\res\mipmap-mdpi" />
-      <recent name="E:\BannerProject\app\src\main\res\mipmap-xhdpi" />
+      <recent name="E:\BannerProject\app\src\main\res\mipmap-xxxhdpi" />
       <recent name="E:\BannerProject\app\src\main\res\mipmap-xxhdpi" />
+      <recent name="E:\BannerProject\app\src\main\res\mipmap-xhdpi" />
+      <recent name="E:\BannerProject\app\src\main\res\mipmap-mdpi" />
+      <recent name="E:\BannerProject\app\src\main\res\mipmap-hdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -563,14 +509,14 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23454158" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23454158" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Find" order="0" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.32899022" />
       <window_info anchor="bottom" id="Run" order="1" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -579,7 +525,7 @@
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32899022" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="9" visible="true" weight="0.6688382" />
+      <window_info anchor="bottom" id="Logcat" order="9" weight="0.6688382" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -612,150 +558,16 @@
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java</url>
+          <line>328</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerApiService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerRetrofitUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="224" column="37" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/BannerQNiuYModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" selection-start-line="2" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/ChangeAccountModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.youth.banner/banner/2.0.4/c90cc704e19c1f7722c34e90768d77183d064b1f/banner-2.0.4-sources.jar!/com/youth/banner/indicator/RoundLinesIndicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="142" column="55" selection-start-line="142" selection-start-column="55" selection-end-line="142" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="1319" column="42" selection-start-line="1319" selection-start-column="38" selection-end-line="1319" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MPChartLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/CommunityInfos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-hdpi-1280x720/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/StatisitcsInfos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/OrderDetailInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
-          <folding>
-            <element signature="e#672#673#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#854#855#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1204#1205#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1343#1344#0" expanded="true" />
-            <element signature="e#1379#1380#0" expanded="true" />
-            <element signature="e#1413#1414#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1777#1778#0" expanded="true" />
-            <element signature="e#1816#1817#0" expanded="true" />
-            <element signature="e#1854#1855#0" expanded="true" />
-            <element signature="e#1913#1914#0" expanded="true" />
-            <element signature="e#1967#1968#0" expanded="true" />
-            <element signature="e#1997#1998#0" expanded="true" />
-            <element signature="e#2026#2027#0" expanded="true" />
-            <element signature="e#2067#2068#0" expanded="true" />
-            <element signature="e#2103#2104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/while_orderdetail_bg.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -770,13 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -848,13 +653,6 @@
             <element signature="e#3228#3248#0" expanded="true" />
             <element signature="e#3683#3703#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="163" column="38" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -979,76 +777,173 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding>
-            <element signature="e#12081#12438#0" expanded="true" />
-            <element signature="e#12437#12438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="230" column="26" lean-forward="true" selection-start-line="230" selection-start-column="26" selection-end-line="230" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
+        <state relative-caret-position="1242">
           <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedListActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1453">
-          <caret line="140" column="62" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="62" />
-          <folding>
-            <element signature="e#2636#3799#0" expanded="true" />
-            <element signature="e#3798#3799#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="319" column="32" selection-start-line="319" selection-start-column="32" selection-end-line="319" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#12567#14108#0" expanded="true" />
-            <element signature="e#14107#14108#0" expanded="true" />
-            <element signature="e#14242#14243#0" expanded="true" />
-            <element signature="e#14281#14282#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1476">
+          <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_statistic_detail.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
+        <state relative-caret-position="1890">
           <caret line="105" column="65" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/FeedListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
+        <state relative-caret-position="1854">
+          <caret line="140" column="62" selection-start-line="140" selection-start-column="62" selection-end-line="140" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="346" column="63" selection-start-line="346" selection-start-column="54" selection-end-line="346" selection-end-column="63" />
+        <state relative-caret-position="139">
+          <caret line="368" column="5" selection-start-line="368" selection-start-column="5" selection-end-line="368" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.contrarywind/Android-PickerView/4.1.9/b33fb84578bb3f31b93443df752a98c1d469cacf/Android-PickerView-4.1.9-sources.jar!/com/bigkoo/pickerview/builder/TimePickerBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/widget/FrameLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="338" column="93" selection-start-line="338" selection-start-column="93" selection-end-line="338" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12548#14419#0" expanded="true" />
+            <element signature="e#14418#14419#0" expanded="true" />
+            <element signature="e#14601#14602#0" expanded="true" />
+            <element signature="e#14655#14656#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/FeedListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="492" selection-start-line="492" selection-end-line="492" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-zloading-1.2.0.aar/7eadd8b93040ecafe611b325676ff716/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zyao89/zloading/1.2.0/640907a655dceb19065117b2ab7a053e06993f09/zloading-1.2.0-sources.jar!/com/zyao89/view/zloading/ZLoadingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="129" column="23" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="23" />
+          <folding>
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/ToastUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="85" lean-forward="true" selection-start-line="18" selection-start-column="85" selection-end-line="18" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/SystemUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/bgl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="127" column="48" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12268#12625#0" expanded="true" />
+            <element signature="e#12624#12625#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ljbf.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ljbfl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ljbgl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
         </state>
       </provider>
     </entry>
