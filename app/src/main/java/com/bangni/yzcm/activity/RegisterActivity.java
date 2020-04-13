@@ -126,6 +126,10 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
         String textSource = "点击立即注册表示您已阅读并同意<font color='#1D65FF'>《用户协议》</font>";
         txt_yhxy.setText(Html.fromHtml(textSource));
+
+        String text2Source = "已有账号，<font color='#1D65FF'>去登录</font>";
+        txt_tologin.setText(Html.fromHtml(text2Source));
+
         //加粗
         txt_register_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         txt_rg_getcode.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));

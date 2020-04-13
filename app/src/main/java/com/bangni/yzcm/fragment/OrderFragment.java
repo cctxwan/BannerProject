@@ -184,7 +184,7 @@ public class OrderFragment extends Fragment {
 
                 @Override
                 public void onNext(BannerBaseResponse<OrderBannerModel> response) {
-
+                    banner.start();
                     orderHandler.post(getOrderLists);
 
                     if(response.data != null){
@@ -219,6 +219,7 @@ public class OrderFragment extends Fragment {
 
                 @Override
                 public void onError(String msg) {
+                    banner.start();
                     ToastUtils.error(getActivity(), msg);
                     order_swipeRefreshLayout.finishRefresh(true);
                     order_swipeRefreshLayout.finishLoadMore(true);
