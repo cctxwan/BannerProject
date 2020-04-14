@@ -35,7 +35,9 @@ import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.LQRPhotoSelectUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
@@ -141,7 +143,27 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             }else if(msg.what == 2){
                 String path = (String) msg.obj;
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(SettingActivity.this).load(path).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
+                Glide
+                        .with(SettingActivity.this)
+                        .load(path)
+                        .asBitmap()
+                        .centerCrop()
+                        .error(R.mipmap.img_user)
+                        .dontAnimate()
+                        .listener(new RequestListener<String, Bitmap>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
+                                BannerLog.d("b_cc", "图片加载失败");
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                BannerLog.d("b_cc", "图片加载成功");
+                                return false;
+                            }
+                        })
+                        .into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable;
@@ -386,7 +408,27 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 BannerLog.d("b_cc", "七牛云的k" + key);
                 upImgUrl = BannerConstants.BASE_IMAGE_URL + key;
                 // 4、当拍照或从图库选取图片成功后回调
-                Glide.with(SettingActivity.this).load(upImgUrl).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
+                Glide
+                        .with(SettingActivity.this)
+                        .load(upImgUrl)
+                        .asBitmap()
+                        .centerCrop()
+                        .error(R.mipmap.img_user)
+                        .dontAnimate()
+                        .listener(new RequestListener<String, Bitmap>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
+                                BannerLog.d("b_cc", "图片加载失败");
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                BannerLog.d("b_cc", "图片加载成功");
+                                return false;
+                            }
+                        })
+                        .into(new BitmapImageViewTarget(img_userimg) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable;

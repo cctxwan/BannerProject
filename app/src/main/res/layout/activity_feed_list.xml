@@ -5,10 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F1F2F7"
-    android:orientation="vertical"
     android:paddingLeft="@dimen/dimen_25_dip"
     android:paddingRight="@dimen/dimen_25_dip"
-    android:gravity="center_horizontal"
     tools:context=".activity.AboutActivity">
 
     <RelativeLayout
@@ -47,9 +45,8 @@
         android:id="@+id/feedlist_lin_nodata"
         android:layout_below="@+id/rel_adfss"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dimen_72_dip"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
