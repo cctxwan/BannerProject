@@ -233,7 +233,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
                         txt_orderdetail_bfl.setText(response.data.getAvgPlay() + "次");
                     }else{
                         //日均曝光量
-                        txt_orderdetail_bgl.setText("0.0次");
+                        txt_orderdetail_bgl.setText("0次");
                     }
 
                     if(response.data.getAvgNumber() > 0){
@@ -241,7 +241,7 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
                         txt_orderdetail_bgl.setText(response.data.getAvgNumber() + "次");
                     }else{
                         //日均曝光量
-                        txt_orderdetail_bgl.setText("0.0次");
+                        txt_orderdetail_bgl.setText("0次");
                     }
                 }
 

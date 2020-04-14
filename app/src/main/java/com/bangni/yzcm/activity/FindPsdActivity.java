@@ -89,6 +89,7 @@ public class FindPsdActivity extends BannerActivity implements View.OnClickListe
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
         initView();
+        addActivity(this);
     }
 
     /**

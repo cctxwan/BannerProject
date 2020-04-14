@@ -2,6 +2,8 @@ package com.bangni.yzcm.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -84,6 +86,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @BindView(R.id.txt_login_forgetPsd)
     TextView txt_login_forgetPsd;
 
+    /**
+     * 重写getResources()方法，让APP的字体不受系统设置字体大小影响
+     */
+    @Override
+    public Resources getResources() {
+        Resources resources = super.getResources();
+        if (resources != null && resources.getConfiguration().fontScale != 1) {
+            Configuration configuration = resources.getConfiguration();
+            configuration.fontScale = 1;
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        }
+        return resources;
+    }
 
     //是否是账号登录
     private boolean ISUSERLOGIN = true;
@@ -226,6 +241,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 //存入token
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
+                //清空img和name
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg("");
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setNickName("");
 
                 //去主界面
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -422,6 +440,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 //存入token
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setToken(response.data.getToken());
+                //清空img和name
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg("");
+                new BannerPreferenceStorage(BannerApplication.getInstance()).setNickName("");
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
@@ -514,7 +535,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             } else {
                 // 仿返回键退出界面,但不销毁，程序仍在后台运行
 //                moveTaskToBack(false); // 关键的一行代码
-                System.exit(0);
+//                System.exit(0);
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
             return true;
         }

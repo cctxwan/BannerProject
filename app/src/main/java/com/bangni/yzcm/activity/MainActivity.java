@@ -1,5 +1,7 @@
 package com.bangni.yzcm.activity;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.fragment.OrderFragment;
 import com.bangni.yzcm.fragment.InfoFragment;
 import com.bangni.yzcm.fragment.BroadCastFragment;
@@ -25,6 +28,19 @@ import butterknife.OnClick;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    /**
+     * 重写getResources()方法，让APP的字体不受系统设置字体大小影响
+     */
+    @Override
+    public Resources getResources() {
+        Resources resources = super.getResources();
+        if (resources != null && resources.getConfiguration().fontScale != 1) {
+            Configuration configuration = resources.getConfiguration();
+            configuration.fontScale = 1;
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        }
+        return resources;
+    }
 
     //获取底部导航栏的ImageView
     @BindView(R.id.img_one_bottom)
@@ -62,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
 
         initFrag();
         // 设置默认的Fragment
@@ -187,11 +202,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 // 仿返回键退出界面,但不销毁，程序仍在后台运行
 //                moveTaskToBack(false); // 关键的一行代码
-                System.exit(0);
+//                System.exit(0);
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

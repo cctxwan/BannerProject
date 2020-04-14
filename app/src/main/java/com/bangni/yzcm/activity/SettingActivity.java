@@ -189,6 +189,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             public void onClick(Dialog dialog, String content) {
                 if(content.equals("yes_hc")){
                     dialog.dismiss();
+                    finishAllActivity();
                     new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                     startActivity(new Intent(mContext, LoginActivity.class));
                     //退出登录

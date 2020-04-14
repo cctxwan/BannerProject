@@ -35,7 +35,7 @@ public class CommunityActivity extends BannerActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
         ButterKnife.bind(this);
-
+        addActivity(this);
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
         initView();

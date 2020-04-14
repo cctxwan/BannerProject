@@ -82,7 +82,7 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
-
+        addActivity(this);
         initView();
     }
 
@@ -293,13 +293,13 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
 
         //新密码
         if(TextUtils.isEmpty(et_newpsd.getText().toString().trim()) || et_newpsd.getText().toString().trim().length() < 6){
-            ToastUtils.warning(mContext, "请输入6-20位大小写字母和数字组合");
+            BannerUtils.showImageToasPsdError(mContext, "请输入6-20位大小写字母和数字组合");
             return;
         }
 
         //确认密码
         if(TextUtils.isEmpty(et_newpsd_r.getText().toString().trim()) || et_newpsd_r.getText().toString().trim().length() < 6){
-            ToastUtils.warning(mContext, "请输入6-20位大小写字母和数字组合");
+            BannerUtils.showImageToasPsdError(mContext, "请输入6-20位大小写字母和数字组合");
             return;
         }
 
@@ -341,6 +341,7 @@ public class ChangePsdActivity extends BannerActivity implements View.OnClickLis
 
                 @Override
                 public void onNext(BannerBaseResponse<ChangepsdModel> response) {
+                    finishAllActivity();
                     new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                     startActivity(new Intent(mContext, LoginActivity.class));
                 }

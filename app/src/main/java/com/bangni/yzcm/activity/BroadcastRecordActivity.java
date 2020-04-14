@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.adapter.RecordAdapter;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
@@ -26,9 +27,8 @@ import butterknife.OnClick;
 
 /**
  * 监播记录界面
- * (第一版没有这个界面)
  */
-public class BroadcastRecordActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class BroadcastRecordActivity extends BannerActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.rv_record_list)
     RecyclerView rv_record_list;
@@ -50,6 +50,7 @@ public class BroadcastRecordActivity extends AppCompatActivity implements View.O
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
         initView();
+        addActivity(this);
     }
 
     private void initView() {

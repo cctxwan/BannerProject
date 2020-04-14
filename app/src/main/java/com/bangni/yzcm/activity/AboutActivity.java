@@ -22,6 +22,7 @@ public class AboutActivity extends BannerActivity implements View.OnClickListene
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
+        addActivity(this);
     }
 
     @OnClick({R.id.img_about_back})

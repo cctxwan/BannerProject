@@ -73,7 +73,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
-
+        addActivity(this);
         initView();
     }
 
@@ -244,6 +244,7 @@ public class ChangeAccountActivity extends BannerActivity implements View.OnClic
                                         public void run() {
                                             try {
                                                 this.sleep(2000);
+                                                finishAllActivity();
                                                 startActivity(new Intent(mContext, LoginActivity.class));
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();

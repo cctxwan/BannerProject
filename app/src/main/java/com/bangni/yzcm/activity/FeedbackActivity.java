@@ -54,7 +54,7 @@ public class FeedbackActivity extends BannerActivity implements View.OnClickList
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
-
+        addActivity(this);
         initView();
     }
 

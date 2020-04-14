@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
+import com.bangni.yzcm.network.util.BannerConstants;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 
 /**
@@ -30,6 +31,8 @@ public class AgreementActivity extends BannerActivity implements View.OnClickLis
         setContentView(R.layout.activity_agreement);
         ButterKnife.bind(this);
 
+        addActivity(this);
+
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
 
@@ -41,7 +44,7 @@ public class AgreementActivity extends BannerActivity implements View.OnClickLis
         web_agreement.getSettings().setDisplayZoomControls(false);
 
         web_agreement.getSettings().setJavaScriptEnabled(true);
-        web_agreement.loadUrl("http://192.168.0.188:8888/img/agreement.html");
+        web_agreement.loadUrl(BannerConstants.BASE_URL + "/img/agreement.html");
 
         web_agreement.setWebChromeClient(new WebChromeClient() {});
         web_agreement.setWebViewClient(new WebViewClient() {

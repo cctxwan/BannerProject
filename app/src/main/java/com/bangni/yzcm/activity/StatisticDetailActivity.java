@@ -105,6 +105,8 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
 
+        addActivity(this);
+
         initView();
         //设置默认折线图数据
         initAvgPlayData();

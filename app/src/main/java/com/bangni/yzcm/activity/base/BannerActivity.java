@@ -3,6 +3,8 @@ package com.bangni.yzcm.activity.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,7 +14,9 @@ import android.view.inputmethod.InputMethodManager;
 import com.bangni.yzcm.utils.BannerUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import androidx.annotation.Nullable;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -37,6 +41,9 @@ public class BannerActivity extends SwipeBackActivity {
     /** 是否允许滑动退出，不允许 **/
     private boolean isSwback = false;
 
+    //
+    private Set<Activity> allActivities = new HashSet<>();
+
     /**
      * 设置是否为滑动退出
      * @param Swback
@@ -57,11 +64,9 @@ public class BannerActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         addActivity(mContext);
-
-
 
 
         //是否全屏
@@ -84,6 +89,20 @@ public class BannerActivity extends SwipeBackActivity {
 
         sdPath = getExternalFilesDir(null).toString() + "/";
 
+    }
+
+    /**
+     * 重写getResources()方法，让APP的字体不受系统设置字体大小影响
+     */
+    @Override
+    public Resources getResources() {
+        Resources resources = super.getResources();
+        if (resources != null && resources.getConfiguration().fontScale != 1) {
+            Configuration configuration = resources.getConfiguration();
+            configuration.fontScale = 1;
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        }
+        return resources;
     }
 
     /**
@@ -139,7 +158,10 @@ public class BannerActivity extends SwipeBackActivity {
      * @param activity
      */
     protected void addActivity(Activity activity) {
-        allActivity.add(activity);
+        if (allActivities == null) {
+            allActivities = new HashSet<Activity>();
+        }
+        allActivities.add(activity);
     }
 
     /**
@@ -147,39 +169,22 @@ public class BannerActivity extends SwipeBackActivity {
      * @param activity
      */
     protected void removeActivity(final Activity activity) {
-        if (getCurrentActivity() == activity) {
-            setCurrentActivity(null);
+        if (allActivities != null) {
+            allActivities.remove(activity);
         }
-        allActivity.remove(activity);
-    }
-
-    /**
-     * 当前选中的activity
-     * @return
-     */
-    public Activity getCurrentActivity() {
-        Activity currentActivity = null;
-        if (sCurrentActivityWeakRef != null) {
-            currentActivity = sCurrentActivityWeakRef.get();
-        }
-        return currentActivity;
-    }
-
-    //当前选中
-    public void setCurrentActivity(Activity activity) {
-        sCurrentActivityWeakRef = new WeakReference<Activity>(activity);
     }
 
     /**
      * 移除所有的activity
      */
     public void finishAllActivity() {
-        for (Activity activity : allActivity) {
-            if (activity != null) {
-                activity.finish();
+        if (allActivities != null) {
+            synchronized (allActivities) {
+                for (Activity act : allActivities) {
+                    act.finish();
+                }
             }
         }
-        allActivity.clear();
     }
 
     /**
@@ -202,23 +207,6 @@ public class BannerActivity extends SwipeBackActivity {
             intent.putExtras(bundle);
         }
         startActivity(intent);
-    }
-
-    /**
-     * 含有Bundle通过Class打开编辑界面
-     *
-     * @param cls
-     * @param bundle
-     * @param requestCode
-     */
-    public void startActivityForResult(Class<?> cls, Bundle bundle,
-                                       int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(this, cls);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivityForResult(intent, requestCode);
     }
 
 
