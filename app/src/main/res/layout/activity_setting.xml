@@ -120,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60_dip"
             android:layout_marginTop="@dimen/dimen_5_dip"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <TextView
