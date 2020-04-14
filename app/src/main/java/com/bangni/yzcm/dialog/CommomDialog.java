@@ -222,6 +222,9 @@ public class CommomDialog extends Dialog implements View.OnClickListener{
             wheelview.setCyclic(false);
             wheelview.setItemsVisibleCount(3);
             wheelview.setLineSpacingMultiplier(2.5f);
+            wheelview.setVerticalScrollbarPosition(1);
+
+            BannerLog.d("b_cc", "默认选择的postion=" + wheelview.getInitPosition());
 
             wheelview.setAdapter(new ArrayWheelAdapter(items));
             wheelview.setOnItemSelectedListener(new OnItemSelectedListener() {

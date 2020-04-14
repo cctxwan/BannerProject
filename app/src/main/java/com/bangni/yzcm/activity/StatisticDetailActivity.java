@@ -151,11 +151,11 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 
                         communityNameLists = response.data;
 
-                        if(communityNameLists.size() > 0){
-                            if(txt_static_communityname.getText().toString().trim().equals("全部")){
-                                txt_static_communityname.setText(communityNameLists.get(0).getCommunityName());
-                            }
-                        }
+//                        if(communityNameLists.size() > 0){
+//                            if(txt_static_communityname.getText().toString().trim().equals("全部")){
+//                                txt_static_communityname.setText(communityNameLists.get(0).getCommunityName());
+//                            }
+//                        }
 
                         for (int i = 0; i < communityNameLists.size(); i ++){
                             parmsCommunitys.add(communityNameLists.get(i).getCommunityName());
@@ -368,30 +368,30 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 
         //默认为0.0f
         List<Float> dataFloat = new ArrayList<>();
-        for (int i = 0; i < 24; i++) {
-            if(i == 2){
-                dataFloat.add(24.0f);
-            }else if (i == 4){
-                dataFloat.add(36.0f);
-            }else if (i == 6){
-                dataFloat.add(17.0f);
-            }else if (i == 8){
-                dataFloat.add(50.0f);
-            }else if (i == 10){
-                dataFloat.add(82.0f);
-            }else if (i == 12){
-                dataFloat.add(12.0f);
-            }else if (i == 19){
-                dataFloat.add(23.0f);
-            }else if (i == 21){
-                dataFloat.add(20.0f);
-            }else if (i == 24){
-                dataFloat.add(40.0f);
-            }else{
+        for (int i = 0; i < 100; i++) {
+//            if(i == 2){
+//                dataFloat.add(24.0f);
+//            }else if (i == 4){
+//                dataFloat.add(36.0f);
+//            }else if (i == 6){
+//                dataFloat.add(17.0f);
+//            }else if (i == 8){
+//                dataFloat.add(50.0f);
+//            }else if (i == 10){
+//                dataFloat.add(82.0f);
+//            }else if (i == 12){
+//                dataFloat.add(12.0f);
+//            }else if (i == 19){
+//                dataFloat.add(23.0f);
+//            }else if (i == 21){
+//                dataFloat.add(20.0f);
+//            }else if (i == 24){
+//                dataFloat.add(40.0f);
+//            }else{
                 dataFloat.add(0.0f);
-            }
+//            }
         }
-        setData(24, dataFloat);
+        setData(100, dataFloat);
     }
 
 
@@ -512,19 +512,22 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 
 
         List<Float> dataFloat1 = new ArrayList<>();
-        dataFloat1.add((float) 12);
-        dataFloat1.add((float) 32);
-        dataFloat1.add((float) 45);
-        dataFloat1.add((float) 12);
-        dataFloat1.add((float) 81);
-        dataFloat1.add((float) 21);
-        dataFloat1.add((float) 15);
-        dataFloat1.add((float) 0);
-        dataFloat1.add((float) 0);
-        dataFloat1.add((float) 54);
-        dataFloat1.add((float) 12);
-        dataFloat1.add((float) 2);
-        initOneChat(12, dataFloat1);
+//        dataFloat1.add((float) 12);
+//        dataFloat1.add((float) 32);
+//        dataFloat1.add((float) 45);
+//        dataFloat1.add((float) 12);
+//        dataFloat1.add((float) 81);
+//        dataFloat1.add((float) 21);
+//        dataFloat1.add((float) 15);
+//        dataFloat1.add((float) 0);
+//        dataFloat1.add((float) 0);
+//        dataFloat1.add((float) 54);
+//        dataFloat1.add((float) 12);
+//        dataFloat1.add((float) 2);
+        for (int i = 0; i < 100; i ++){
+            dataFloat1.add((float) 0);
+        }
+        initOneChat(100, dataFloat1);
     }
 
     /**

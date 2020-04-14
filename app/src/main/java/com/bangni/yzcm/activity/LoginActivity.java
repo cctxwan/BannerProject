@@ -451,7 +451,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onError(String msg) {
                 if(msg.equals("账号不存在")){
-                    BannerUtils.showToLoginNoAccount(LoginActivity.this, "该手机号码暂未注册任何用户");
+                    BannerUtils.showToLoginNoAccount(LoginActivity.this, "该手机号码暂未注册任何用户", 1500);
                 }else{
                     ToastUtils.error(LoginActivity.this, msg);
                 }

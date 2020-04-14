@@ -32,28 +32,25 @@
         android:layout_width="@dimen/dimen_462_dip"
         android:layout_height="@dimen/dimen_229_dip"
         android:layout_marginTop="@dimen/dimen_132_dip"
-        android:background="@mipmap/order_bg"
         android:layout_marginLeft="@dimen/dimen_8_dip"
         android:layout_marginRight="@dimen/dimen_8_dip"
         android:orientation="horizontal">
 
+        <com.youth.banner.Banner
+            xmlns:banner="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            banner:indicator_selected_color="#0048E2"
+            banner:indicator_normal_color="@color/grey"/>
 
-            <com.youth.banner.Banner
-                xmlns:banner="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                banner:indicator_selected_color="#0048E2"
-                banner:indicator_normal_color="@color/grey"/>
-
-            <com.youth.banner.indicator.RoundLinesIndicator
-                android:id="@+id/indicator"
-                android:layout_below="@+id/banner"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"/>
-
+        <com.youth.banner.indicator.RoundLinesIndicator
+            android:id="@+id/indicator"
+            android:layout_below="@+id/banner"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
