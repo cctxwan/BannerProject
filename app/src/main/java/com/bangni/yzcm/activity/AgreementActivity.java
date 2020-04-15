@@ -31,8 +31,6 @@ public class AgreementActivity extends BannerActivity implements View.OnClickLis
         setContentView(R.layout.activity_agreement);
         ButterKnife.bind(this);
 
-        addActivity(this);
-
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
 

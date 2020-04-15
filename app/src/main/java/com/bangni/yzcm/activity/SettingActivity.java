@@ -102,8 +102,6 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        addActivity(this);
     }
 
     private void initView() throws Exception {
@@ -113,15 +111,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
         //给头像、昵称和账号赋值
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
-            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(new BitmapImageViewTarget(img_userimg) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable;
-                    circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    img_userimg.setImageDrawable(circularBitmapDrawable);
-                }
-            });
+            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(img_userimg);
         }
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){
             txt_set_nickname.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
@@ -163,15 +153,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                                 return false;
                             }
                         })
-                        .into(new BitmapImageViewTarget(img_userimg) {
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable;
-                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        img_userimg.setImageDrawable(circularBitmapDrawable);
-                    }
-                });
+                        .into(img_userimg);
 
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(path.toString());
             }
@@ -211,10 +193,10 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
             public void onClick(Dialog dialog, String content) {
                 if(content.equals("yes_hc")){
                     dialog.dismiss();
-                    finishAllActivity();
                     new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
                     startActivity(new Intent(mContext, LoginActivity.class));
                     //退出登录
+                    finishAllActivity();
                 }else if(content.equals("no_hc")){
                     dialog.dismiss();
                 }
@@ -428,15 +410,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                                 return false;
                             }
                         })
-                        .into(new BitmapImageViewTarget(img_userimg) {
-                    @Override
-                    protected void setResource(Bitmap resource) {
-                        RoundedBitmapDrawable circularBitmapDrawable;
-                        circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                        circularBitmapDrawable.setCircular(true);
-                        img_userimg.setImageDrawable(circularBitmapDrawable);
-                    }
-                });
+                        .into(img_userimg);
                 userRaceimgModify();
             }
         }, null);

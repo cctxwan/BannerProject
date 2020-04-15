@@ -82,6 +82,9 @@ public class OrderFragment extends Fragment {
     @BindView(R.id.indicator)
     RoundLinesIndicator indicator;
 
+    @BindView(R.id.lin_banner)
+    LinearLayout lin_banner;
+
     /** 自定义刷新和加载的标识，默认为false */
     boolean isRef, isLoad = false;
 
@@ -190,6 +193,7 @@ public class OrderFragment extends Fragment {
                     if(response.data != null){
                         OrderBannerModel orderBannerModel = response.data;
                         if(orderBannerModel.getList().size() > 0){
+                            banner.setVisibility(View.VISIBLE);
                             bannerLists = new ArrayList<>(orderBannerModel.getList());
                             banner.setAdapter(new MultipleTypesAdapter(getActivity(), bannerLists));
                             banner.setIndicator(new RectangleIndicator(getActivity()));
@@ -208,6 +212,9 @@ public class OrderFragment extends Fragment {
                             banner.setBannerRound(BannerUtils.dp2px(5));
 
                         }else{
+                            lin_banner.setBackgroundResource(R.mipmap.order_bg);
+                            banner.setVisibility(View.GONE);
+
                             order_swipeRefreshLayout.finishRefresh(true);
                             order_swipeRefreshLayout.finishLoadMore(true);
                         }

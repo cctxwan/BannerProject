@@ -32,17 +32,17 @@ public class BannerActivity extends SwipeBackActivity {
     public Activity mContext = BannerActivity.this;
 
     /** 管理activity */
-    private List<Activity> allActivity = new ArrayList<>();
-    private WeakReference<Activity> sCurrentActivityWeakRef;
+    public List<Activity> allActivity = new ArrayList<>();
+    public WeakReference<Activity> sCurrentActivityWeakRef;
 
     /** 是否允许全屏，默认全屏 **/
-    private boolean mAllowFullScreen = false;
+    public boolean mAllowFullScreen = false;
 
     /** 是否允许滑动退出，不允许 **/
-    private boolean isSwback = false;
+    public boolean isSwback = true;
 
     //
-    private Set<Activity> allActivities = new HashSet<>();
+    public Set<Activity> allActivities = new HashSet<>();
 
     /**
      * 设置是否为滑动退出
@@ -50,6 +50,13 @@ public class BannerActivity extends SwipeBackActivity {
      */
     public void setSwback(boolean Swback) {
         this.isSwback = Swback;
+        // 可以调用该方法，设置是否允许滑动退出
+        mSwipeBackLayout = getSwipeBackLayout();
+        getSwipeBackLayout().setEnableGesture(isSwback);//关闭右滑返回上一级
+        // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
+        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        // 滑动退出的效果只能从边界滑动才有效果，如果要扩大touch的范围，可以调用这个方法
+        mSwipeBackLayout.setEdgeSize(200);
     }
 
     /**
@@ -66,6 +73,7 @@ public class BannerActivity extends SwipeBackActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
         addActivity(mContext);
 
 
@@ -77,15 +85,13 @@ public class BannerActivity extends SwipeBackActivity {
         }
 
 
-        if(isSwback){
-            // 可以调用该方法，设置是否允许滑动退出
-            setSwipeBackEnable(isSwback);
-            mSwipeBackLayout = getSwipeBackLayout();
-            // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
-            mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
-            // 滑动退出的效果只能从边界滑动才有效果，如果要扩大touch的范围，可以调用这个方法
-            mSwipeBackLayout.setEdgeSize(200);
-        }
+        // 可以调用该方法，设置是否允许滑动退出
+        mSwipeBackLayout = getSwipeBackLayout();
+        getSwipeBackLayout().setEnableGesture(isSwback);//关闭右滑返回上一级
+        // 设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
+        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        // 滑动退出的效果只能从边界滑动才有效果，如果要扩大touch的范围，可以调用这个方法
+        mSwipeBackLayout.setEdgeSize(200);
 
         sdPath = getExternalFilesDir(null).toString() + "/";
 
@@ -216,4 +222,5 @@ public class BannerActivity extends SwipeBackActivity {
         //移除activity
         removeActivity(this);
     }
+
 }

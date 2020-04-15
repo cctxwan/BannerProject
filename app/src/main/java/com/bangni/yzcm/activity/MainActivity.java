@@ -14,6 +14,8 @@ import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.fragment.OrderFragment;
 import com.bangni.yzcm.fragment.InfoFragment;
 import com.bangni.yzcm.fragment.BroadCastFragment;
+import com.bangni.yzcm.utils.BannerLog;
+
 import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,7 @@ import butterknife.OnClick;
 /**
  * 主界面
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BannerActivity implements View.OnClickListener {
 
     /**
      * 重写getResources()方法，让APP的字体不受系统设置字体大小影响
@@ -83,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 设置默认的Fragment
         defaultFragment();
         SelectColor(0);
+
+        //关闭侧滑
+        setSwback(false);
     }
 
     private void initFrag() {
@@ -202,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 // 仿返回键退出界面,但不销毁，程序仍在后台运行
 //                moveTaskToBack(false); // 关键的一行代码
-//                System.exit(0);
+                finishAllActivity();
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
             return true;
@@ -213,6 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        finish();
+        BannerLog.d("b_cc", "onDestroy");
+//        finishAllActivity();
     }
+
 }

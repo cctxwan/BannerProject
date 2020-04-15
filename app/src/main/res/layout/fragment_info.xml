@@ -34,7 +34,7 @@
         android:layout_marginLeft="@dimen/dimen_15_dip"
         android:layout_marginRight="@dimen/dimen_15_dip"
         android:orientation="horizontal">
-        
+
         <com.bangni.yzcm.view.RoundImageView
             android:id="@+id/img_info_path"
             android:layout_width="@dimen/dimen_64_dip"

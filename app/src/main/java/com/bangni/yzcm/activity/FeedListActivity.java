@@ -78,7 +78,6 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
         StatusBarUtil.setImmersiveStatusBar(this, true);
         
         initView();
-        addActivity(this);
         getfeedlistsHandler.post(getDatas);
     }
 

@@ -1,6 +1,8 @@
 package com.bangni.yzcm.activity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.bean.UserGetCodeLoginBean;
@@ -54,7 +57,7 @@ import okhttp3.RequestBody;
 /**
  * 登录界面
  */
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends BannerActivity implements View.OnClickListener {
 
     @BindView(R.id.et_username)
     EditText et_username;
@@ -86,20 +89,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @BindView(R.id.txt_login_forgetPsd)
     TextView txt_login_forgetPsd;
 
-    /**
-     * 重写getResources()方法，让APP的字体不受系统设置字体大小影响
-     */
-    @Override
-    public Resources getResources() {
-        Resources resources = super.getResources();
-        if (resources != null && resources.getConfiguration().fontScale != 1) {
-            Configuration configuration = resources.getConfiguration();
-            configuration.fontScale = 1;
-            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-        }
-        return resources;
-    }
-
     //是否是账号登录
     private boolean ISUSERLOGIN = true;
 
@@ -117,7 +106,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //关闭侧滑
+        setSwback(false);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
@@ -535,12 +525,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             } else {
                 // 仿返回键退出界面,但不销毁，程序仍在后台运行
 //                moveTaskToBack(false); // 关键的一行代码
-//                System.exit(0);
+                finishAllActivity();
                 android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+                //退出整个APP，记得加权限
+                ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                manager.restartPackage(getPackageName());
             }
             return true;
         }
-        return super.onKeyDown(keyCode, event);
+        return false;
     }
 
 }

@@ -132,8 +132,6 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
         StatusBarUtil.setImmersiveStatusBar(this, true);
 
         initView();
-
-        addActivity(this);
     }
 
     Runnable getCommunityDatas = new Runnable() {

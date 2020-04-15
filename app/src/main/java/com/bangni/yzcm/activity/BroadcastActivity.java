@@ -39,7 +39,6 @@ public class BroadcastActivity extends BannerActivity implements View.OnClickLis
 
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
-        addActivity(this);
         initView();
     }
 

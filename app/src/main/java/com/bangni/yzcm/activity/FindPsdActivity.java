@@ -9,6 +9,7 @@ import okhttp3.RequestBody;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -89,7 +90,6 @@ public class FindPsdActivity extends BannerActivity implements View.OnClickListe
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
         initView();
-        addActivity(this);
     }
 
     /**
@@ -150,6 +150,9 @@ public class FindPsdActivity extends BannerActivity implements View.OnClickListe
                 }
             }
         });
+
+        //加粗
+        txt_findpsd_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
     }
 
     @OnClick({R.id.img_findpsd_lookpsd, R.id.txt_findpsd_getcode, R.id.txt_findpsd, R.id.img_findpsd_back})

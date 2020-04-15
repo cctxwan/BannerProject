@@ -50,7 +50,6 @@ public class BroadcastRecordActivity extends BannerActivity implements View.OnCl
         //修改状态栏字体颜色
         StatusBarUtil.setImmersiveStatusBar(this, true);
         initView();
-        addActivity(this);
     }
 
     private void initView() {

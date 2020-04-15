@@ -15,7 +15,10 @@ public class BannerConstants {
 //    public static final String BASE_URL = "http://192.168.0.188:8888";
 
     //远程访问
-    public static final String BASE_URL = "http://adapi.81dd.cn";
+//    public static final String BASE_URL = "http://adapi.81dd.cn";
+
+    //正式环境
+    public static final String BASE_URL = "https://yzcm.81dd.cn";
 
     public static final String BASE_IMAGE_URL = "http://images.81dd.cn/";//图片地址
 

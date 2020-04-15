@@ -17,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.utils.BannerLog;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ import kr.co.namee.permissiongen.PermissionSuccess;
 /**
  * 启动页面
  */
-public class GuiActivity extends Activity {
+public class GuiActivity extends BannerActivity {
 
     @BindView(R.id.iv_start)
     ImageView img_guidance_close;
@@ -39,8 +40,8 @@ public class GuiActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -50,6 +51,8 @@ public class GuiActivity extends Activity {
 
         ButterKnife.bind(this);
 
+        //关闭侧滑
+        setSwback(false);
 
         //请求打开权限
         PermissionGen.with(GuiActivity.this)

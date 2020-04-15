@@ -142,15 +142,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                                     return false;
                                 }
                             })
-                            .into(new BitmapImageViewTarget(img_info_path) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            RoundedBitmapDrawable circularBitmapDrawable;
-                            circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                            circularBitmapDrawable.setCircular(true);
-                            img_info_path.setImageDrawable(circularBitmapDrawable);
-                        }
-                    });
+                            .into(img_info_path);
                 }
                 if(!TextUtils.isEmpty(infoFragmentBean.getNickname())){
                     txt_info_name.setText(infoFragmentBean.getNickname());
@@ -234,15 +226,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                             return false;
                         }
                     })
-                    .into(new BitmapImageViewTarget(img_info_path) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable;
-                    circularBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    img_info_path.setImageDrawable(circularBitmapDrawable);
-                }
-            });
+                    .into(img_info_path);
         }
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){
             txt_info_name.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
