@@ -99,6 +99,9 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     @BindView(R.id.lin_gpuresult)
     LinearLayout lin_gpuresult;
 
+    @BindView(R.id.orderdetail_txt_detail)
+    TextView orderdetail_txt_detail;
+
     //时间控件
     private TimePickerView pvTime;
 
@@ -338,6 +341,10 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
     };
 
     private void initView() {
+
+//        if(!BannerUtils.isApkInDebug(mContext, getPackageName())){
+//            orderdetail_txt_detail.setVisibility(View.GONE);
+//        }
 
         //接收传值
         Intent intent = getIntent();

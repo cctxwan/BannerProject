@@ -36,13 +36,10 @@ import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.indicator.RoundLinesIndicator;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.util.BannerUtils;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -93,6 +90,9 @@ public class OrderFragment extends Fragment {
 
     private int pageNo = 1, pageSize = 5, total = 0;//当前页数、数据总数量
 
+    /** 刷新方式 */
+    public boolean isRefreshHead = false;
+
     //轮播图集合
     List<OrderBannerModel.ListBean> bannerLists;
 
@@ -101,6 +101,7 @@ public class OrderFragment extends Fragment {
         super.onAttach(context);
         BannerLog.d("b_cc", "onAttach()");
         orderHandler.post(getBannerLists);
+        isRefreshHead = true;
     }
 
     @Nullable
@@ -132,10 +133,14 @@ public class OrderFragment extends Fragment {
         //最大显示下拉高度/Header标准高度
         order_swipeRefreshLayout.setHeaderMaxDragRate(2);
 
+        order_swipeRefreshLayout.setDisableContentWhenRefresh(true);//是否在刷新的时候禁止列表的操作
+        order_swipeRefreshLayout.setDisableContentWhenLoading(true);//是否在加载的时候禁止列表的操作
+
         order_swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 BannerLog.d("b_cc", "下拉刷新更多");
+                isRefreshHead = false;
                 banner.stop();
                 order_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(false);
                 pageNo = 1;
@@ -169,6 +174,7 @@ public class OrderFragment extends Fragment {
 
         if(hidden){
             BannerLog.d("b_cc", "离开了订单界面");
+            isRefreshHead = false;
         }else{
             BannerLog.d("b_cc", "进入了订单界面");
         }
@@ -214,13 +220,7 @@ public class OrderFragment extends Fragment {
                         }else{
                             lin_banner.setBackgroundResource(R.mipmap.order_bg);
                             banner.setVisibility(View.GONE);
-
-                            order_swipeRefreshLayout.finishRefresh(true);
-                            order_swipeRefreshLayout.finishLoadMore(true);
                         }
-                    }else{
-                        order_swipeRefreshLayout.finishRefresh(true);
-                        order_swipeRefreshLayout.finishLoadMore(true);
                     }
                 }
 
@@ -232,7 +232,7 @@ public class OrderFragment extends Fragment {
                     order_swipeRefreshLayout.finishLoadMore(true);
                 }
             };
-            BannerRetrofitUtil.getInstance().getBannerLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderBannerModel>>(mListener, getActivity(), true));
+            BannerRetrofitUtil.getInstance().getBannerLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderBannerModel>>(mListener, getActivity(), isRefreshHead));
 
         }
     };
@@ -308,11 +308,11 @@ public class OrderFragment extends Fragment {
                         rv_order_list.setVisibility(View.GONE);
                         order_lin_nodata.setVisibility(View.VISIBLE);
                     }else{
-                        order_lin_nodata.setVisibility(View.GONE);
+                        order_lin_nodata.setVisibility(View.VISIBLE);
                     }
                 }
             };
-            BannerRetrofitUtil.getInstance().userOrderLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderInfos>>(mListener, getActivity(), true));
+            BannerRetrofitUtil.getInstance().userOrderLists(body, new BannerProgressSubscriber<BannerBaseResponse<OrderInfos>>(mListener, getActivity(), isRefreshHead));
 
         }
     };

@@ -62,6 +62,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 统计详情
@@ -186,17 +187,24 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                 @Override
                 public void onNext(BannerBaseResponse<StatisitcsInfos> response) {
                     if(response.data != null){
-                        if(!TextUtils.isEmpty(response.data.getCommunityName())){
-                            txt_static_communityname.setText(response.data.getCommunityName());
+                        StatisitcsInfos infos = response.data;
+                        if(!TextUtils.isEmpty(infos.getCommunityName())){
+                            txt_static_communityname.setText(infos.getCommunityName());
                         }
 
-                        if(!TextUtils.isEmpty(response.data.getPointNum())){
-                            txt_static_communitynamedw.setText(response.data.getPointNum() + "个");
+                        if(!TextUtils.isEmpty(infos.getPointNum())){
+                            txt_static_communitynamedw.setText(infos.getPointNum() + "个");
                         }
 
-                        if(response.data.getCumulativeDischarge() != null){
+                        if(infos.getCumulativeDischarge() != null){
                             List<Float> dataFloat1 = new ArrayList<>();
-                            Map<String, Integer> map1 = new HashMap<>();
+                            Map<String, Integer> map1 = infos.getCumulativeDischarge();
+                            for (int i = 0; i < map1.size(); i++) {
+                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
+                            }
+//                            initOneChat(dataFloat1.size(), dataFloat1);
+
+
 //                            map1.put("1", response.data.getCumulativeDischarge().get_$11());
 //                            map1.put("2", response.data.getElevatorExceptionStatistics().get_$2());
 //                            map1.put("3", response.data.getElevatorExceptionStatistics().get_$3());
@@ -221,23 +229,31 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 //                            initOneChat(12, dataFloat1);
                         }else{
                             //默认为0.0f
-                            List<Float> dataFloat = new ArrayList<>();
-                            for (int i = 0; i < 24; i++) {
-                                dataFloat.add(0.0f);
-                            }
-                            setData(24, dataFloat);
+                            BannerLog.d("b_cc", "折线图为空");
                         }
 
-                        if(!TextUtils.isEmpty(response.data.getCumulativePlay().toString())){
+                        if(infos.getCumulativePlay() != null){
                             //给柱状图赋值
+                            List<String> keyName = new ArrayList<>();
+                            List<Float> dataFloat1 = new ArrayList<>();
+                            Map<String, Integer> map1 = infos.getCumulativePlay();
+                            Set<String> keys = map1.keySet();
+                            for(String key : keys){
+                                System.out.println("key值：" + key + " value值：" + map1.get(key));
+                                keyName.add(key);
+                                dataFloat1.add((float)map1.get(key));
+                            }
 
+
+//                            for (int i = 0; i < map1.size(); i++) {
+//                                BannerLog.d("b_cc", "map1.get(String.valueOf(i)=" + map1.get(i).toString());
+//                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
+//                            }
+                            initOneChat(keyName, dataFloat1);
 
                         }else{
-                            List<Float> dataFloat1 = new ArrayList<>();
-                            for (int i = 0; i < 12; i++) {
-                                dataFloat1.add((float) (i * 1) * 12-i);
-                            }
-                            initOneChat(12, dataFloat1);
+                            //默认为0.0f
+                            BannerLog.d("b_cc", "柱状图为空");
                         }
                     }
                 }
@@ -525,7 +541,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         for (int i = 0; i < 100; i ++){
             dataFloat1.add((float) 0);
         }
-        initOneChat(100, dataFloat1);
+//        initOneChat(dataFloat1, dataFloat1);
     }
 
     /**
@@ -533,26 +549,30 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
      * @param count
      * @param range
      */
-    private void initOneChat(final int count, List<Float> range) {
+    private void initOneChat(List<String> count, List<Float> range) {
         ArrayList<BarEntry> yValues = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            yValues.add(new BarEntry(i, range.get(i)));
+        for (int i = 0; i < count.size(); i++) {
+            yValues.add(new BarEntry(count.size(), range.get(i)));
         }
         // y 轴数据集
         final BarDataSet barDataSet = new BarDataSet(yValues, "柱状图");
         ////设置柱子的颜色
         barDataSet.setColor(Color.parseColor("#1D65FF"));
+        barDataSet.setDrawValues(true);//显示柱子当前数值
+        barDataSet.setValueTextColor(getResources().getColor(R.color.aaaa));
+        bf_chart.setScaleEnabled(false);
+        bf_chart.setTouchEnabled(false);// 设置是否可以触摸
 
 
-        barDataSet.setValueFormatter(new IValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-                return (int) value + "";
-            }
-        });
+//        barDataSet.setValueFormatter(new IValueFormatter() {
+//            @Override
+//            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+//
+//            }
+//        });
 
         BarData mBarData = new BarData(barDataSet);
-        mBarData.setDrawValues(false);//显示柱子当前数值
+        mBarData.setDrawValues(true);//显示柱子当前数值
 
         float ratio = (float) range.size()/(float) 7;
         //显示的时候是按照多大的比率缩放显示,1f表示不放大缩小
@@ -561,8 +581,8 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         bf_chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                for (int j = 1; j < count; j ++){
-                }
+//                for (int j = 1; j < count; j ++){
+//                }
             }
 
             @Override
@@ -574,9 +594,6 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         bf_chart.setData(mBarData);
         // 设置 是否可以缩放
         bf_chart.setScaleEnabled(false);
-        //设置阴影
-        bf_chart.setDrawBarShadow(false);
-        bf_chart.setTouchEnabled(true);// 设置是否可以触摸
 //        mBarChart.setDrawValueAboveBar(true);//柱状图上面的数值显示在柱子上面还是柱子里面
         bf_chart.animateXY(2000, 3000);
         // 设置 柱子的宽度
@@ -599,7 +616,8 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return ((int) value + 1) + "月";
+                BannerLog.d("b_cc", "v" + value);
+                return count.get((int)value - 1);
             }
         });
 
@@ -619,8 +637,55 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         mLAxis.setAxisLineWidth(0.5f);
         // 显示 横向 网格线
         mLAxis.setDrawGridLines(true);
+        // 设置 Y 坐标轴 颜色
+//        mLAxis.setAxisLineColor(0xFFBA7858);
+        mLAxis.setTextColor(Color.parseColor("#A0A0A0"));
+//        mLAxis.setAxisMaximum(Collections.max(range) > 0 ? Collections.max(range) : 10f);
+        mLAxis.setAxisMaxValue(maxXValue(range));//计算Y轴最大值
+        mLAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return itemXValue(value, true);
+            }
+        });
         // 设置 Y轴 的刻度数量
         mLAxis.setLabelCount(6, true);
+    }
+
+    private String itemXValue(float value, boolean reall) {
+        String valueStr = "";
+        if (value > 999 && value < 10000) {
+            valueStr = (value / 1000.f) + "k";
+        } else {
+            if(reall){
+                valueStr = ((int) value) + "";
+            }else {
+                valueStr = (int) value + "";
+            }
+        }
+        if (value > 9999 && value < 100000) {
+            valueStr = value / 10000.f + "w";
+        }
+        return valueStr;
+    }
+
+    private float maxXValue(List<Float> range) {
+        float maxFloat = 0;
+        try {
+            if (Collections.max(range) < 1000) {
+                maxFloat = (((int) (Collections.max(range) / 50) + 1) * 50);
+            } else if (Collections.max(range) >= 1000 && Collections.max(range) < 9999) {
+                maxFloat = (((int) (Collections.max(range) / 500) + 1) * 500);
+            } else if (Collections.max(range) >= 10000 && Collections.max(range) < 99999) {
+                maxFloat = (((int) (Collections.max(range) / 5000) + 1) * 5000);
+            } else {
+                maxFloat = (((int) (Collections.max(range) / 50) + 1) * 50);
+            }
+        } catch (Exception e) {
+            BannerLog.d("b_cc", e.toString());
+            maxFloat = 50;
+        }
+        return maxFloat;
     }
 
 }

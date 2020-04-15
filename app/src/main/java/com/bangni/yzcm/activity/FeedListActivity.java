@@ -63,6 +63,9 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
     /** 自定义刷新和加载的标识，默认为false */
     boolean isRef, isLoad = false;
 
+    /** 刷新方式 */
+    public boolean isRefreshHead = true;
+
     /** 网络请求返回码 */
     static final int SUCC_CODE = 10000;
 
@@ -174,11 +177,11 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
                         rv_feedlist.setVisibility(View.GONE);
                         feedlist_lin_nodata.setVisibility(View.VISIBLE);
                     }else{
-                        feedlist_lin_nodata.setVisibility(View.GONE);
+                        feedlist_lin_nodata.setVisibility(View.VISIBLE);
                     }
                 }
             };
-            BannerRetrofitUtil.getInstance().getFeedbookLists(body, new BannerProgressSubscriber<BannerBaseResponse<FeedBookListModel>>(mListener, mContext, true));
+            BannerRetrofitUtil.getInstance().getFeedbookLists(body, new BannerProgressSubscriber<BannerBaseResponse<FeedBookListModel>>(mListener, mContext, isRefreshHead));
         }
     };
 
@@ -189,11 +192,14 @@ public class FeedListActivity extends BannerActivity implements View.OnClickList
         //加粗
         txt_feedbooklist_title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
+        feedlist_swipeRefreshLayout.setDisableContentWhenRefresh(true);//是否在刷新的时候禁止列表的操作
+        feedlist_swipeRefreshLayout.setDisableContentWhenLoading(true);//是否在加载的时候禁止列表的操作
 
         feedlist_swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 BannerLog.d("b_cc", "下拉刷新更多");
+                isRefreshHead = false;
                 feedlist_swipeRefreshLayout.setEnableFooterFollowWhenNoMoreData(false);
                 pageNo = 1;
                 isRef = true;

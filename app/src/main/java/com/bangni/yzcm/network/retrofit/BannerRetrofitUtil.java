@@ -51,7 +51,7 @@ import static okhttp3.internal.Util.UTF_8;
 
 public class BannerRetrofitUtil {
 
-    public static final int DEFAULT_TIMEOUT = 5;
+    public static final int DEFAULT_TIMEOUT = 10;
     private Retrofit mRetrofit;
     private BannerApiService mApiService;
 

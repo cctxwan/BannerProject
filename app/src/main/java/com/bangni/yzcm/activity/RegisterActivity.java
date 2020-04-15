@@ -326,7 +326,11 @@ public class RegisterActivity extends BannerActivity implements View.OnClickList
 
             @Override
             public void onError(String msg) {
-                ToastUtils.error(mContext, msg);
+                if(msg.equals("手机号码已经被其他用户使用")){
+                    ToastUtils.error(mContext, "该账号已被注册");
+                }else{
+                    ToastUtils.error(mContext, msg);
+                }
             }
         };
         BannerRetrofitUtil.getInstance().userRegister(body, new BannerProgressSubscriber<BannerBaseResponse<UserRegisterBean>>(mListener, this, true));

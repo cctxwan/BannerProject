@@ -2,6 +2,8 @@ package com.bangni.yzcm.network.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 public class StatisitcsInfos {
     /**
      * communityName : 辉少
@@ -11,8 +13,8 @@ public class StatisitcsInfos {
      */
 
     private String communityName;
-    private CumulativeDischargeBean cumulativeDischarge;
-    private Object cumulativePlay;
+    private Map<String, Integer> cumulativeDischarge;
+    private Map<String, Integer> cumulativePlay;
     private String pointNum;
 
     public String getCommunityName() {
@@ -23,19 +25,19 @@ public class StatisitcsInfos {
         this.communityName = communityName;
     }
 
-    public CumulativeDischargeBean getCumulativeDischarge() {
+    public Map<String, Integer> getCumulativeDischarge() {
         return cumulativeDischarge;
     }
 
-    public void setCumulativeDischarge(CumulativeDischargeBean cumulativeDischarge) {
+    public void setCumulativeDischarge(Map<String, Integer> cumulativeDischarge) {
         this.cumulativeDischarge = cumulativeDischarge;
     }
 
-    public Object getCumulativePlay() {
+    public Map<String, Integer> getCumulativePlay() {
         return cumulativePlay;
     }
 
-    public void setCumulativePlay(Object cumulativePlay) {
+    public void setCumulativePlay(Map<String, Integer> cumulativePlay) {
         this.cumulativePlay = cumulativePlay;
     }
 
@@ -45,44 +47,5 @@ public class StatisitcsInfos {
 
     public void setPointNum(String pointNum) {
         this.pointNum = pointNum;
-    }
-
-    public static class CumulativeDischargeBean {
-        /**
-         * 12-31 : 633
-         * 1-1 : 1744
-         * 1-2 : 84
-         */
-
-        @SerializedName("12-31")
-        private int _$1231;
-        @SerializedName("1-1")
-        private int _$11;
-        @SerializedName("1-2")
-        private int _$12;
-
-        public int get_$1231() {
-            return _$1231;
-        }
-
-        public void set_$1231(int _$1231) {
-            this._$1231 = _$1231;
-        }
-
-        public int get_$11() {
-            return _$11;
-        }
-
-        public void set_$11(int _$11) {
-            this._$11 = _$11;
-        }
-
-        public int get_$12() {
-            return _$12;
-        }
-
-        public void set_$12(int _$12) {
-            this._$12 = _$12;
-        }
     }
 }
