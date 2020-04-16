@@ -203,4 +203,23 @@ public class BannerUtils {
         return date.getTime();
     }
 
+
+
+    private static final int MIN_DELAY_TIME = 400;  // 两次点击间隔不能少于400ms 往大调也可以
+    private static long lastClickTime;
+
+    /**
+     * 防止多次点击造成的页面一直返回
+     * @return
+     */
+    public static boolean isFastClick() { //这个方法可以放到公共类里
+        boolean flag = true;
+        long currentClickTime = System.currentTimeMillis();
+        if ((currentClickTime - lastClickTime) >= MIN_DELAY_TIME) {
+            flag = false;
+        }
+        lastClickTime = currentClickTime;
+        return flag;
+    }
+
 }

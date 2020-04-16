@@ -81,8 +81,8 @@ public class BannerProgressSubscriber<T> extends Subscriber<T> {
         this.unsubscribe();
         //全局code处理
         if(mListener != null) {
-            String message = ErrorCodeUtils.onError(mContext, e);
-            mListener.onError(message);
+//            String message = ErrorCodeUtils.onError(mContext, e);
+            mListener.onError("接口出现问题");
         }
     }
 

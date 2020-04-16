@@ -147,19 +147,6 @@ public class BannerActivity extends SwipeBackActivity {
     }
 
     /**
-     * 防止快速点击
-     * @return
-     */
-    private boolean fastClick() {
-        long lastClick = 0;
-        if (System.currentTimeMillis() - lastClick <= 1000) {
-            return false;
-        }
-        lastClick = System.currentTimeMillis();
-        return true;
-    }
-
-    /**
      * 添加activity
      * @param activity
      */

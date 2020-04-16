@@ -169,7 +169,12 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 
                 @Override
                 public void onError(String msg) {
-                    ToastUtils.error(mContext, msg);
+                    if(msg.equals("接口出现问题")){
+                        setResult(111);
+                        finish();
+                    }else{
+                        ToastUtils.error(mContext, msg);
+                    }
                 }
             };
             BannerRetrofitUtil.getInstance().getCommunityLists(body, new BannerProgressSubscriber<BannerBaseResponse<List<CommunityInfos>>>(mListener, mContext, true));
@@ -288,7 +293,12 @@ public class OrderDetailActivity extends BannerActivity implements View.OnClickL
 
                 @Override
                 public void onError(String msg) {
-                    ToastUtils.error(mContext, msg);
+                    if(msg.equals("接口出现问题")){
+                        setResult(111);
+                        finish();
+                    }else{
+                        ToastUtils.error(mContext, msg);
+                    }
                 }
             };
             BannerRetrofitUtil.getInstance().getDwLists(body, new BannerProgressSubscriber<BannerBaseResponse<List<CommunityDWInfos>>>(mListener, mContext, true));

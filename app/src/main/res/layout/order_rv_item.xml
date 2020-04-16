@@ -28,7 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="三只松鼠"
+            android:text="广告名称"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:layout_centerVertical="true"
             android:textSize="@dimen/dimen_23_dip"
             android:textColor="#30313C"/>
@@ -37,7 +40,7 @@
             android:id="@+id/order_item_state"
             android:layout_width="@dimen/dimen_103_dip"
             android:layout_height="@dimen/dimen_53_dip"
-            android:text="进行中..."
+            android:text="广告状态"
             android:layout_alignParentRight="true"
             android:background="@drawable/order_item_bg_blue"
             android:gravity="center"
@@ -65,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="投放点位：共109个点位"
+            android:text="投放点位：共0个点位"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -89,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="曝光量：100000(人次)"
+            android:text="曝光量：0(人次)"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -113,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="播放量：1000(次)"
+            android:text="播放量：0(次)"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -137,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="开始时间：2020年12月12日 8:00"
+            android:text="开始时间：520年11月14日 5:20"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 
@@ -161,7 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_13_dip"
-            android:text="结束时间：2020年12月12日 8:00"
+            android:text="结束时间：520年11月14日 5:20"
             android:textColor="#30313C"
             android:textSize="@dimen/dimen_18_dip"/>
 

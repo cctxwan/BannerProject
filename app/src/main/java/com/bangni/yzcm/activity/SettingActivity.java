@@ -111,7 +111,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
         //给头像、昵称和账号赋值
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())){
-            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).asBitmap().centerCrop().error(R.mipmap.img_user).into(img_userimg);
+            Glide.with(SettingActivity.this).load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg()).error(R.mipmap.img_user).into(img_userimg);
         }
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){
             txt_set_nickname.setText(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName());
@@ -136,23 +136,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 Glide
                         .with(SettingActivity.this)
                         .load(path)
-                        .asBitmap()
-                        .centerCrop()
                         .error(R.mipmap.img_user)
-                        .dontAnimate()
-                        .listener(new RequestListener<String, Bitmap>() {
-                            @Override
-                            public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                                BannerLog.d("b_cc", "图片加载失败");
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                BannerLog.d("b_cc", "图片加载成功");
-                                return false;
-                            }
-                        })
                         .into(img_userimg);
 
                 new BannerPreferenceStorage(BannerApplication.getInstance()).setInfoImg(path.toString());
@@ -380,6 +364,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
      * @param token    在七牛官网上注册的token
      */
     private void uploadImageToQiniu(File filePath, String token, String key) {
+        //上传到七牛云
+        BannerLog.d("b_cc", "上传到七牛云");
+
         UploadManager uploadManager = new UploadManager();
         // 设置图片名字
         uploadManager.put(filePath, key, token, new UpCompletionHandler() {
@@ -393,23 +380,7 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
                 Glide
                         .with(SettingActivity.this)
                         .load(upImgUrl)
-                        .asBitmap()
-                        .centerCrop()
                         .error(R.mipmap.img_user)
-                        .dontAnimate()
-                        .listener(new RequestListener<String, Bitmap>() {
-                            @Override
-                            public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                                BannerLog.d("b_cc", "图片加载失败");
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                BannerLog.d("b_cc", "图片加载成功");
-                                return false;
-                            }
-                        })
                         .into(img_userimg);
                 userRaceimgModify();
             }

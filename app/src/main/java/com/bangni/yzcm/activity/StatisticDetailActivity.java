@@ -202,31 +202,6 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                             for (int i = 0; i < map1.size(); i++) {
                                 dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
                             }
-//                            initOneChat(dataFloat1.size(), dataFloat1);
-
-
-//                            map1.put("1", response.data.getCumulativeDischarge().get_$11());
-//                            map1.put("2", response.data.getElevatorExceptionStatistics().get_$2());
-//                            map1.put("3", response.data.getElevatorExceptionStatistics().get_$3());
-//                            map1.put("4", response.data.getElevatorExceptionStatistics().get_$4());
-//                            map1.put("5", response.data.getElevatorExceptionStatistics().get_$5());
-//                            map1.put("6", response.data.getElevatorExceptionStatistics().get_$6());
-//                            map1.put("7", response.data.getElevatorExceptionStatistics().get_$7());
-//                            map1.put("8", response.data.getElevatorExceptionStatistics().get_$8());
-//                            map1.put("9", response.data.getElevatorExceptionStatistics().get_$9());
-//                            map1.put("10", response.data.getElevatorExceptionStatistics().get_$10());
-//                            map1.put("11", response.data.getElevatorExceptionStatistics().get_$11());
-//                            map1.put("12", response.data.getElevatorExceptionStatistics().get_$12());
-//                            for (int i = 0; i < map1.size(); i++) {
-//                                dataFloat1.add(new BigDecimal(map1.get(String.valueOf(i + 1))).floatValue());
-//                            }
-//                            initOneChat(12, dataFloat1);
-//                        }else {
-//                            List<Float> dataFloat1 = new ArrayList<>();
-//                            for (int i = 0; i < 12; i++) {
-//                                dataFloat1.add((float) (i * 1) * 12 - i);
-//                            }
-//                            initOneChat(12, dataFloat1);
                         }else{
                             //默认为0.0f
                             BannerLog.d("b_cc", "折线图为空");
@@ -541,7 +516,6 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         for (int i = 0; i < 100; i ++){
             dataFloat1.add((float) 0);
         }
-//        initOneChat(dataFloat1, dataFloat1);
     }
 
     /**
@@ -552,63 +526,51 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
     private void initOneChat(List<String> count, List<Float> range) {
         ArrayList<BarEntry> yValues = new ArrayList<>();
         for (int i = 0; i < count.size(); i++) {
-            yValues.add(new BarEntry(count.size(), range.get(i)));
+            yValues.add(new BarEntry(i, range.get(i)));
         }
         // y 轴数据集
-        final BarDataSet barDataSet = new BarDataSet(yValues, "柱状图");
-        ////设置柱子的颜色
-        barDataSet.setColor(Color.parseColor("#1D65FF"));
-        barDataSet.setDrawValues(true);//显示柱子当前数值
-        barDataSet.setValueTextColor(getResources().getColor(R.color.aaaa));
-        bf_chart.setScaleEnabled(false);
-        bf_chart.setTouchEnabled(false);// 设置是否可以触摸
+        BarDataSet barDataSet = new BarDataSet(yValues, "柱状图");
+        barDataSet.setColor(Color.parseColor("#1D65FF"));//设置柱子颜色
+        barDataSet.setValueTextColor(getResources().getColor(R.color.aaaa));//设置柱子上值得颜色
 
-
-//        barDataSet.setValueFormatter(new IValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-//
-//            }
-//        });
 
         BarData mBarData = new BarData(barDataSet);
         mBarData.setDrawValues(true);//显示柱子当前数值
-
-        float ratio = (float) range.size()/(float) 7;
-        //显示的时候是按照多大的比率缩放显示,1f表示不放大缩小
-        bf_chart.zoom(ratio,1f,0,0);
-
+        bf_chart.setNoDataText("暂无数据");
+        bf_chart.setData(mBarData);
+        // 设置 是否可以缩放
+        bf_chart.setScaleEnabled(false);
+        bf_chart.setTouchEnabled(false);// 设置是否可以触摸
+//        barChartTow.setDrawValueAboveBar(true);//柱状图上面的数值显示在柱子上面还是柱子里面
+        bf_chart.animateXY(2000, 3000);
         bf_chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-//                for (int j = 1; j < count; j ++){
-//                }
+                e.getX();       //X轴坐标 记得转 int
+                e.getY();       //当前柱状图Y轴值
+                e.getIcon();    //对应 BarEntry(float x, float y, Drawable icon)
+                e.getData();    //对应 BarEntry(float x, float y, Object data)
             }
 
             @Override
             public void onNothingSelected() {
             }
         });
-
-        bf_chart.setNoDataText("暂无数据");
-        bf_chart.setData(mBarData);
-        // 设置 是否可以缩放
-        bf_chart.setScaleEnabled(false);
-//        mBarChart.setDrawValueAboveBar(true);//柱状图上面的数值显示在柱子上面还是柱子里面
-        bf_chart.animateXY(2000, 3000);
         // 设置 柱子的宽度
         mBarData.setBarWidth(0.5f);
         // 获取 x 轴
         XAxis xAxis = bf_chart.getXAxis();
-        // 隐藏下边X轴
-        xAxis.setDrawAxisLine(false);
-        // 设置x轴显示位置
+        // 设置 x 轴显示位置
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        // 取消垂直网格线
-        xAxis.setDrawGridLines(false);
+        // 网格线
+        xAxis.setDrawGridLines(true);
+        // 设置 x 轴 坐标旋转角度
+//        xAxis.setLabelRotationAngle(10f);
         // 设置 x 轴 坐标字体大小
-        xAxis.setTextSize(9f);
-        xAxis.setTextColor(Color.parseColor("#464646"));
+        xAxis.setTextSize(10f);
+        xAxis.setTextColor(getResources().getColor(R.color.aaaa));
+        // 设置 x 坐标轴 颜色
+        xAxis.setAxisLineColor(getResources().getColor(R.color.aaaa));
         // 设置 x 坐标轴 宽度
         xAxis.setAxisLineWidth(1f);
         // 设置 x轴 的刻度数量
@@ -616,8 +578,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                BannerLog.d("b_cc", "v" + value);
-                return count.get((int)value - 1);
+                return count.get((int)value);
             }
         });
 
@@ -626,31 +587,40 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         // 隐藏 右边 Y 轴
         mRAxis.setEnabled(false);
 
-
         // 获取 左边 Y轴
         YAxis mLAxis = bf_chart.getAxisLeft();
         // 显示  左边 Y轴 坐标线
         mLAxis.setDrawAxisLine(true);
-        // 设置 Y 坐标轴 颜色
-        mLAxis.setAxisLineColor(Color.parseColor("#000000"));
         // 设置 x 坐标轴 宽度
         mLAxis.setAxisLineWidth(0.5f);
         // 显示 横向 网格线
         mLAxis.setDrawGridLines(true);
+
         // 设置 Y 坐标轴 颜色
-//        mLAxis.setAxisLineColor(0xFFBA7858);
-        mLAxis.setTextColor(Color.parseColor("#A0A0A0"));
+        mLAxis.setAxisLineColor(getResources().getColor(R.color.aaaa));
+        mLAxis.setTextColor(getResources().getColor(R.color.aaaa));
 //        mLAxis.setAxisMaximum(Collections.max(range) > 0 ? Collections.max(range) : 10f);
         mLAxis.setAxisMaxValue(maxXValue(range));//计算Y轴最大值
         mLAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return itemXValue(value, true);
+//                if(isSafety){
+                    return itemXValue(value, true);
+//                }else{
+//                    return itemXValue(value, false);
+//                }
             }
         });
+
+        mLAxis.setAxisMinimum(0f);
+        // 设置 x 坐标轴 宽度
+        mLAxis.setAxisLineWidth(1f);
         // 设置 Y轴 的刻度数量
         mLAxis.setLabelCount(6, true);
     }
+
+
+
 
     private String itemXValue(float value, boolean reall) {
         String valueStr = "";
@@ -682,7 +652,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                 maxFloat = (((int) (Collections.max(range) / 50) + 1) * 50);
             }
         } catch (Exception e) {
-            BannerLog.d("b_cc", e.toString());
+            BannerLog.d("chart", e.toString());
             maxFloat = 50;
         }
         return maxFloat;

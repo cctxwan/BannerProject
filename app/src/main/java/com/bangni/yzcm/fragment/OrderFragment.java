@@ -11,11 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bangni.yzcm.R;
+import com.bangni.yzcm.activity.LoginActivity;
 import com.bangni.yzcm.activity.OrderDetailActivity;
 import com.bangni.yzcm.adapter.MultipleTypesAdapter;
 import com.bangni.yzcm.adapter.OrderAdapter;
+import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.network.bean.FindPsdBean;
 import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.OrderBannerModel;
@@ -26,6 +29,7 @@ import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
 import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
+import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -346,7 +350,7 @@ public class OrderFragment extends Fragment {
                             bundle.putLong("startTime", orderInfos.get(position).getStartTime());
                             bundle.putLong("endTime", orderInfos.get(position).getEndTime());
                             intent.putExtras(bundle);
-                            startActivity(intent);
+                            startActivityForResult(intent, 222);
                         }else{
                             ToastUtils.warning(getActivity(), "广告暂未投放，请稍后再试。");
                         }
@@ -355,6 +359,19 @@ public class OrderFragment extends Fragment {
             }
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 判断请求码和返回码是不是正确的，这两个码都是我们自己设置的
+        if (requestCode == 222 && resultCode == 111){
+            BannerLog.d("b_cc", "接口出现问题");
+            ToastUtils.warning(getActivity(), "账号已在其他设备登录");
+            new BannerPreferenceStorage(BannerApplication.getInstance()).setToken("");
+            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//            order_swipeRefreshLayout.autoRefresh();
+        }
+    }
 
     @Override
     public void onDestroyView() {
