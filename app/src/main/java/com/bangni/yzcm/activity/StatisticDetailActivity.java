@@ -1,23 +1,18 @@
 package com.bangni.yzcm.activity;
 
-import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
@@ -25,7 +20,6 @@ import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.CommunityInfos;
 import com.bangni.yzcm.network.bean.StatisitcsInfos;
-import com.bangni.yzcm.network.bean.UserFeedBookBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
@@ -46,17 +40,11 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IFillFormatter;
-import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.model.GradientColor;
-import com.github.mikephil.charting.utils.Utils;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.google.gson.Gson;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -196,16 +184,16 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                             txt_static_communitynamedw.setText(infos.getPointNum() + "个");
                         }
 
-                        if(infos.getCumulativeDischarge() != null){
-                            List<Float> dataFloat1 = new ArrayList<>();
-                            Map<String, Integer> map1 = infos.getCumulativeDischarge();
-                            for (int i = 0; i < map1.size(); i++) {
-                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
-                            }
-                        }else{
-                            //默认为0.0f
-                            BannerLog.d("b_cc", "折线图为空");
-                        }
+//                        if(infos.getCumulativeDischarge() != null){
+//                            List<Float> dataFloat1 = new ArrayList<>();
+//                            Map<String, Integer> map1 = infos.getCumulativeDischarge();
+//                            for (int i = 0; i < map1.size(); i++) {
+//                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
+//                            }
+//                        }else{
+//                            //默认为0.0f
+//                            BannerLog.d("b_cc", "折线图为空");
+//                        }
 
                         if(infos.getCumulativePlay() != null){
                             //给柱状图赋值

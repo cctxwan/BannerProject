@@ -14,7 +14,6 @@ import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.ChangeAccountModel;
-import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
@@ -24,15 +23,12 @@ import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
 import com.bangni.yzcm.utils.BannerUtils;
-import com.bangni.yzcm.utils.ClearDataUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.bangni.yzcm.view.CheckEditForButton;
 import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

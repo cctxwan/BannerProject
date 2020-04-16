@@ -1,7 +1,6 @@
 package com.bangni.yzcm.activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.utils.BannerLog;
-
 import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;

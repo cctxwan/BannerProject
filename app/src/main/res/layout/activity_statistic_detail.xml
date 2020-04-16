@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_26_dip"
                     android:gravity="center"
-                    android:text="累计流量统计"
+                    android:text="累计曝光量"
                     android:textSize="@dimen/dimen_24_dip"
                     android:textColor="#333333"/>
 
@@ -208,7 +208,7 @@
                     android:gravity="center"
                     android:textSize="@dimen/dimen_24_dip"
                     android:textColor="#333333"
-                    android:text="累计播放统计"/>
+                    android:text="累计播放量"/>
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/bf_chart"
@@ -235,7 +235,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="单位(人次)"
+                        android:text="单位(次)"
                         android:layout_marginLeft="@dimen/dimen_10_dip"
                         android:textSize="@dimen/dimen_15_dip"
                         android:textColor="#464646"/>

@@ -1,14 +1,10 @@
 package com.bangni.yzcm.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-
-import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,13 +20,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.base.BannerActivity;
-import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.FindPsdBean;
 import com.bangni.yzcm.network.bean.UserGetCodeBean;
-import com.bangni.yzcm.network.bean.UserRegisterBean;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
@@ -42,7 +35,6 @@ import com.bangni.yzcm.utils.ToastUtils;
 import com.bangni.yzcm.view.CheckEditForButton;
 import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -21,7 +21,6 @@ import com.bangni.yzcm.activity.base.BannerActivity;
 import com.bangni.yzcm.app.BannerApplication;
 import com.bangni.yzcm.dialog.CommomDialog;
 import com.bangni.yzcm.network.bean.ChangepsdModel;
-import com.bangni.yzcm.network.bean.FeedBookListModel;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
 import com.bangni.yzcm.network.retrofit.BannerProgressSubscriber;
 import com.bangni.yzcm.network.retrofit.BannerRetrofitUtil;
@@ -34,10 +33,8 @@ import com.bangni.yzcm.utils.ToastUtils;
 import com.bangni.yzcm.view.CheckEditForButton;
 import com.bangni.yzcm.view.EditTextChangeListener;
 import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

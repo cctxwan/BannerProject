@@ -15,13 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
             android:id="@+id/img_about_back"
             android:layout_width="@dimen/dimen_45_dip"
             android:layout_height="@dimen/dimen_45_dip"
             android:orientation="horizontal">
-
 
             <ImageView
                 android:layout_width="@dimen/dimen_9_dip"
@@ -80,23 +78,31 @@
         android:textSize="@dimen/dimen_17_dip"
         android:text="        陕西帮你电子科技有限公司成立于2017年，致力于人工智能与深度学习在电梯行业的应用与研究。切实地将人工智能理念与实际电梯应用背景相结合，开发出能提升电梯安全，优化整个电梯行业生态结构的智能软硬件产品。"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/txt_about_ysxy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666666"
+            android:textSize="@dimen/dimen_15_dip"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_55_dip"
+            android:text="029-68960905"/>
 
-    <TextView
-        android:id="@+id/txt_about_ysxy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#666666"
-        android:textSize="@dimen/dimen_15_dip"
-        android:layout_marginTop="@dimen/dimen_75_dip"
-        android:text="029-68960905"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_15_dip"
+            android:textColor="#666666"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dimen_29_dip"
+            android:text="公司官网：www.96333.tech"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_15_dip"
-        android:textColor="#666666"
-        android:layout_marginTop="@dimen/dimen_13_dip"
-        android:text="公司官网：www.96333.tech"/>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.network.bean.BroadcastListInfos;
 import java.util.List;
-
 import androidx.recyclerview.widget.RecyclerView;
 
 /**

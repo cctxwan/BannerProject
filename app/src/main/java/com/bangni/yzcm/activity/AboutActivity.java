@@ -1,6 +1,5 @@
 package com.bangni.yzcm.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.bangni.yzcm.R;
