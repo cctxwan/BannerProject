@@ -22,7 +22,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc7ffde-9730-4521-beeb-46992a8edaa1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/yzcm_iconandroid.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -32,42 +31,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_2_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_xiaohaibin_XBanner_androidx_v1_0_6_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_6_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_11_0_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/OrderDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/StatisticDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/base/BannerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/base/BannerActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/CommunityInfos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/bean/CommunityInfos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/retrofit/BannerProgressSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/util/ErrorCodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/network/util/ErrorCodeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/utils/BannerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/order_rv_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_rv_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/yzcm_iconandroid.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/yzcm_iconandroid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/yzcm_iconandroid.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/yzcm_iconandroid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/yzcm_iconandroid.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/yzcm_iconandroid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/yzcm_iconandroid.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/yzcm_iconandroid.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,11 +75,11 @@
           <entry key="class" value="1" />
           <entry key="gradle" value="22" />
           <entry key="iml" value="1" />
-          <entry key="java" value="863" />
+          <entry key="java" value="864" />
           <entry key="png" value="86" />
           <entry key="pro" value="1" />
           <entry key="properties" value="8" />
-          <entry key="xml" value="406" />
+          <entry key="xml" value="407" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -121,10 +88,10 @@
           <entry key="Groovy" value="22" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="86" />
-          <entry key="JAVA" value="863" />
+          <entry key="JAVA" value="864" />
           <entry key="ProGuard File" value="1" />
           <entry key="Properties" value="8" />
-          <entry key="XML" value="406" />
+          <entry key="XML" value="407" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -151,7 +118,30 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="696">
+              <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="97" column="25" lean-forward="true" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -233,7 +223,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_feed_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/dialog/CommomDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/adapter/OrderAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/InfoFragment.java" />
@@ -269,6 +258,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/order_rv_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/activity/SettingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" />
       </list>
     </option>
   </component>
@@ -330,7 +320,26 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BannerProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BannerProject" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="yzcm" type="462c0819:PsiDirectoryNode" />
+              <item name="fragment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -473,9 +482,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23454158" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20202559" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -483,7 +493,7 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Find" order="0" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="1" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Run" order="1" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32899022" />
@@ -497,7 +507,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.32995737" />
+      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.32995737" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -608,14 +618,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/yzcm_iconandroid.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="99" column="52" selection-start-line="99" selection-start-column="52" selection-end-line="99" selection-end-column="52" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smart/refresh-layout-kernel/2.0.0-alpha-1/2ee09c0fc7d3ca16adcc0aef5c35d406d0fc3772/refresh-layout-kernel-2.0.0-alpha-1-sources.jar!/com/scwang/smart/refresh/layout/api/RefreshLayout.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -883,16 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="337" column="46" selection-start-line="337" selection-start-column="46" selection-end-line="337" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/order_item_bg_yellow.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -946,6 +938,24 @@
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bangni/yzcm/fragment/OrderFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="97" column="25" lean-forward="true" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
   <component name="masterDetails">
