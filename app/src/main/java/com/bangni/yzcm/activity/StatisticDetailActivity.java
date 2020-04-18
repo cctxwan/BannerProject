@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.bangni.yzcm.R;
@@ -184,16 +185,22 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                             txt_static_communitynamedw.setText(infos.getPointNum() + "个");
                         }
 
-//                        if(infos.getCumulativeDischarge() != null){
-//                            List<Float> dataFloat1 = new ArrayList<>();
-//                            Map<String, Integer> map1 = infos.getCumulativeDischarge();
-//                            for (int i = 0; i < map1.size(); i++) {
-//                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
-//                            }
-//                        }else{
-//                            //默认为0.0f
-//                            BannerLog.d("b_cc", "折线图为空");
-//                        }
+                        if(infos.getCumulativeDischarge() != null){
+                            //给柱状图赋值
+                            List<String> keyName = new ArrayList<>();
+                            List<Float> dataFloat1 = new ArrayList<>();
+                            Map<String, Integer> map1 = infos.getCumulativeDischarge();
+                            Set<String> keys = map1.keySet();
+                            for(String key : keys){
+                                System.out.println("key值：" + key + " value值：" + map1.get(key));
+                                keyName.add(key);
+                                dataFloat1.add((float)map1.get(key));
+                            }
+                            setData(keyName, dataFloat1);
+                        }else{
+                            //默认为0.0f
+                            BannerLog.d("b_cc", "折线图为空");
+                        }
 
                         if(infos.getCumulativePlay() != null){
                             //给柱状图赋值
@@ -206,12 +213,6 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                                 keyName.add(key);
                                 dataFloat1.add((float)map1.get(key));
                             }
-
-
-//                            for (int i = 0; i < map1.size(); i++) {
-//                                BannerLog.d("b_cc", "map1.get(String.valueOf(i)=" + map1.get(i).toString());
-//                                dataFloat1.add(new BigDecimal(map1.get(map1.get(i))).floatValue());
-//                            }
                             initOneChat(keyName, dataFloat1);
 
                         }else{
@@ -320,7 +321,6 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                 @Override
                 public String getFormattedValue(float value, AxisBase axis) {
                     //这里是我自己的逻辑
-                    BannerLog.d("b_cc", "=====" + value);
                     return (int) value + 1 + "号";
                 }
             });
@@ -344,8 +344,8 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 
 
         //默认为0.0f
-        List<Float> dataFloat = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+//        List<Float> dataFloat = new ArrayList<>();
+//        for (int i = 0; i < 100; i++) {
 //            if(i == 2){
 //                dataFloat.add(24.0f);
 //            }else if (i == 4){
@@ -365,10 +365,10 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 //            }else if (i == 24){
 //                dataFloat.add(40.0f);
 //            }else{
-                dataFloat.add(0.0f);
+//                dataFloat.add(0.0f);
 //            }
-        }
-        setData(100, dataFloat);
+//        }
+//        setData(100, dataFloat);
     }
 
 
@@ -377,9 +377,9 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
      * @param count
      * @param range
      */
-    private void setData(int count, List<Float> range) {
+    private void setData(List<String> count, List<Float> range) {
         ArrayList<Entry> values = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count.size(); i++) {
             values.add(new Entry(i, range.get(i), null));
         }
 
@@ -388,14 +388,9 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         //显示的时候是按照多大的比率缩放显示,1f表示不放大缩小
         ll_chart.zoom(ratio,1f,0,0);
 
-        LineDataSet set1;
-        // create a dataset and give it a type
-        set1 = new LineDataSet(values, "02");
+        LineDataSet set1 = new LineDataSet(values, "折线图");
         set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-
         set1.setDrawIcons(false);
-
-        // black lines and points
         set1.setLineWidth(2f);
         set1.setColor(Color.parseColor("#4876FD"));// 链接线颜色
         set1.setDrawFilled(true);
@@ -416,15 +411,87 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
                 return ll_chart.getAxisLeft().getAxisMinimum();
             }
         });
-
-
         set1.setFillColor(Color.WHITE);
 
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(set1);
-        LineData data = new LineData(dataSets);
-        // set data
-        ll_chart.setData(data);//设置数据
+        LineData mBarData = new LineData(set1);
+        mBarData.setDrawValues(true);//显示柱子当前数值
+        ll_chart.setNoDataText("暂无数据");
+        ll_chart.setData(mBarData);
+        // 设置 是否可以缩放
+        ll_chart.setScaleEnabled(false);
+        ll_chart.setTouchEnabled(true);// 设置是否可以触摸
+//        barChartTow.setDrawValueAboveBar(true);//柱状图上面的数值显示在柱子上面还是柱子里面
+        ll_chart.animateXY(2000, 3000);
+        ll_chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                e.getX();       //X轴坐标 记得转 int
+                e.getY();       //当前柱状图Y轴值
+                e.getIcon();    //对应 BarEntry(float x, float y, Drawable icon)
+                e.getData();    //对应 BarEntry(float x, float y, Object data)
+            }
+
+            @Override
+            public void onNothingSelected() {
+            }
+        });
+
+        // 获取 x 轴
+        XAxis xAxis = ll_chart.getXAxis();
+        // 设置 x 轴显示位置
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        // 网格线
+        xAxis.setDrawGridLines(true);
+        // 设置 x 轴 坐标旋转角度
+//        xAxis.setLabelRotationAngle(10f);
+        // 设置 x 轴 坐标字体大小
+        xAxis.setTextSize(10f);
+        xAxis.setTextColor(getResources().getColor(R.color.aaaa));
+        // 设置 x 坐标轴 颜色
+        xAxis.setAxisLineColor(getResources().getColor(R.color.aaaa));
+        // 设置 x 坐标轴 宽度
+        xAxis.setAxisLineWidth(1f);
+        // 设置 x轴 的刻度数量
+        xAxis.setLabelCount(7);
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return count.get((int)value);
+            }
+        });
+
+        // 获取 左边 Y轴
+        YAxis mLAxis = ll_chart.getAxisLeft();
+        // 显示  左边 Y轴 坐标线
+        mLAxis.setDrawAxisLine(true);
+        // 设置 x 坐标轴 宽度
+        mLAxis.setAxisLineWidth(0.5f);
+        // 显示 横向 网格线
+        mLAxis.setDrawGridLines(true);
+
+        // 设置 Y 坐标轴 颜色
+        mLAxis.setAxisLineColor(getResources().getColor(R.color.aaaa));
+        mLAxis.setTextColor(getResources().getColor(R.color.aaaa));
+//        mLAxis.setAxisMaximum(Collections.max(range) > 0 ? Collections.max(range) : 10f);
+        mLAxis.setAxisMaxValue(maxXValue(range));//计算Y轴最大值
+        mLAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+//                if(isSafety){
+                return itemXValue(value, true);
+//                }else{
+//                    return itemXValue(value, false);
+//                }
+            }
+        });
+
+        mLAxis.setAxisMinimum(0f);
+        // 设置 x 坐标轴 宽度
+        mLAxis.setAxisLineWidth(1f);
+        // 设置 Y轴 的刻度数量
+        mLAxis.setLabelCount(6, true);
+
+
     }
 
 
@@ -528,7 +595,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
         bf_chart.setData(mBarData);
         // 设置 是否可以缩放
         bf_chart.setScaleEnabled(false);
-        bf_chart.setTouchEnabled(false);// 设置是否可以触摸
+        bf_chart.setTouchEnabled(true);// 设置是否可以触摸
 //        barChartTow.setDrawValueAboveBar(true);//柱状图上面的数值显示在柱子上面还是柱子里面
         bf_chart.animateXY(2000, 3000);
         bf_chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {

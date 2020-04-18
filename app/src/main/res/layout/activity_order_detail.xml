@@ -326,7 +326,6 @@
                     android:layout_height="wrap_content"
                     android:text="详情"
                     android:gravity="right"
-                    android:visibility="gone"
                     android:textSize="@dimen/dimen_20_dip"
                     android:layout_marginRight="@dimen/dimen_18_dip"
                     android:layout_marginTop="@dimen/dimen_28_dip"
