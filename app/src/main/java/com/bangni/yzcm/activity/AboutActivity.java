@@ -9,7 +9,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 关于我们
+ * 关于我们    
  */
 public class AboutActivity extends BannerActivity implements View.OnClickListener {
 
