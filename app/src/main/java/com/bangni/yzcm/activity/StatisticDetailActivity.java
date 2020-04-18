@@ -132,11 +132,11 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 
                 @Override
                 public void onNext(BannerBaseResponse<List<CommunityInfos>> response) {
+
+                    //成功，继续下一个请求
+                    handler.sendEmptyMessage(1);
+
                     if(response.data != null){
-
-                        //成功，继续下一个请求
-                        handler.sendEmptyMessage(1);
-
                         communityNameLists = response.data;
 
 //                        if(communityNameLists.size() > 0){
@@ -371,7 +371,7 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
 //        setData(100, dataFloat);
     }
 
-
+    int i = 0;
     /**
      * 设置折线图的数据
      * @param count
@@ -383,10 +383,15 @@ public class StatisticDetailActivity extends BannerActivity implements View.OnCl
             values.add(new Entry(i, range.get(i), null));
         }
 
-        //设置一页最大显示个数为6，超出部分就滑动
-        float ratio = (float) range.size()/(float) 7;
-        //显示的时候是按照多大的比率缩放显示,1f表示不放大缩小
-        ll_chart.zoom(ratio,1f,0,0);
+        //只执行一次
+        if(i==0){
+            i = 1;
+            //设置一页最大显示个数为6，超出部分就滑动
+            float ratio = (float) range.size()/(float) 7;
+            //显示的时候是按照多大的比率缩放显示,1f表示不放大缩小
+            ll_chart.zoom(ratio,1f,0,0);
+        }
+
 
         LineDataSet set1 = new LineDataSet(values, "折线图");
         set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);

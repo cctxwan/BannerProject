@@ -14,9 +14,9 @@ import java.util.Date;
  */
 public class BannerLog {
 
-    private static Boolean MYLOG_SWITCH = false; // 日志文件总开关
+    private static Boolean MYLOG_SWITCH = true; // 日志文件总开关
 
-    private static Boolean MYLOG_OTHER_OPEN = false;// 其他日志是否打印
+    private static Boolean MYLOG_OTHER_OPEN = true;// 其他日志是否打印
 
     private static String MYLOGFILEName = ".txt";// 本类输出的日志文件名称
 

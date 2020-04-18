@@ -38,6 +38,15 @@
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/dimen_23_dip" />
 
+        <TextView
+            android:id="@+id/txt_sdCard_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:text="APP日志"/>
+
     </RelativeLayout>
     
     <ImageView

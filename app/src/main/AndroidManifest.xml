@@ -10,8 +10,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
     <uses-permission
         android:name="android.permission.READ_LOGS"
@@ -26,37 +24,36 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.FindPsdActivity"></activity>
+        <activity android:name=".activity.SdCardFileStrActivity"></activity>
+        <activity android:name=".activity.FindPsdActivity" />
         <activity android:name=".activity.AgreementActivity" />
         <activity
-            android:launchMode="singleTop"
-            android:name=".activity.StatisticDetailActivity" />
+            android:name=".activity.StatisticDetailActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.ChangeAccountActivity" />
         <activity android:name=".activity.BroadcastRecordActivity" />
         <activity android:name=".activity.CommunityActivity" />
         <activity android:name=".activity.FeedListActivity" />
         <activity android:name=".activity.ChangePsdActivity" />
         <activity
-            android:launchMode="singleTop"
-            android:name=".activity.OrderDetailActivity" />
+            android:name=".activity.OrderDetailActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.BroadcastActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity
-            android:launchMode="singleTop"
-            android:name=".activity.LoginActivity" />
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.MainActivity" />
-        <activity
-            android:name=".activity.GuiActivity">
+        <activity android:name=".activity.GuiActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>
