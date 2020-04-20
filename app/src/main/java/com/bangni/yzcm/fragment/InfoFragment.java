@@ -1,8 +1,6 @@
 package com.bangni.yzcm.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.AboutActivity;
 import com.bangni.yzcm.activity.FeedbackActivity;
@@ -26,21 +24,13 @@ import com.bangni.yzcm.network.retrofit.BannerSubscriberOnNextListener;
 import com.bangni.yzcm.systemstatusbar.StatusBarUtil;
 import com.bangni.yzcm.utils.BannerLog;
 import com.bangni.yzcm.utils.BannerPreferenceStorage;
-import com.bangni.yzcm.utils.BannerUtils;
 import com.bangni.yzcm.utils.ToastUtils;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
-import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,6 +56,9 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.txt_info_account)
     TextView txt_info_account;
+
+    @BindView(R.id.loading)
+    ProgressBar loading;
 
     @Nullable
     @Override
@@ -125,23 +118,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                     Glide
                             .with(getActivity())
                             .load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())
-                            .asBitmap()
-                            .centerCrop()
                             .error(R.mipmap.img_user)
-                            .dontAnimate()
-                            .listener(new RequestListener<String, Bitmap>() {
-                                @Override
-                                public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                                    BannerLog.d("b_cc", "图片加载失败");
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                    BannerLog.d("b_cc", "图片加载成功");
-                                    return false;
-                                }
-                            })
                             .into(img_info_path);
                 }
                 if(!TextUtils.isEmpty(infoFragmentBean.getNickname())){
@@ -209,23 +186,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
             Glide
                     .with(getActivity())
                     .load(new BannerPreferenceStorage(BannerApplication.getInstance()).getInfoImg())
-                    .asBitmap()
-                    .centerCrop()
                     .error(R.mipmap.img_user)
-                    .dontAnimate()
-                    .listener(new RequestListener<String, Bitmap>() {
-                        @Override
-                        public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                            BannerLog.d("b_cc", "图片加载失败");
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            BannerLog.d("b_cc", "图片加载成功");
-                            return false;
-                        }
-                    })
                     .into(img_info_path);
         }
         if(!TextUtils.isEmpty(new BannerPreferenceStorage(BannerApplication.getInstance()).getNickName())){

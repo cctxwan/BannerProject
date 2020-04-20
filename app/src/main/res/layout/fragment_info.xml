@@ -35,13 +35,27 @@
         android:layout_marginRight="@dimen/dimen_15_dip"
         android:orientation="horizontal">
 
-        <com.bangni.yzcm.view.RoundImageView
-            android:id="@+id/img_info_path"
+        <RelativeLayout
             android:layout_width="@dimen/dimen_64_dip"
             android:layout_height="@dimen/dimen_64_dip"
             android:layout_marginTop="@dimen/dimen_24_dip"
-            android:layout_marginLeft="@dimen/dimen_26_dip"
-            android:src="@mipmap/img_user"/>
+            android:layout_marginLeft="@dimen/dimen_26_dip">
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/dimen_13_dip"
+                android:layout_marginTop="@dimen/dimen_13_dip"
+                android:indeterminateBehavior="repeat"
+                android:indeterminateDrawable="@drawable/anim" />
+
+            <com.bangni.yzcm.view.RoundImageView
+                android:id="@+id/img_info_path"
+                android:layout_width="@dimen/dimen_64_dip"
+                android:layout_height="@dimen/dimen_64_dip"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -203,5 +203,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.multidex:multidex-instrumentation:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.retrofit2:retrofit:2.2.0@jar" level="project" />
     <orderEntry type="module" module-name="MPChartLib" />
+    <orderEntry type="module" module-name="MPChartLib" />
   </component>
 </module>

@@ -3,6 +3,7 @@ package com.bangni.yzcm.activity;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
@@ -35,6 +36,9 @@ import com.google.gson.Gson;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
+import com.zyao89.view.zloading.ZLoadingDialog;
+import com.zyao89.view.zloading.Z_TYPE;
+
 import org.json.JSONObject;
 import java.io.File;
 import java.util.HashMap;
@@ -73,6 +77,8 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
 
     String upImgUrl;
+
+    private ZLoadingDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -352,6 +358,18 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
     private void uploadImageToQiniu(File filePath, String token, String key) {
         //上传到七牛云
         BannerLog.d("b_cc", "上传到七牛云");
+        if(dialog == null){
+            dialog = new ZLoadingDialog(mContext, R.style.zload_dialog);
+            dialog.setLoadingBuilder(Z_TYPE.SNAKE_CIRCLE)//设置类型
+                    .setLoadingColor(Color.BLUE)//颜色
+                    .setHintText("上传头像...")
+                    .setHintTextSize(14) // 设置字体大小 dp
+                    .setHintTextColor(Color.BLACK)  // 设置字体颜色
+                    .setDurationTime(0.5) // 设置动画时间百分比 - 0.5倍
+                    .setCanceledOnTouchOutside(false)
+                    .setDialogBackgroundColor(Color.TRANSPARENT) // 设置背景色，默认白色
+                    .show();
+        }
 
         UploadManager uploadManager = new UploadManager();
         // 设置图片名字
@@ -387,6 +405,9 @@ public class SettingActivity extends BannerActivity implements View.OnClickListe
 
             @Override
             public void onNext(BannerBaseResponse<InfoFragmentBean> response) {
+                if (dialog != null){
+                    dialog.dismiss();
+                }
                 Message msg = handler.obtainMessage();
                 msg.what = 2;
                 msg.obj = upImgUrl;

@@ -2,25 +2,19 @@ package com.bangni.yzcm.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import com.bangni.yzcm.R;
 import com.bangni.yzcm.activity.LoginActivity;
 import com.bangni.yzcm.activity.OrderDetailActivity;
 import com.bangni.yzcm.adapter.MultipleTypesAdapter;
 import com.bangni.yzcm.adapter.OrderAdapter;
 import com.bangni.yzcm.app.BannerApplication;
-import com.bangni.yzcm.network.bean.FindPsdBean;
-import com.bangni.yzcm.network.bean.InfoFragmentBean;
 import com.bangni.yzcm.network.bean.OrderBannerModel;
 import com.bangni.yzcm.network.bean.OrderInfos;
 import com.bangni.yzcm.network.retrofit.BannerBaseResponse;
